@@ -5,7 +5,9 @@ public class main {
 
 
     public static void main(String[] args) {
-        System.out.println();
+        InterfaceThread interfaz = new InterfaceThread();
+
+        interfaz.start();
     }
 }
 
