@@ -2,7 +2,10 @@ package classes;
 
 
 public class inValues {
-//Atributos (Parametros) de entrada
+
+//----------------------------------------------------------------------------------------------------------------------
+                                            //Atributos (Parametros) de entrada
+
     char timeUnit;
     boolean eventTable;
     int timeAmount;
@@ -21,7 +24,9 @@ public class inValues {
     float saleLossCost;
     int initialInv;
 
-    //Constructor de parametros de Entrada
+//----------------------------------------------------------------------------------------------------------------------
+                                            //Constructor de parametros de Entrada
+
     public inValues(char timeUnit, boolean eventTable, int timeAmount, int demandValues, int demand, int demandProb, int deliverTimeAmount, int deliverTime, int deliverTimeProb, int w8TimeAmntClient, int clientW8TimeArt, int w8TimeClientProb, float invCost, float purchaseCost, float orderCost, float acumDemandCost, float saleLossCost, int initialInv) {
         this.timeUnit = timeUnit;
         this.eventTable = eventTable;
@@ -40,11 +45,9 @@ public class inValues {
         this.initialInv = initialInv;
     }
 
-    
-    
    
-    
-    //Getters y Setters de atributos
+//----------------------------------------------------------------------------------------------------------------------
+                                                //Getters y Setters de atributos
     
     public char getTimeUnit() {
         return timeUnit;
