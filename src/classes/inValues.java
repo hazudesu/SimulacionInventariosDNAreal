@@ -34,11 +34,11 @@ public class inValues {
         this.eventTable = eventTable;
         this.timeAmount = timeAmount;
         this.demandValues = demandValues;
-        this.demandsArray = new int[demandValues][demandValues];
+        this.demandsArray = new int[demandValues][1];
         this.deliverTimeAmount = deliverTimeAmount;
-        this.deliverTimeArray = new int[deliverTimeAmount][deliverTimeAmount];
+        this.deliverTimeArray = new int[deliverTimeAmount][1];
         this.w8TimeAmntClient = w8TimeAmntClient;
-        this.clientw8TimeArray = new int[w8TimeAmntClient][w8TimeAmntClient];
+        this.clientw8TimeArray = new int[w8TimeAmntClient][1];
         this.invCost = invCost;
         this.purchaseCost = purchaseCost;
         this.orderCost = orderCost;
@@ -46,6 +46,31 @@ public class inValues {
         this.saleLossCost = saleLossCost;
         this.initialInv = initialInv;
     }
+
+
+    
+    //Setters de arrays
+    
+    //
+    
+    //Metodo de selección por probabilidades (Set ValoresActuales Demanda, Entrega, Cliente)
+    /*int VarRandom = Nro Random;
+    int Sum=0;
+    int ValorReal=0;
+    
+    for(i=0;i<demandsArray.length;i++){
+        if (VarRandom < (demandsArray[i][0]+Sum)){
+            ValorReal=demandsArray[i];
+            exit() or break();
+        }
+        Sum=Sum+demandsArray[i][0];
+    }
+    
+    //PARA MOSTRAR LA TABLA FINAL CREAR ARREGLO [I][12] PARA ALMACENAR TODAS LAS VARIABLES DE RESULTADO DE SIMULACION
+    12= Nro de variables en tabla, posiblemente 14 si almacenamos Q Y R, i=0 hasta timeAmount (duración de simulación)
+    */
+    
+    //Getters y Setters de atributos
 
     public inValues() {
     }
@@ -78,6 +103,7 @@ public class inValues {
 
     //----------------------------------------------------------------------------------------------------------------------
                                                 //Getters y Setters de atributos
+
     
     public char getTimeUnit() {
         return timeUnit;
