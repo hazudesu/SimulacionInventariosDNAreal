@@ -1,27 +1,34 @@
 package classes;
 
 
-public class inValues {
-//Atributos (Parametros) de entrada
-    char timeUnit;
-    boolean eventTable;
-    int timeAmount;
-    int demandValues;
-    int[][] demandsArray;
-    int deliverTimeAmount;
-    int[][] deliverTimeArray;
-    int deliverTime;
-    int deliverTimeProb;
-    int w8TimeAmntClient;
-    int[][] clientw8TimeArray;
-    float invCost;
-    float purchaseCost;
-    float orderCost;
-    float acumDemandCost;
-    float saleLossCost;
-    int initialInv;
+import java.util.Arrays;
 
-    //Constructor de parametros de Entrada
+public class inValues {
+
+//----------------------------------------------------------------------------------------------------------------------
+                                            //Atributos (Parametros) de entrada
+
+    protected char timeUnit ;
+    protected boolean eventTable ;
+    protected int timeAmount;
+    protected int demandValues;
+    protected int[][] demandsArray;
+    protected int deliverTimeAmount;
+    protected int[][] deliverTimeArray;
+    protected int deliverTime;
+    protected int deliverTimeProb;
+    protected int w8TimeAmntClient;
+    protected int[][] clientw8TimeArray;
+    protected float invCost;
+    protected float purchaseCost;
+    protected float orderCost;
+    protected float acumDemandCost;
+    protected float saleLossCost;
+    protected int initialInv;
+
+//----------------------------------------------------------------------------------------------------------------------
+                                            //Constructor de parametros de Entrada
+
     public inValues(char timeUnit, boolean eventTable, int timeAmount, int demandValues, int demand, int demandProb, int deliverTimeAmount, int deliverTime, int deliverTimeProb, int w8TimeAmntClient, int clientW8TimeArt, int w8TimeClientProb, float invCost, float purchaseCost, float orderCost, float acumDemandCost, float saleLossCost, int initialInv) {
         this.timeUnit = timeUnit;
         this.eventTable = eventTable;
@@ -39,6 +46,7 @@ public class inValues {
         this.saleLossCost = saleLossCost;
         this.initialInv = initialInv;
     }
+
 
     
     //Setters de arrays
@@ -63,6 +71,39 @@ public class inValues {
     */
     
     //Getters y Setters de atributos
+
+    public inValues() {
+    }
+    //----------------------------------------------------------------------------------------------------------------------
+                                                //Metodos
+
+    @Override
+    public String toString() {
+        return "inValues{" +
+                "timeUnit=" + timeUnit +
+                ", eventTable=" + eventTable +
+                ", timeAmount=" + timeAmount +
+                ", demandValues=" + demandValues +
+                ", demandsArray=" + Arrays.toString(demandsArray) +
+                ", deliverTimeAmount=" + deliverTimeAmount +
+                ", deliverTimeArray=" + Arrays.toString(deliverTimeArray) +
+                ", deliverTime=" + deliverTime +
+                ", deliverTimeProb=" + deliverTimeProb +
+                ", w8TimeAmntClient=" + w8TimeAmntClient +
+                ", clientw8TimeArray=" + Arrays.toString(clientw8TimeArray) +
+                ", invCost=" + invCost +
+                ", purchaseCost=" + purchaseCost +
+                ", orderCost=" + orderCost +
+                ", acumDemandCost=" + acumDemandCost +
+                ", saleLossCost=" + saleLossCost +
+                ", initialInv=" + initialInv +
+                '}';
+    }
+
+
+    //----------------------------------------------------------------------------------------------------------------------
+                                                //Getters y Setters de atributos
+
     
     public char getTimeUnit() {
         return timeUnit;

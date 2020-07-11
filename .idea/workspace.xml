@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba013635-969b-439f-988d-0e3f8a833f66" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/inValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/inValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/interfaz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/interfaz.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/interfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/interfaz.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,18 +24,25 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1e9VxXeUZNk52ae1KIrerYTQOca" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build.tools" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Adrian Luces\Documents\Universidad\8vo Semestre\Investigacion de Operaciones\Simulacion y Proyecto\SimulacionInventariosDNA\resources" />
       <recent name="C:\Users\Adrian Luces\Documents\Universidad\8vo Semestre\Investigacion de Operaciones\Simulacion y Proyecto\SimulacionInventariosDNA\src" />
     </key>
   </component>
@@ -50,7 +58,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.interfaz">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="10" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -58,8 +66,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="C:/Program Files/Java/jdk-11.0.7" />
+    <configuration name="interfaz" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11.0.7" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="interfaces.interfaz" />
+      <module name="SimulacionInventariosDNA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="interfaces.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11.0.7" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="classes.main" />
       <module name="SimulacionInventariosDNA" />
@@ -73,9 +96,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.main" />
+      <item itemvalue="Application.interfaz" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.main" />
+        <item itemvalue="Application.interfaz" />
       </list>
     </recent_temporary>
   </component>
@@ -92,6 +119,11 @@
       <workItem from="1593734044928" duration="1721000" />
       <workItem from="1593899400078" duration="5466000" />
       <workItem from="1593910368272" duration="3887000" />
+      <workItem from="1593971954157" duration="16239000" />
+      <workItem from="1593971954157" duration="5979000" />
+      <workItem from="1593993215184" duration="1971000" />
+      <workItem from="1594428863877" duration="242000" />
+      <workItem from="1594091868841" duration="5582000" />
     </task>
     <servers />
   </component>
