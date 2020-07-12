@@ -7,7 +7,7 @@ public class main {
 
 
     public static void main(String[] args) {
-        fileCreator creator = new fileCreator();
+       /* fileCreator creator = new fileCreator();
         creator.createDir();
         //creator.createStream();
         try {
@@ -17,16 +17,18 @@ public class main {
             return;
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
         
         inValues enter = new inValues('d',false,5,4,3,3,50,25,5,10,15,2);
+        enter.bubbleSort();
         System.out.println(enter.timeUnit);
-        
-        for (int i=0; i< enter.demandsArray.length; i++){
-           System.out.println(enter.demandsArray[i][0]);  
-           System.out.println(enter.demandsArray[i][1]);  
-        }
-        
+        simulation sim = new simulation();
+       /* enter.setDemandTime();
+        enter.setDeliverTime();
+        enter.setW8Time();
+        System.out.println(enter.demandRandom);
+        System.out.println(enter.deliverRandom);
+        System.out.println(enter.w8TimeRandom);*/
 
         //InterfaceThread interfaz = new InterfaceThread();
         //interfaz.start();

@@ -2,16 +2,17 @@ package classes;
 
 
 import static java.lang.System.exit;
+
 import java.util.Arrays;
 import java.util.Random;
 
 public class inValues {
 
 //----------------------------------------------------------------------------------------------------------------------
-                                            //Atributos (Parametros) de entrada
+    //Atributos (Parametros) de entrada
 
-    protected char timeUnit ;
-    protected boolean eventTable ;
+    protected char timeUnit;
+    protected boolean eventTable;
     protected int timeAmount;
     protected int demandValues;
     protected int[][] demandsArray;
@@ -25,14 +26,11 @@ public class inValues {
     protected float acumDemandCost;
     protected float saleLossCost;
     protected int initialInv;
-    protected int demandRandom;
-    protected int deliverRandom;
-    protected int w8TimeRandom;
 
 //----------------------------------------------------------------------------------------------------------------------
-                                            //Constructor de parametros de Entrada
+    //Constructor de parametros de Entrada
 
-    public inValues(char timeUnit, boolean eventTable, int timeAmount, int demandValues, int deliverTimeAmount, int w8TimeAmntClient,float invCost, float purchaseCost, float orderCost, float acumDemandCost, float saleLossCost, int initialInv) {
+    public inValues(char timeUnit, boolean eventTable, int timeAmount, int demandValues, int deliverTimeAmount, int w8TimeAmntClient, float invCost, float purchaseCost, float orderCost, float acumDemandCost, float saleLossCost, int initialInv) {
         this.timeUnit = timeUnit;
         this.eventTable = eventTable;
         this.timeAmount = timeAmount;
@@ -51,12 +49,10 @@ public class inValues {
     }
 
 
-    
-  
     public inValues() {
     }
     //----------------------------------------------------------------------------------------------------------------------
-                                                //Metodos
+    //Metodos
 
     @Override
     public String toString() {
@@ -90,59 +86,108 @@ public class inValues {
 
 
     //----------------------------------------------------------------------------------------------------------------------
-                                                //Getters y Setters de atributos
-
-    //Setters de arrays
-    
-    //
-    
-    //Metodo de selección por probabilidades (Set ValoresActuales Demanda, Entrega, Cliente)
-    public void setDemandTime(){       
-        int VarRandom = new Random().nextInt(100);    
-        int Sum=0;
-    //cambiar tipo de array a floats??
-        for(int i=0;i<demandsArray.length;i++){
-            if (VarRandom < (demandsArray[i][1]+Sum)){
-                this.demandRandom= demandsArray[i][0];
-                exit(0);
-            }
-            Sum=Sum+demandsArray[i][1];
-        }
-    }
-    
-    public void setDeliverTime(){        
-        int VarRandom = new Random().nextInt(100);    
-        int Sum=0;
-    //cambiar tipo de array a floats??
-        for(int i=0;i<demandsArray.length;i++){
-            if (VarRandom < (demandsArray[i][1]+Sum)){
-                this.deliverRandom= demandsArray[i][0];
-                exit(0);
-            }
-            Sum=Sum+demandsArray[i][1];
-        }
-    }
-    
-    public void setW8Time(){ 
-        int VarRandom = new Random().nextInt(100);    
-        int Sum=0;
-    //cambiar tipo de array a floats??
-        for(int i=0;i<demandsArray.length;i++){
-            if (VarRandom < (demandsArray[i][1]+Sum)){
-                this.w8TimeRandom= demandsArray[i][0];
-                exit(0);
-            }
-            Sum=Sum+demandsArray[i][1];
-        }
-    }
-    
-    //PARA MOSTRAR LA TABLA FINAL CREAR ARREGLO [I][12] PARA ALMACENAR TODAS LAS VARIABLES DE RESULTADO DE SIMULACION
-   /* 12= Nro de variables en tabla, posiblemente 14 si almacenamos Q Y R, i=0 hasta timeAmount (duración de simulación)
-    */
-    
     //Getters y Setters de atributos
 
-    
+    //Setters de arrays
+
+    //
+
+    //Metodo de selección por probabilidades (Set ValoresActuales Demanda, Entrega, Cliente)
+
+   /* public void setDemandTime() {
+        int VarRandom = new Random().nextInt(100);
+        System.out.println(VarRandom);
+        int Sum = 0;
+        //cambiar tipo de array a floats??
+        for (int i = 0; i < demandsArray.length; i++) {
+            if (VarRandom < (demandsArray[i][1] + Sum)) {
+                this.demandRandom = demandsArray[i][0];
+                return;
+            }
+            Sum = Sum + demandsArray[i][1];
+        }
+    }
+
+    public void setDeliverTime() {
+        int VarRandom = new Random().nextInt(100);
+        int Sum = 0;
+        System.out.println(VarRandom);
+        //cambiar tipo de array a floats??
+        for (int i = 0; i < deliverTimeArray.length; i++) {
+            if (VarRandom < (deliverTimeArray[i][1] + Sum)) {
+                this.deliverRandom = deliverTimeArray[i][0];
+                return;
+            }
+            Sum = Sum + deliverTimeArray[i][1];
+        }
+    }
+
+    public void setW8Time() {
+        int VarRandom = new Random().nextInt(100);
+        int Sum = 0;
+        System.out.println(VarRandom);
+        //cambiar tipo de array a floats??
+        for (int i = 0; i < clientw8TimeArray.length; i++) {
+            if (VarRandom < (clientw8TimeArray[i][1] + Sum)) {
+                this.w8TimeRandom = clientw8TimeArray[i][0];
+                return;
+            }
+            Sum = Sum + clientw8TimeArray[i][1];
+        }
+    }
+*/
+    //PARA MOSTRAR LA TABLA FINAL CREAR ARREGLO [I][12] PARA ALMACENAR TODAS LAS VARIABLES DE RESULTADO DE SIMULACION
+    /* 12= Nro de variables en tabla, posiblemente 14 si almacenamos Q Y R, i=0 hasta timeAmount (duración de simulación)
+     */
+
+    //Sort de arrays (Menor a Mayor)
+    public void bubbleSort() {
+        int n = this.demandsArray.length;
+        int n1 = this.deliverTimeArray.length;
+        int n2 = this.clientw8TimeArray.length;
+
+        //Sort para demandas
+        for (int i = 0; i < n-1; i++) {
+            for (int j = 0; j < n-i-1; j++) {
+                if (this.demandsArray[j][0] > this.demandsArray[j+1][0])
+                {
+                    // swap arr[j+1] and arr[i]
+                    int temp = this.demandsArray[j][0];
+                    this.demandsArray[j][0] = this.demandsArray[j+1][0];
+                    this.demandsArray[j+1][0] = temp;
+                }
+            }
+        }
+
+        //Sort para tiempos de entrega
+        for (int i = 0; i < n1-1; i++) {
+            for (int j = 0; j < n1-i-1; j++) {
+                if (this.deliverTimeArray[j][0] > this.deliverTimeArray[j+1][0])
+                {
+                    // swap arr[j+1] and arr[i]
+                    int temp = this.deliverTimeArray[j][0];
+                    this.deliverTimeArray[j][0] = this.deliverTimeArray[j+1][0];
+                    this.deliverTimeArray[j+1][0] = temp;
+                }
+            }
+        }
+
+        //Sort para tiempos de espera
+        for (int i = 0; i < n2-1; i++) {
+            for (int j = 0; j < n2-i-1; j++) {
+                if (this.clientw8TimeArray[j][0] > this.clientw8TimeArray[j+1][0])
+                {
+                    // swap arr[j+1] and arr[i]
+                    int temp = this.clientw8TimeArray[j][0];
+                    this.clientw8TimeArray[j][0] = this.clientw8TimeArray[j+1][0];
+                    this.clientw8TimeArray[j+1][0] = temp;
+                }
+            }
+        }
+    }
+
+    //Getters y Setters de atributos
+
     public char getTimeUnit() {
         return timeUnit;
     }
@@ -262,6 +307,6 @@ public class inValues {
     public void setInitialInv(int initialInv) {
         this.initialInv = initialInv;
     }
-    
-    
+
+
 }
