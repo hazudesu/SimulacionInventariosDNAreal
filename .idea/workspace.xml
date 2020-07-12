@@ -21,8 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ba013635-969b-439f-988d-0e3f8a833f66" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/inValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/inValues.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/inValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/inValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/simulation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +56,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -66,7 +69,7 @@
       <recent name="C:\Users\Adrian Luces\Documents\Universidad\8vo Semestre\Investigacion de Operaciones\Simulacion y Proyecto\SimulacionInventariosDNA\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.main">
+  <component name="RunManager" selected="Application.interfaz">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="10" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -135,7 +138,7 @@
       <workItem from="1594497115869" duration="1018000" />
       <workItem from="1594500801340" duration="1242000" />
       <workItem from="1594504421141" duration="4291000" />
-      <workItem from="1594517934393" duration="5116000" />
+      <workItem from="1594517934393" duration="9602000" />
     </task>
     <servers />
   </component>
@@ -159,25 +162,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1594520316211" />
-    <state width="1877" height="234" key="GridCell.Tab.0.bottom" timestamp="1594520892963">
+    <state width="913" height="233" key="GridCell.Tab.0.bottom" timestamp="1594527239857">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="234" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594520892963" />
-    <state width="1877" height="234" key="GridCell.Tab.0.center" timestamp="1594520892963">
+    <state width="913" height="233" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594527239857" />
+    <state width="913" height="233" key="GridCell.Tab.0.center" timestamp="1594527239857">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="234" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594520892963" />
-    <state width="1877" height="234" key="GridCell.Tab.0.left" timestamp="1594520892962">
+    <state width="913" height="233" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594527239857" />
+    <state width="913" height="233" key="GridCell.Tab.0.left" timestamp="1594527239856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="234" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594520892962" />
-    <state width="1877" height="234" key="GridCell.Tab.0.right" timestamp="1594520892963">
+    <state width="913" height="233" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594527239856" />
+    <state width="913" height="233" key="GridCell.Tab.0.right" timestamp="1594527239857">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="234" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594520892963" />
+    <state width="913" height="233" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594527239857" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1594518329616">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1594518329616" />
+    <state x="1096" y="244" key="run.anything.popup" timestamp="1594526596851">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1096" y="244" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1594526596851" />
   </component>
 </project>

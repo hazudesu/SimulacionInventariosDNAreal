@@ -26,9 +26,6 @@ public class inValues {
     protected float acumDemandCost;
     protected float saleLossCost;
     protected int initialInv;
-    protected int demandRandom;
-    protected int deliverRandom;
-    protected int w8TimeRandom;
 
 //----------------------------------------------------------------------------------------------------------------------
     //Constructor de parametros de Entrada
@@ -134,12 +131,13 @@ public class inValues {
     /* 12= Nro de variables en tabla, posiblemente 14 si almacenamos Q Y R, i=0 hasta timeAmount (duración de simulación)
      */
 
-    //Sort
+    //Sort de arrays (Menor a Mayor)
     public void bubbleSort() {
         int n = this.demandsArray.length;
         int n1 = this.deliverTimeArray.length;
         int n2 = this.clientw8TimeArray.length;
 
+        //Sort para demandas
         for (int i = 0; i < n-1; i++) {
             for (int j = 0; j < n-i-1; j++) {
                 if (this.demandsArray[j][0] > this.demandsArray[j+1][0])
@@ -152,6 +150,7 @@ public class inValues {
             }
         }
 
+        //Sort para tiempos de entrega
         for (int i = 0; i < n1-1; i++) {
             for (int j = 0; j < n1-i-1; j++) {
                 if (this.deliverTimeArray[j][0] > this.deliverTimeArray[j+1][0])
@@ -164,6 +163,7 @@ public class inValues {
             }
         }
 
+        //Sort para tiempos de espera
         for (int i = 0; i < n2-1; i++) {
             for (int j = 0; j < n2-i-1; j++) {
                 if (this.clientw8TimeArray[j][0] > this.clientw8TimeArray[j+1][0])
