@@ -141,7 +141,7 @@ public class fileCreator {
                     case 7:
                         intry = Integer.parseInt(line);
                         if(!(line.isEmpty()) && line != null){
-                            result.setDeliverTime(intry);
+                          //  result.setDeliverTime(intry);
                             fillLine++;
                             break;
                         }else{
@@ -151,7 +151,7 @@ public class fileCreator {
                     case 8:
                         intry = Integer.parseInt(line);
                         if(!(line.isEmpty()) && line != null){
-                            result.setDeliverTimeProb(intry);
+                           // result.setDeliverTimeProb(intry);
                             fillLine++;
                             break;
                         }else{
