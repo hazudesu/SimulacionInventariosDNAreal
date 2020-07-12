@@ -5,6 +5,7 @@ import java.awt.*;
 import java.io.*;
 import java.awt.desktop.*;
 import java.awt.FileDialog;
+import java.util.ArrayList;
 
 public class fileCreator {
     protected Desktop desktop = Desktop.getDesktop();
@@ -121,7 +122,23 @@ public class fileCreator {
                             return null;
                         }
 
-                    case 4://demand array
+                    case 4:
+                        String[] splitted = line.split("-");
+                        String[] part1 = splitted[0].split("/");
+                        String[] part2 = splitted[1].split("/");
+                        if((part1.length) == (part2.length)){
+                            int[][] artry = new int[2][part1.length];
+                            for(int i = 0; i<= 1 ; i++){
+                                for(int j = 0; j<=part1.length ; j++){
+
+                                }
+                            }
+
+                        }else{
+                            System.out.println("Different Sizes in arrays");
+                            return null;
+                        }
+
 
                         fillLine++;
                         break;
@@ -135,7 +152,13 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 6://delivertimearray
+                    case 6:
+                        ArrayList listtry2 = new ArrayList();
+                        String[] splitted2 = line.split("/");
+                        for(int i = 0; i<splitted2.length ; i++){
+                            listtry2.add(Integer.parseInt(splitted2[i]));
+                        }
+                        result.setDeliverTimeArray((int[][]) listtry2.toArray());
                         fillLine++;
                         break;
                     case 7:
@@ -148,8 +171,13 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 8://clientw8timearray
-
+                    case 8:
+                        ArrayList listtry3 = new ArrayList();
+                        String[] splitted3 = line.split("/");
+                        for(int i = 0; i<splitted3.length ; i++){
+                            listtry3.add(Integer.parseInt(splitted3[i]));
+                        }
+                        result.setClientw8TimeArray((int[][]) listtry3.toArray());
                         fillLine++;
                         break;
 
