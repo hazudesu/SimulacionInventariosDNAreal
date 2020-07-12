@@ -16,6 +16,9 @@ public class outValues {
     protected ArrayList deliverTime;
     protected ArrayList randomW8timeNo;
     protected ArrayList w8Time;
+    protected ArrayList demandRandom;
+    protected ArrayList deliverRandom;
+    protected ArrayList w8TimeRandom;
 
 
     //------------------------------------------------------------------------------------------------------------------

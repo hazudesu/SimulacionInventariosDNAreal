@@ -72,9 +72,6 @@ public class inValues {
                 ", acumDemandCost=" + acumDemandCost +
                 ", saleLossCost=" + saleLossCost +
                 ", initialInv=" + initialInv +
-                ", demandRandom=" + demandRandom +
-                ", deliverRandom=" + deliverRandom +
-                ", w8TimeRandom=" + w8TimeRandom +
                 '}';
     }
 
