@@ -121,7 +121,7 @@ public class fileCreator {
                             return null;
                         }
 
-                    case 4:
+                    case 4://demand array
 
                         fillLine++;
                         break;
@@ -135,30 +135,10 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 6:
+                    case 6://delivertimearray
                         fillLine++;
                         break;
                     case 7:
-                        intry = Integer.parseInt(line);
-                        if(!(line.isEmpty()) && line != null){
-                            result.setDeliverTime(intry);
-                            fillLine++;
-                            break;
-                        }else{
-                            System.out.println("Error de Formato");
-                            return null;
-                        }
-                    case 8:
-                        intry = Integer.parseInt(line);
-                        if(!(line.isEmpty()) && line != null){
-                            result.setDeliverTimeProb(intry);
-                            fillLine++;
-                            break;
-                        }else{
-                            System.out.println("Error de Formato");
-                            return null;
-                        }
-                    case 9:
                         intry = Integer.parseInt(line);
                         if(!(line.isEmpty()) && line != null){
                             result.setW8TimeAmntClient(intry);
@@ -168,11 +148,12 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 10:
+                    case 8://clientw8timearray
 
                         fillLine++;
                         break;
-                    case 11:
+
+                    case 9:
                         flotry = Float.parseFloat(line);
                         if(!(line.isEmpty()) && line != null){
                             result.setInvCost(flotry);
@@ -182,7 +163,7 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 12:
+                    case 10:
                         flotry = Float.parseFloat(line);
                         if(!(line.isEmpty()) && line != null){
                             result.setPurchaseCost(flotry);
@@ -192,7 +173,7 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 13:
+                    case 11:
                         flotry = Float.parseFloat(line);
                         if(!(line.isEmpty()) && line != null){
                             result.setOrderCost(flotry);
@@ -202,7 +183,7 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 14:
+                    case 12:
                         flotry = Float.parseFloat(line);
                         if(!(line.isEmpty()) && line != null){
                             result.setAcumDemandCost(flotry);
@@ -212,7 +193,7 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 15:
+                    case 13:
                         flotry = Float.parseFloat(line);
                         if(!(line.isEmpty()) && line != null){
                             result.setSaleLossCost(flotry);
@@ -222,10 +203,10 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 16:
+                    case 14:
                         intry = Integer.parseInt(line);
                         if(!(line.isEmpty()) && line != null){
-                            result.setDemandValues(intry);
+                            result.setInitialInv(intry);
                             fillLine++;
                             break;
                         }else{
