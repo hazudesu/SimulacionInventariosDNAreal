@@ -5,6 +5,7 @@ import java.awt.*;
 import java.io.*;
 import java.awt.desktop.*;
 import java.awt.FileDialog;
+import java.util.ArrayList;
 
 public class fileCreator {
     protected Desktop desktop = Desktop.getDesktop();
@@ -122,7 +123,24 @@ public class fileCreator {
                         }
 
                     case 4:
-
+                        String[] splitted = line.split("-");
+                        String[] part1 = splitted[0].split("/");
+                        String[] part2 = splitted[1].split("/");
+                        if((part1.length) == (part2.length)){
+                            int[][] artry = new int[2][part1.length];
+                            for(int i = 0; i<= 1 ; i++){
+                                for(int j = 0; j<part2.length ; j++){
+                                    if(i == 0)
+                                        artry[i][j] = Integer.parseInt(part1[j]);
+                                    if(i == 1)
+                                        artry[i][j] = Integer.parseInt(part2[j]);
+                                }
+                            }
+                            result.setDemandsArray(artry);
+                        }else{
+                            System.out.println("Different Sizes in arrays");
+                            return null;
+                        }
                         fillLine++;
                         break;
                     case 5:
@@ -136,29 +154,15 @@ public class fileCreator {
                             return null;
                         }
                     case 6:
+                        /*ArrayList listtry2 = new ArrayList();
+                        String[] splitted2 = line.split("/");
+                        for(int i = 0; i<splitted2.length ; i++){
+                            listtry2.add(Integer.parseInt(splitted2[i]));
+                        }
+                        result.setDeliverTimeArray((int[][]) listtry2.toArray());*/
                         fillLine++;
                         break;
                     case 7:
-                        intry = Integer.parseInt(line);
-                        if(!(line.isEmpty()) && line != null){
-                          //  result.setDeliverTime(intry);
-                            fillLine++;
-                            break;
-                        }else{
-                            System.out.println("Error de Formato");
-                            return null;
-                        }
-                    case 8:
-                        intry = Integer.parseInt(line);
-                        if(!(line.isEmpty()) && line != null){
-                           // result.setDeliverTimeProb(intry);
-                            fillLine++;
-                            break;
-                        }else{
-                            System.out.println("Error de Formato");
-                            return null;
-                        }
-                    case 9:
                         intry = Integer.parseInt(line);
                         if(!(line.isEmpty()) && line != null){
                             result.setW8TimeAmntClient(intry);
@@ -168,11 +172,17 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 10:
-
+                    case 8:
+                        /*ArrayList listtry3 = new ArrayList();
+                        String[] splitted3 = line.split("/");
+                        for(int i = 0; i<splitted3.length ; i++){
+                            listtry3.add(Integer.parseInt(splitted3[i]));
+                        }
+                        result.setClientw8TimeArray((int[][]) listtry3.toArray());*/
                         fillLine++;
                         break;
-                    case 11:
+
+                    case 9:
                         flotry = Float.parseFloat(line);
                         if(!(line.isEmpty()) && line != null){
                             result.setInvCost(flotry);
@@ -182,7 +192,7 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 12:
+                    case 10:
                         flotry = Float.parseFloat(line);
                         if(!(line.isEmpty()) && line != null){
                             result.setPurchaseCost(flotry);
@@ -192,7 +202,7 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 13:
+                    case 11:
                         flotry = Float.parseFloat(line);
                         if(!(line.isEmpty()) && line != null){
                             result.setOrderCost(flotry);
@@ -202,7 +212,7 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 14:
+                    case 12:
                         flotry = Float.parseFloat(line);
                         if(!(line.isEmpty()) && line != null){
                             result.setAcumDemandCost(flotry);
@@ -212,7 +222,7 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 15:
+                    case 13:
                         flotry = Float.parseFloat(line);
                         if(!(line.isEmpty()) && line != null){
                             result.setSaleLossCost(flotry);
@@ -222,10 +232,10 @@ public class fileCreator {
                             System.out.println("Error de Formato");
                             return null;
                         }
-                    case 16:
+                    case 14:
                         intry = Integer.parseInt(line);
                         if(!(line.isEmpty()) && line != null){
-                            result.setDemandValues(intry);
+                            result.setInitialInv(intry);
                             fillLine++;
                             break;
                         }else{
