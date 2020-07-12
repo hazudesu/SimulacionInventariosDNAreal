@@ -23,6 +23,7 @@ public class main {
         enter.bubbleSort();
         System.out.println(enter.timeUnit);
         simulation sim = new simulation();
+        sim.simulate(enter);
        /* enter.setDemandTime();
         enter.setDeliverTime();
         enter.setW8Time();

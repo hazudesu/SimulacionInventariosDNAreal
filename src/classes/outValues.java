@@ -4,18 +4,21 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class outValues {
-    protected ArrayList<Integer> day ;
-    protected ArrayList<Integer> invInc;
-    protected ArrayList<Float> randomDemandNo;
-    protected ArrayList<Integer> demand;
-    protected ArrayList<Integer> finalInv;
-    protected ArrayList<Float> invProm;
-    protected ArrayList<Integer> remain;
-    protected ArrayList<Integer> orderNo;
-    protected ArrayList<Float> randomDeliverNo;
-    protected ArrayList<Integer> deliverTime;
-    protected ArrayList<Float> randomW8timeNo;
-    protected ArrayList<Integer> w8Time;
+    protected ArrayList day;
+    protected ArrayList invInc;
+    protected ArrayList randomDemandNo;
+    protected ArrayList demand;
+    protected ArrayList finalInv;
+    protected ArrayList invProm;
+    protected ArrayList remain;
+    protected ArrayList orderNo;
+    protected ArrayList randomDeliverNo;
+    protected ArrayList deliverTime;
+    protected ArrayList randomW8timeNo;
+    protected ArrayList w8Time;
+    protected ArrayList demandRandom;
+    protected ArrayList deliverRandom;
+    protected ArrayList w8TimeRandom;
 
 
     //------------------------------------------------------------------------------------------------------------------
