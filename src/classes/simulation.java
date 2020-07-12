@@ -28,6 +28,9 @@ public class simulation {
         maxQ = maxQ(entrada);
         minR = minR(entrada, minQ);
         maxR = maxR(entrada, maxQ);
+        boolean orderup = false;
+        int currentOrders = 0;
+        int remainingOrderTime = 0;
 
         //Inicio de Simulacion
         outValues salida = new outValues();
@@ -38,14 +41,27 @@ public class simulation {
             randomDemand(entrada, salida);
             randomDeliverT(entrada, salida);
             randomW8Time(entrada, salida);
-            salida.finalInv.add(salida.invInc.get(i));
-            salida.invProm.add((int)salida.invInc.get(i)+(int)salida.finalInv.get(i)/2);
-            if ((int)salida.invInc.get(i)-(int)salida.finalInv.get(i) < 0)
-            salida.remain.add((int)salida.invInc.get(i)-(int)salida.finalInv.get(i)*-1);
+            salida.finalInv.add((salida.invInc.get(i)) - salida.demand.get(i));
+            salida.invProm.add((float)(salida.invInc.get(i)+salida.finalInv.get(i))/2);
+            if (salida.invInc.get(i)-salida.finalInv.get(i) < 0)
+                salida.remain.add((int)salida.invInc.get(i)-(int)salida.finalInv.get(i)*-1);
             else
                 salida.remain.add(0);
             //
-            salida.orderNo.add()
+
+            if((orderup == false) && (salida.invInc.get(i)<=salida.getRvalue())){
+                currentOrders++;
+                salida.orderNo.add(currentOrders);
+                orderup = true;
+            }else
+                if((orderup == true) && (remainingOrderTime == 0)){
+                    orderup = false;
+                    salida.invInc.add(salida.invInc.get(i-1)+salida.getQvalue());
+
+                }else
+                    if((orderup == true) && (remainingOrderTime != 0))
+                        remainingOrderTime--;
+
 
 
         }
@@ -86,6 +102,9 @@ public class simulation {
             return Le - input.demandsArray[input.demandValues][0];
         }
     }
+
+    //RECORDAR MULTIPLICAR LOS VALORES DE LOS RANDOM POR 100 Y CASTEAR
+
 
     //Metodos de seleccion de prob
     public void randomDemand(inValues entrada, outValues salida){
