@@ -54,6 +54,7 @@ public class inValues {
     //----------------------------------------------------------------------------------------------------------------------
     //Metodos
 
+
     @Override
     public String toString() {
         return "inValues{" +
@@ -72,16 +73,13 @@ public class inValues {
                 ", acumDemandCost=" + acumDemandCost +
                 ", saleLossCost=" + saleLossCost +
                 ", initialInv=" + initialInv +
-                ", demandRandom=" + demandRandom +
-                ", deliverRandom=" + deliverRandom +
-                ", w8TimeRandom=" + w8TimeRandom +
                 '}';
     }
 
     public void printarray(){
         for(int i = 0; i<=1; i++)
             for(int j = 0; j<5 ; j++)
-                System.out.println(demandsArray[i][j]);
+                System.out.println(clientw8TimeArray[i][j]);
     }
 
 

@@ -154,12 +154,24 @@ public class fileCreator {
                             return null;
                         }
                     case 6:
-                        /*ArrayList listtry2 = new ArrayList();
-                        String[] splitted2 = line.split("/");
-                        for(int i = 0; i<splitted2.length ; i++){
-                            listtry2.add(Integer.parseInt(splitted2[i]));
+                        String[] splitted2 = line.split("-");
+                        String[] A = splitted2[0].split("/");
+                        String[] B = splitted2[1].split("/");
+                        if((A.length) == (B.length)){
+                            int[][] artry = new int[2][A.length];
+                            for(int i = 0; i<= 1 ; i++){
+                                for(int j = 0; j<B.length ; j++){
+                                    if(i == 0)
+                                        artry[i][j] = Integer.parseInt(A[j]);
+                                    if(i == 1)
+                                        artry[i][j] = Integer.parseInt(B[j]);
+                                }
+                            }
+                            result.setDeliverTimeArray(artry);
+                        }else{
+                            System.out.println("Different Sizes in arrays");
+                            return null;
                         }
-                        result.setDeliverTimeArray((int[][]) listtry2.toArray());*/
                         fillLine++;
                         break;
                     case 7:
@@ -173,15 +185,26 @@ public class fileCreator {
                             return null;
                         }
                     case 8:
-                        /*ArrayList listtry3 = new ArrayList();
-                        String[] splitted3 = line.split("/");
-                        for(int i = 0; i<splitted3.length ; i++){
-                            listtry3.add(Integer.parseInt(splitted3[i]));
+                        String[] splitted3 = line.split("-");
+                        String[] A1 = splitted3[0].split("/");
+                        String[] B1 = splitted3[1].split("/");
+                        if((A1.length) == (B1.length)){
+                            int[][] artry = new int[2][A1.length];
+                            for(int i = 0; i<= 1 ; i++){
+                                for(int j = 0; j<B1.length ; j++){
+                                    if(i == 0)
+                                        artry[i][j] = Integer.parseInt(A1[j]);
+                                    if(i == 1)
+                                        artry[i][j] = Integer.parseInt(B1[j]);
+                                }
+                            }
+                            result.setClientw8TimeArray(artry);
+                        }else{
+                            System.out.println("Different Sizes in arrays");
+                            return null;
                         }
-                        result.setClientw8TimeArray((int[][]) listtry3.toArray());*/
                         fillLine++;
                         break;
-
                     case 9:
                         flotry = Float.parseFloat(line);
                         if(!(line.isEmpty()) && line != null){
