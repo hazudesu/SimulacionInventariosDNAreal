@@ -12,7 +12,8 @@ public class main {
         //creator.createStream();
         try {
             inValues test = creator.readFile(creator.openFile());
-            System.out.println(test.toString());
+            //System.out.println(test.toString());
+            test.printarray();
             return;
         } catch (IOException e) {
             e.printStackTrace();
