@@ -13,7 +13,7 @@ public class main {
         try {
             inValues test = creator.readFile(creator.openFile());
             //System.out.println(test.toString());
-            test.printarray();
+            //test.printarray();
             return;
         } catch (IOException e) {
             e.printStackTrace();
