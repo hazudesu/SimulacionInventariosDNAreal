@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba013635-969b-439f-988d-0e3f8a833f66" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/classes/simulation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/inValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/inValues.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/main.java" afterDir="false" />
@@ -136,7 +135,7 @@
       <workItem from="1594497115869" duration="1018000" />
       <workItem from="1594500801340" duration="1242000" />
       <workItem from="1594504421141" duration="4291000" />
-      <workItem from="1594517934393" duration="3352000" />
+      <workItem from="1594517934393" duration="5116000" />
     </task>
     <servers />
   </component>

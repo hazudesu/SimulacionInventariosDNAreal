@@ -134,8 +134,50 @@ public class inValues {
     /* 12= Nro de variables en tabla, posiblemente 14 si almacenamos Q Y R, i=0 hasta timeAmount (duración de simulación)
      */
 
-    //Getters y Setters de atributos
+    //Sort
+    public void bubbleSort() {
+        int n = this.demandsArray.length;
+        int n1 = this.deliverTimeArray.length;
+        int n2 = this.clientw8TimeArray.length;
 
+        for (int i = 0; i < n-1; i++) {
+            for (int j = 0; j < n-i-1; j++) {
+                if (this.demandsArray[j][0] > this.demandsArray[j+1][0])
+                {
+                    // swap arr[j+1] and arr[i]
+                    int temp = this.demandsArray[j][0];
+                    this.demandsArray[j][0] = this.demandsArray[j+1][0];
+                    this.demandsArray[j+1][0] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < n1-1; i++) {
+            for (int j = 0; j < n1-i-1; j++) {
+                if (this.deliverTimeArray[j][0] > this.deliverTimeArray[j+1][0])
+                {
+                    // swap arr[j+1] and arr[i]
+                    int temp = this.deliverTimeArray[j][0];
+                    this.deliverTimeArray[j][0] = this.deliverTimeArray[j+1][0];
+                    this.deliverTimeArray[j+1][0] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < n2-1; i++) {
+            for (int j = 0; j < n2-i-1; j++) {
+                if (this.clientw8TimeArray[j][0] > this.clientw8TimeArray[j+1][0])
+                {
+                    // swap arr[j+1] and arr[i]
+                    int temp = this.clientw8TimeArray[j][0];
+                    this.clientw8TimeArray[j][0] = this.clientw8TimeArray[j+1][0];
+                    this.clientw8TimeArray[j+1][0] = temp;
+                }
+            }
+        }
+    }
+
+    //Getters y Setters de atributos
 
     public char getTimeUnit() {
         return timeUnit;

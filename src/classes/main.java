@@ -19,6 +19,7 @@ public class main {
         }*/
         
         inValues enter = new inValues('d',false,5,4,3,3,50,25,5,10,15,2);
+        enter.bubbleSort();
         System.out.println(enter.timeUnit);
         simulation sim = new simulation();
        /* enter.setDemandTime();
