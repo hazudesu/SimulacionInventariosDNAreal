@@ -20,12 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba013635-969b-439f-988d-0e3f8a833f66" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/simulation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/fileCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/fileCreator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/inValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/inValues.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/fileCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/fileCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/inValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/inValues.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/main.java" afterDir="false" />
     </list>
@@ -140,7 +136,7 @@
       <workItem from="1594497115869" duration="1018000" />
       <workItem from="1594500801340" duration="1242000" />
       <workItem from="1594504421141" duration="4291000" />
-      <workItem from="1594517934393" duration="2530000" />
+      <workItem from="1594517934393" duration="3352000" />
     </task>
     <servers />
   </component>
@@ -164,22 +160,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1594520316211" />
-    <state width="915" height="234" key="GridCell.Tab.0.bottom" timestamp="1594519998492">
+    <state width="1877" height="234" key="GridCell.Tab.0.bottom" timestamp="1594520892963">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="915" height="234" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594519998492" />
-    <state width="915" height="234" key="GridCell.Tab.0.center" timestamp="1594519998492">
+    <state width="1877" height="234" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594520892963" />
+    <state width="1877" height="234" key="GridCell.Tab.0.center" timestamp="1594520892963">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="915" height="234" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594519998492" />
-    <state width="915" height="234" key="GridCell.Tab.0.left" timestamp="1594519998492">
+    <state width="1877" height="234" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594520892963" />
+    <state width="1877" height="234" key="GridCell.Tab.0.left" timestamp="1594520892962">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="915" height="234" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594519998492" />
-    <state width="915" height="234" key="GridCell.Tab.0.right" timestamp="1594519998492">
+    <state width="1877" height="234" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594520892962" />
+    <state width="1877" height="234" key="GridCell.Tab.0.right" timestamp="1594520892963">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="915" height="234" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594519998492" />
+    <state width="1877" height="234" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594520892963" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1594518329616">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

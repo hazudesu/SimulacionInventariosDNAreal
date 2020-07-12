@@ -88,7 +88,7 @@ public class inValues {
 
     //Metodo de selección por probabilidades (Set ValoresActuales Demanda, Entrega, Cliente)
 
-    public void setDemandTime() {
+   /* public void setDemandTime() {
         int VarRandom = new Random().nextInt(100);
         System.out.println(VarRandom);
         int Sum = 0;
@@ -129,7 +129,7 @@ public class inValues {
             Sum = Sum + clientw8TimeArray[i][1];
         }
     }
-
+*/
     //PARA MOSTRAR LA TABLA FINAL CREAR ARREGLO [I][12] PARA ALMACENAR TODAS LAS VARIABLES DE RESULTADO DE SIMULACION
     /* 12= Nro de variables en tabla, posiblemente 14 si almacenamos Q Y R, i=0 hasta timeAmount (duración de simulación)
      */
