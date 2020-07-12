@@ -1,7 +1,9 @@
 package classes;
 
 
+import static java.lang.System.exit;
 import java.util.Arrays;
+import java.util.Random;
 
 public class inValues {
 
@@ -15,8 +17,6 @@ public class inValues {
     protected int[][] demandsArray;
     protected int deliverTimeAmount;
     protected int[][] deliverTimeArray;
-    protected int deliverTime;
-    protected int deliverTimeProb;
     protected int w8TimeAmntClient;
     protected int[][] clientw8TimeArray;
     protected float invCost;
@@ -25,20 +25,23 @@ public class inValues {
     protected float acumDemandCost;
     protected float saleLossCost;
     protected int initialInv;
+    protected int demandRandom;
+    protected int deliverRandom;
+    protected int w8TimeRandom;
 
 //----------------------------------------------------------------------------------------------------------------------
                                             //Constructor de parametros de Entrada
 
-    public inValues(char timeUnit, boolean eventTable, int timeAmount, int demandValues, int demand, int demandProb, int deliverTimeAmount, int deliverTime, int deliverTimeProb, int w8TimeAmntClient, int clientW8TimeArt, int w8TimeClientProb, float invCost, float purchaseCost, float orderCost, float acumDemandCost, float saleLossCost, int initialInv) {
+    public inValues(char timeUnit, boolean eventTable, int timeAmount, int demandValues, int deliverTimeAmount, int w8TimeAmntClient,float invCost, float purchaseCost, float orderCost, float acumDemandCost, float saleLossCost, int initialInv) {
         this.timeUnit = timeUnit;
         this.eventTable = eventTable;
         this.timeAmount = timeAmount;
         this.demandValues = demandValues;
-        this.demandsArray = new int[demandValues][1];
+        this.demandsArray = new int[demandValues][2];
         this.deliverTimeAmount = deliverTimeAmount;
-        this.deliverTimeArray = new int[deliverTimeAmount][1];
+        this.deliverTimeArray = new int[deliverTimeAmount][2];
         this.w8TimeAmntClient = w8TimeAmntClient;
-        this.clientw8TimeArray = new int[w8TimeAmntClient][1];
+        this.clientw8TimeArray = new int[w8TimeAmntClient][2];
         this.invCost = invCost;
         this.purchaseCost = purchaseCost;
         this.orderCost = orderCost;
@@ -49,29 +52,7 @@ public class inValues {
 
 
     
-    //Setters de arrays
-    
-    //
-    
-    //Metodo de selección por probabilidades (Set ValoresActuales Demanda, Entrega, Cliente)
-    /*int VarRandom = Nro Random;
-    int Sum=0;
-    int ValorReal=0;
-    
-    for(i=0;i<demandsArray.length;i++){
-        if (VarRandom < (demandsArray[i][0]+Sum)){
-            ValorReal=demandsArray[i];
-            exit() or break();
-        }
-        Sum=Sum+demandsArray[i][0];
-    }
-    
-    //PARA MOSTRAR LA TABLA FINAL CREAR ARREGLO [I][12] PARA ALMACENAR TODAS LAS VARIABLES DE RESULTADO DE SIMULACION
-    12= Nro de variables en tabla, posiblemente 14 si almacenamos Q Y R, i=0 hasta timeAmount (duración de simulación)
-    */
-    
-    //Getters y Setters de atributos
-
+  
     public inValues() {
     }
     //----------------------------------------------------------------------------------------------------------------------
@@ -87,8 +68,6 @@ public class inValues {
                 ", demandsArray=" + Arrays.toString(demandsArray) +
                 ", deliverTimeAmount=" + deliverTimeAmount +
                 ", deliverTimeArray=" + Arrays.toString(deliverTimeArray) +
-                ", deliverTime=" + deliverTime +
-                ", deliverTimeProb=" + deliverTimeProb +
                 ", w8TimeAmntClient=" + w8TimeAmntClient +
                 ", clientw8TimeArray=" + Arrays.toString(clientw8TimeArray) +
                 ", invCost=" + invCost +
@@ -103,6 +82,56 @@ public class inValues {
 
     //----------------------------------------------------------------------------------------------------------------------
                                                 //Getters y Setters de atributos
+
+    //Setters de arrays
+    
+    //
+    
+    //Metodo de selección por probabilidades (Set ValoresActuales Demanda, Entrega, Cliente)
+    public void setDemandTime(){       
+        int VarRandom = new Random().nextInt(100);    
+        int Sum=0;
+    //cambiar tipo de array a floats??
+        for(int i=0;i<demandsArray.length;i++){
+            if (VarRandom < (demandsArray[i][1]+Sum)){
+                this.demandRandom= demandsArray[i][0];
+                exit(0);
+            }
+            Sum=Sum+demandsArray[i][1];
+        }
+    }
+    
+    public void setDeliverTime(){        
+        int VarRandom = new Random().nextInt(100);    
+        int Sum=0;
+    //cambiar tipo de array a floats??
+        for(int i=0;i<demandsArray.length;i++){
+            if (VarRandom < (demandsArray[i][1]+Sum)){
+                this.deliverRandom= demandsArray[i][0];
+                exit(0);
+            }
+            Sum=Sum+demandsArray[i][1];
+        }
+    }
+    
+    public void setW8Time(){ 
+        int VarRandom = new Random().nextInt(100);    
+        int Sum=0;
+    //cambiar tipo de array a floats??
+        for(int i=0;i<demandsArray.length;i++){
+            if (VarRandom < (demandsArray[i][1]+Sum)){
+                this.w8TimeRandom= demandsArray[i][0];
+                exit(0);
+            }
+            Sum=Sum+demandsArray[i][1];
+        }
+    }
+    
+    //PARA MOSTRAR LA TABLA FINAL CREAR ARREGLO [I][12] PARA ALMACENAR TODAS LAS VARIABLES DE RESULTADO DE SIMULACION
+   /* 12= Nro de variables en tabla, posiblemente 14 si almacenamos Q Y R, i=0 hasta timeAmount (duración de simulación)
+    */
+    
+    //Getters y Setters de atributos
 
     
     public char getTimeUnit() {
@@ -159,22 +188,6 @@ public class inValues {
 
     public void setDeliverTimeArray(int[][] deliverTimeArray) {
         this.deliverTimeArray = deliverTimeArray;
-    }
-
-    public int getDeliverTime() {
-        return deliverTime;
-    }
-
-    public void setDeliverTime(int deliverTime) {
-        this.deliverTime = deliverTime;
-    }
-
-    public int getDeliverTimeProb() {
-        return deliverTimeProb;
-    }
-
-    public void setDeliverTimeProb(int deliverTimeProb) {
-        this.deliverTimeProb = deliverTimeProb;
     }
 
     public int getW8TimeAmntClient() {

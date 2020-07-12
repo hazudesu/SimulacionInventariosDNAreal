@@ -17,10 +17,19 @@ public class main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        
+        inValues enter = new inValues('d',false,5,4,3,3,50,25,5,10,15,2);
+        System.out.println(enter.timeUnit);
+        
+        for (int i=0; i< enter.demandsArray.length; i++){
+           System.out.println(enter.demandsArray[i][0]);  
+           System.out.println(enter.demandsArray[i][1]);  
+        }
+        
 
         //InterfaceThread interfaz = new InterfaceThread();
         //interfaz.start();
     }
+    
 }
 
