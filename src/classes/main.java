@@ -7,17 +7,17 @@ public class main {
 
 
     public static void main(String[] args) {
-       /* fileCreator creator = new fileCreator();
+        fileCreator creator = new fileCreator();
         creator.createDir();
         //creator.createStream();
         try {
             inValues test = creator.readFile(creator.openFile());
             //System.out.println(test.toString());
-            test.printarray();
+            //test.printarray();
             return;
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
         
         inValues enter = new inValues('d',false,5,4,3,3,50,25,5,10,15,2);
         enter.bubbleSort();
