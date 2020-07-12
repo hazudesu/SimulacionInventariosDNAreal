@@ -1,13 +1,19 @@
 package classes;
 import javax.swing.*;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
+import java.awt.*;
 import java.io.*;
+import java.awt.desktop.*;
+import java.awt.FileDialog;
 
 public class fileCreator {
+    protected Desktop desktop = Desktop.getDesktop();
     protected String fileName;
-    protected File directory = new File("resources/Caso.txt");
+    protected String path = "C:\\\\Simulacion de Inventarios\\\\Archivos\\\\";
+    protected File directory = new File("C:\\Simulacion de Inventarios\\Archivos");
     protected File newDoc;
     protected FileWriter fOut;
+    protected JFrame frame = new JFrame();
 
 
     //------------------------------------------------------------------------------------------------------------------
@@ -17,10 +23,25 @@ public class fileCreator {
         this.fileName = fileName;
     }
 
+    public fileCreator() {
+    }
+
     public void createDir() {
         if (!directory.exists()) {
             directory.mkdirs();
         }
+    }
+
+    public String openFile(){
+
+        FileDialog fd = new FileDialog(frame, "Select a file",FileDialog.LOAD);
+        fd.setDirectory(path);
+        fd.setFile("*.txt");
+        fd.setVisible(true);
+        fileName = fd.getFile();
+        System.out.println(fileName+"ff");
+        return path+fileName;
+
     }
 
     public void createStream (){
@@ -40,7 +61,7 @@ public class fileCreator {
 
     public inValues readFile(String fileName) throws IOException {
         inValues result = new inValues();
-        FileReader rd = new FileReader(newDoc);
+        FileReader rd = new FileReader(fileName);
         System.out.print(rd.ready());
         BufferedReader buffrd = new BufferedReader(rd);
         if(rd == null){
@@ -52,7 +73,6 @@ public class fileCreator {
             int intry;
             float flotry;
             while((line = buffrd.readLine()) != null && !(line.isEmpty())){
-                System.out.print(line);
                 switch (fillLine) {
                     case 0:
                         if (line.equalsIgnoreCase("d") || line.equalsIgnoreCase("s") || line.equalsIgnoreCase("m") || line.equalsIgnoreCase("b") || line.equalsIgnoreCase("t")){

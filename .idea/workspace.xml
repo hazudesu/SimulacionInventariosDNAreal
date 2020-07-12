@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba013635-969b-439f-988d-0e3f8a833f66" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/interfaz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/interfaz.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/interfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/interfaz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/fileCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/fileCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/inValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/inValues.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/fileCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/fileCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +60,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.interfaz">
+  <component name="RunManager" selected="Application.main">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="10" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -124,6 +126,9 @@
       <workItem from="1593993215184" duration="1971000" />
       <workItem from="1594428863877" duration="242000" />
       <workItem from="1594091868841" duration="5582000" />
+      <workItem from="1594497115869" duration="1018000" />
+      <workItem from="1594500801340" duration="1242000" />
+      <workItem from="1594504421141" duration="4048000" />
     </task>
     <servers />
   </component>
