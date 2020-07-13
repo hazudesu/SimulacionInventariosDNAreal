@@ -40,15 +40,16 @@ public class fileCreator {
         fd.setFile("*.txt");
         fd.setVisible(true);
         fileName = fd.getFile();
-        System.out.println(fileName+"ff");
         fd.setVisible(false);
+        fd.dispose();
+        System.out.println(path+fileName);
         return path+fileName;
 
     }
 
-    public void createStream (){
+    public void createStream (String Filename){
         try {
-            newDoc = new File("C://Simulacion de Inventarios/Archivos/" + fileName);
+            newDoc = new File(path + fileName);
             fOut = new FileWriter(newDoc);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -269,14 +270,13 @@ public class fileCreator {
 
                 }
 
-                break;
             }
         }
         return result;
     }
 
     public void writeResult(outValues salida, String resultFileName){
-
+        createStream("newFile.txt");
     }
 
 

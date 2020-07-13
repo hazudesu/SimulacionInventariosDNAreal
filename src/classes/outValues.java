@@ -4,18 +4,18 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class outValues {
-    protected ArrayList<Integer> day;
-    protected ArrayList<Integer> invInc;
-    protected ArrayList<Integer> demand;
-    protected ArrayList<Integer> finalInv;
-    protected ArrayList<Float> invProm;
-    protected ArrayList<Integer> remain;
-    protected ArrayList<Integer> orderNo;
-    protected ArrayList<Integer> deliverTime;
-    protected ArrayList<Integer> w8Time;
-    protected ArrayList<Integer> demandRandom;
-    protected ArrayList<Integer> deliverRandom;
-    protected ArrayList<Integer> w8TimeRandom;
+    protected ArrayList<Integer> day = new ArrayList<Integer>();
+    protected ArrayList<Integer> invInc = new ArrayList<Integer>();
+    protected ArrayList<Integer> demand = new ArrayList<Integer>();
+    protected ArrayList<Integer> finalInv = new ArrayList<Integer>();
+    protected ArrayList<Float> invProm = new ArrayList<Float>();
+    protected ArrayList<Integer> remain = new ArrayList<Integer>();
+    protected ArrayList<Integer> orderNo = new ArrayList<Integer>();
+    protected ArrayList<Integer> deliverTime = new ArrayList<Integer>();
+    protected ArrayList<Integer> w8Time = new ArrayList<Integer>();
+    protected ArrayList<Integer> demandRandom = new ArrayList<Integer>();
+    protected ArrayList<Integer> deliverRandom = new ArrayList<Integer>();
+    protected ArrayList<Integer> w8TimeRandom = new ArrayList<Integer>();
     protected int Qvalue;
     protected int Rvalue;
 
@@ -32,6 +32,9 @@ public class outValues {
 
     //------------------------------------------------------------------------------------------------------------------
                                                     //Constructores
+
+
+
 
 
     public outValues() {
