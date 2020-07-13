@@ -274,6 +274,10 @@ public class fileCreator {
         return result;
     }
 
+    public void writeResult(outValues salida){
+
+    }
+
 
     //------------------------------------------------------------------------------------------------------------------
                                     //Setters y Getters

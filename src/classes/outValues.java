@@ -13,12 +13,19 @@ public class outValues {
     protected ArrayList<Integer> orderNo;
     protected ArrayList<Integer> deliverTime;
     protected ArrayList<Integer> w8Time;
-    protected ArrayList<Float> demandRandom;
-    protected ArrayList<Float> deliverRandom;
-    protected ArrayList<Float> w8TimeRandom;
+    protected ArrayList<Integer> demandRandom;
+    protected ArrayList<Integer> deliverRandom;
+    protected ArrayList<Integer> w8TimeRandom;
     protected int Qvalue;
     protected int Rvalue;
 
+    protected int totalCostInv;
+    protected int totalOrderCost;
+    protected int totalPurchaseCost;
+    protected int totalRemainCost;
+
+    protected int w8RemainCost;
+    protected int noW8RemainCost;
 
     //------------------------------------------------------------------------------------------------------------------
                                                     //Constructores
@@ -27,7 +34,7 @@ public class outValues {
     public outValues() {
     }
 
-    public outValues(ArrayList<Integer> day, ArrayList<Integer> invInc, ArrayList<Integer> demand, ArrayList<Integer> finalInv, ArrayList<Float> invProm, ArrayList<Integer> remain, ArrayList<Integer> orderNo, ArrayList<Integer> deliverTime, ArrayList<Integer> w8Time, ArrayList<Float> demandRandom, ArrayList<Float> deliverRandom, ArrayList<Float> w8TimeRandom) {
+    public outValues(ArrayList<Integer> day, ArrayList<Integer> invInc, ArrayList<Integer> demand, ArrayList<Integer> finalInv, ArrayList<Float> invProm, ArrayList<Integer> remain, ArrayList<Integer> orderNo, ArrayList<Integer> deliverTime, ArrayList<Integer> w8Time, ArrayList<Integer> demandRandom, ArrayList<Integer> deliverRandom, ArrayList<Integer> w8TimeRandom, int qvalue, int rvalue) {
         this.day = day;
         this.invInc = invInc;
         this.demand = demand;
@@ -40,6 +47,8 @@ public class outValues {
         this.demandRandom = demandRandom;
         this.deliverRandom = deliverRandom;
         this.w8TimeRandom = w8TimeRandom;
+        Qvalue = qvalue;
+        Rvalue = rvalue;
     }
 
     //------------------------------------------------------------------------------------------------------------------
