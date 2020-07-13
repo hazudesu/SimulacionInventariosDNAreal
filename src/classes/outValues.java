@@ -23,9 +23,12 @@ public class outValues {
     protected int totalOrderCost;
     protected int totalPurchaseCost;
     protected int totalRemainCost;
+    protected int totalCost;
 
     protected int w8RemainCost;
     protected int noW8RemainCost;
+
+
 
     //------------------------------------------------------------------------------------------------------------------
                                                     //Constructores
@@ -34,7 +37,7 @@ public class outValues {
     public outValues() {
     }
 
-    public outValues(ArrayList<Integer> day, ArrayList<Integer> invInc, ArrayList<Integer> demand, ArrayList<Integer> finalInv, ArrayList<Float> invProm, ArrayList<Integer> remain, ArrayList<Integer> orderNo, ArrayList<Integer> deliverTime, ArrayList<Integer> w8Time, ArrayList<Integer> demandRandom, ArrayList<Integer> deliverRandom, ArrayList<Integer> w8TimeRandom, int qvalue, int rvalue) {
+    public outValues(ArrayList<Integer> day, ArrayList<Integer> invInc, ArrayList<Integer> demand, ArrayList<Integer> finalInv, ArrayList<Float> invProm, ArrayList<Integer> remain, ArrayList<Integer> orderNo, ArrayList<Integer> deliverTime, ArrayList<Integer> w8Time, ArrayList<Integer> demandRandom, ArrayList<Integer> deliverRandom, ArrayList<Integer> w8TimeRandom, int qvalue, int rvalue, int totalCostInv, int totalOrderCost, int totalPurchaseCost, int totalRemainCost, int w8RemainCost, int noW8RemainCost) {
         this.day = day;
         this.invInc = invInc;
         this.demand = demand;
@@ -47,8 +50,19 @@ public class outValues {
         this.demandRandom = demandRandom;
         this.deliverRandom = deliverRandom;
         this.w8TimeRandom = w8TimeRandom;
+<<<<<<< HEAD
+        this.Qvalue = qvalue;
+        this.Rvalue = rvalue;
+=======
         Qvalue = qvalue;
         Rvalue = rvalue;
+        this.totalCostInv = totalCostInv;
+        this.totalOrderCost = totalOrderCost;
+        this.totalPurchaseCost = totalPurchaseCost;
+        this.totalRemainCost = totalRemainCost;
+        this.w8RemainCost = w8RemainCost;
+        this.noW8RemainCost = noW8RemainCost;
+>>>>>>> master
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -135,7 +149,7 @@ public class outValues {
     }
 
     public void setQvalue(int qvalue) {
-        Qvalue = qvalue;
+        this.Qvalue = qvalue;
     }
 
     public int getRvalue() {
@@ -143,6 +157,6 @@ public class outValues {
     }
 
     public void setRvalue(int rvalue) {
-        Rvalue = rvalue;
+        this.Rvalue = rvalue;
     }
 }
