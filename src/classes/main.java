@@ -14,16 +14,16 @@ public class main {
             inValues test = creator.readFile(creator.openFile());
             //System.out.println(test.toString());
             //test.printarray();
-            return;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        inValues enter = new inValues('d',false,5,4,3,3,50,25,5,10,15,2);
-        enter.bubbleSort();
-        System.out.println(enter.timeUnit);
-        simulation sim = new simulation();
-        sim.simulate(enter);
+
+        System.out.println("pene");
+        //inValues enter = new inValues('d',false,5,4,3,3,50,25,5,10,15,2);
+        //enter.bubbleSort();
+        //System.out.println(enter.timeUnit);
+        //simulation sim = new simulation();
+        //sim.simulate(enter);
        /* enter.setDemandTime();
         enter.setDeliverTime();
         enter.setW8Time();

@@ -41,6 +41,7 @@ public class fileCreator {
         fd.setVisible(true);
         fileName = fd.getFile();
         System.out.println(fileName+"ff");
+        fd.setVisible(false);
         return path+fileName;
 
     }
@@ -268,13 +269,13 @@ public class fileCreator {
 
                 }
 
-
+                break;
             }
         }
         return result;
     }
 
-    public void writeResult(outValues salida){
+    public void writeResult(outValues salida, String resultFileName){
 
     }
 
