@@ -48,9 +48,13 @@ public class simulation {
                     salida.day.add(k);
                     if(k == 0)
                         salida.invInc.add(entrada.initialInv);
-                    else{
-                        salida.invInc.add(salida.finalInv.get(k-1));
-                    }
+                    else
+                        if((orderup == true) && (remainingOrderTime == 0) && (k>0)){
+                            System.out.println("uwu");
+                            orderup = false;
+                            salida.invInc.add((salida.finalInv.get(k-1)) + salida.getQvalue());
+                        }else { salida.invInc.add(salida.finalInv.get(k-1)); }
+
                     //Inicializar variables N# Random y Valor (Demanda, TEntrega, TEspera)
                     randomDemand(entrada, salida);
                     randomW8Time(entrada, salida);
@@ -74,20 +78,13 @@ public class simulation {
                         randomDeliverT(entrada, salida);
                         remainingOrderTime= salida.deliverTime.get(k);
                     }else
-                    if((orderup == true) && (remainingOrderTime == 0 && k>0)){
-                        orderup = false;
-                        salida.invInc.remove(k);
-                        salida.invInc.add(salida.invInc.get(k-1)+salida.getQvalue());
-                        salida.deliverTime.add(0);
-                        salida.deliverRandom.add(0);
-                    }else
                     if((orderup == true) && (remainingOrderTime != 0)){
                         remainingOrderTime--;
                         salida.orderNo.add(0);
                         salida.deliverTime.add(0);
                         salida.deliverRandom.add(0);
                     }
-                  //  System.out.println("MAMALO GIO");
+
                 }
                 System.out.println(salida.toString());
            // }

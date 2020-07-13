@@ -295,6 +295,57 @@ public class fileCreator {
         }
     }
 
+    public void modifyinFile(String fileopen, inValues inModed){
+        String separator = System.getProperty("line.separator");
+        File fileMod = new File(path+fileopen);
+        try {
+            FileWriter fw = new FileWriter(fileMod);
+            int atrCount = 0;
+            while(atrCount < 15 ){
+                switch (atrCount){
+                    case 0 :
+                        fw.write(inModed.getTimeUnit() + separator);
+                        break;
+                    case 1 :
+                        if(inModed.isEventTable())
+                            fw.write("S" + separator);
+                        else
+                            fw.write("N" + separator);
+                        break;
+                    case 3 :
+                        fw.write(Integer.toString(inModed.getTimeAmount()));
+                        break;
+                    case 4 :
+                        break;
+                    case 5 :
+                        break;
+                    case 6 :
+                        break;
+                    case 7 :
+                        break;
+                    case 8 :
+                        break;
+                    case 9 :
+                        break;
+                    case 10 :
+                        break;
+                    case 11 :
+                        break;
+                    case 12 :
+                        break;
+                    case 13 :
+                        break;
+                    case 14 :
+                        break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
     //------------------------------------------------------------------------------------------------------------------
                                     //Setters y Getters
