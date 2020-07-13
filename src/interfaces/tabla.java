@@ -14,9 +14,9 @@ public class tabla extends JFrame {
                 "Tiempo de Entrega", "No. A espera","Tiempo de Espera"};
 
         Object[][] data = {
-                {"Bill","Gates","20","Bill","Gates","20","Bill","Gates","20","Bill","Gates","20"},
-                {"Bill","Gates","20","Bill","Gates","20","Bill","Gates","20","Bill","Gates","20"},
-                {"Bill","Gates","20","Bill","Gates","20","Bill","Gates","20","Bill","Gates","20"},
+                //{"1","50","20","Bill","Gates","20","Bill","Gates","20","Bill","Gates","20"},
+                //{"Bill","Gates","20","Bill","Gates","20","Bill","Gates","20","Bill","Gates","20"},
+                //{"Bill","Gates","20","Bill","Gates","20","Bill","Gates","20","Bill","Gates","20"},
                 //{"Bill","Gates","20"},
         };
 

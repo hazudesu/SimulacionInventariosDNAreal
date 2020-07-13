@@ -57,11 +57,27 @@ public class interfaz {
     private JTextField textField42;
     private JTextField textField43;
     private JTextField textField44;
+    private JButton cargarArchivoButton;
+    private JButton guardarArchivoButton;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JTextArea textArea1;
+    private JButton agregarButton;
+    private JButton borrarUltimoValorButton;
+    private JList list1;
+    private JList list2;
+    private JTextField prueba;
 
     int arrayd[];
     String hola;
 
     public interfaz() {
+
+        DefaultListModel data = new DefaultListModel();
+        data.addElement("hola");
+        data.addElement("chao");
+        //String[] data = {"1","50","20"};
+        list1.setModel(data);
 
         continuarButton.setEnabled(false);
 
@@ -221,6 +237,9 @@ public class interfaz {
 
 
     public void validar(JTextField d){
+
+
+
         if(d.getText().isEmpty()) {
             d.setBackground(Color.white);
         }else
