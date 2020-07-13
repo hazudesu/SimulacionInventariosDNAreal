@@ -28,13 +28,18 @@ public class simulation {
         maxQ = maxQ(entrada);
         minR = minR(entrada, minQ);
         maxR = maxR(entrada, maxQ);
-        boolean orderup = false;
-        int currentOrders = 0;
-        int remainingOrderTime = 0;
+        System.out.println(minQ);
+        System.out.println(maxQ);
+        System.out.println(minR);
+        System.out.println(maxR);
+
 
         //Inicio de Simulacion
-       // for(int i=minQ; i<=maxQ;i++){
-       //     for(int j=minR; j<=maxR;j++){
+        for(int i=minQ; i<=maxQ;i++){
+            for(int j=minR; j<=maxR;j++){
+                boolean orderup = false;
+                int currentOrders = 0;
+                int remainingOrderTime = 0;
                 outValues salida = new outValues();
                 salida.setQvalue(minQ);
                 salida.setRvalue(minR);
@@ -58,8 +63,8 @@ public class simulation {
                     //Inicializacion Inv. prom
                     salida.invProm.add((float)(salida.invInc.get(k)+salida.finalInv.get(k))/2);
                     //Inicializacion Faltante
-                    if (salida.invInc.get(k)-salida.finalInv.get(k) < 0)
-                        salida.remain.add((int)salida.invInc.get(k)-(int)salida.finalInv.get(k)*-1);
+                    if ((salida.invInc.get(k)-salida.demand.get(k)) < 0)
+                        salida.remain.add((salida.invInc.get(k)-salida.demand.get(k))*-1);
                     else
                         salida.remain.add(0);
                     //Inicializacion N# Orden
@@ -67,16 +72,22 @@ public class simulation {
                         currentOrders++;
                         salida.orderNo.add(currentOrders);
                         orderup = true;
+                        remainingOrderTime= salida.deliverTime.get(k);
                     }else
-                    if((orderup == true) && (remainingOrderTime == 0)){
+                    if((orderup == true) && (remainingOrderTime == 0 && k>1)){
                         orderup = false;
                         salida.invInc.add(salida.invInc.get(k-1)+salida.getQvalue());
                     }else
-                    if((orderup == true) && (remainingOrderTime != 0))
+                    if((orderup == true) && (remainingOrderTime != 0)){
                         remainingOrderTime--;
+                        salida.orderNo.add(0);
+                    }
+                  //  System.out.println("MAMALO GIO");
                 }
-            //}
-      //  }
+                System.out.println(salida.toString());
+            }
+        }
+
 
 
 return;
@@ -86,27 +97,24 @@ return;
     //Metodos de inicializacion Q y R (Min-Max)
     public int minQ(inValues input) {
         float qValue = (2 * input.orderCost * input.demandsArray[0][0] * (input.invCost + input.saleLossCost) / (input.invCost * input.saleLossCost));
-        qValue = (int) Math.sqrt(qValue);
+        qValue = Math.round(Math.sqrt(qValue)) ;
         return (int) qValue;
     }
 
     public int maxQ(inValues input) {
         float qValue = (2 * input.orderCost * input.demandsArray[input.demandValues-1][0] * (input.invCost + input.acumDemandCost) / (input.invCost * input.acumDemandCost));
-        qValue = (int) Math.sqrt(qValue);
+        qValue = Math.round(Math.sqrt(qValue));
         return (int) qValue;
     }
 
     public int minR(inValues input, int minQ) {
-        System.out.println(minQ);
-        System.out.println(input.demandsArray[0][0]);
         float t0 =((float)minQ / (float)input.demandsArray[0][0]);
-        System.out.println(t0);
         if (input.deliverTimeArray[0][0] < t0) {
             return input.deliverTimeArray[0][0] * input.demandsArray[0][0];
         } else {
-            int n = (int) (input.deliverTimeArray[0][0] / t0);
-            int Le = (int) (input.deliverTimeArray[0][0] * (n * t0));
-            return Le - input.demandsArray[0][0];
+            int n = (int) (input.deliverTimeArray[0][0] / t0);;
+            float Le =  (input.deliverTimeArray[0][0] - (n * t0));
+            return Math.round (Le * input.demandsArray[0][0]);
         }
     }
 
@@ -116,8 +124,8 @@ return;
             return input.deliverTimeArray[input.deliverTimeAmount-1][0] * input.demandsArray[input.demandValues-1][0];
         } else {
             int n = (int) (input.deliverTimeArray[input.deliverTimeAmount-1][0] / t0);
-            int Le = (int) (input.deliverTimeArray[input.deliverTimeAmount-1][0] * (n * t0));
-            return Le - input.demandsArray[input.demandValues-1][0];
+            float Le =  (input.deliverTimeArray[input.deliverTimeAmount-1][0] - (n * t0));
+            return Math.round (Le * input.demandsArray[input.demandValues-1][0]);
         }
     }
 
@@ -127,10 +135,8 @@ return;
     //Metodos de seleccion de prob
     public void randomDemand(inValues entrada, outValues salida){
         int VarRandom = new Random().nextInt(100);
-        System.out.println(VarRandom);
         salida.demandRandom.add(VarRandom);
         int Sum = 0;
-        //cambiar tipo de array a floats??
         for (int i = 0; i < entrada.demandsArray.length; i++) {
             if (VarRandom < (entrada.demandsArray[i][1] + Sum)) {
                 salida.demand.add(entrada.demandsArray[i][0]);
@@ -142,10 +148,8 @@ return;
 
     public void randomDeliverT(inValues entrada, outValues salida){
         int VarRandom = new Random().nextInt(100);
-        System.out.println(VarRandom);
         salida.deliverRandom.add(VarRandom);
         int Sum = 0;
-        //cambiar tipo de array a floats??
         for (int i = 0; i < entrada.deliverTimeArray.length; i++) {
             if (VarRandom < (entrada.deliverTimeArray[i][1] + Sum)) {
                 salida.deliverTime.add(entrada.deliverTimeArray[i][0]);
@@ -156,12 +160,10 @@ return;
     }
 
     public void randomW8Time(inValues entrada, outValues salida){
-        System.out.println("MAMALO GIO");
+
         int VarRandom = new Random().nextInt(100);
-        System.out.println(VarRandom);
         salida.w8TimeRandom.add(VarRandom);
         int Sum = 0;
-        //cambiar tipo de array a floats??
         for (int i = 0; i < entrada.clientw8TimeArray.length; i++) {
             if (VarRandom < (entrada.clientw8TimeArray[i][1] + Sum)) {
                 salida.w8Time.add(entrada.clientw8TimeArray[i][0]);

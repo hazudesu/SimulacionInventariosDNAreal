@@ -23,12 +23,9 @@ public class main {
 
 
         System.out.println("PENSASDASDAS");
-        inValues enter = new inValues('d', false, 5, 4, 3, 3, 50, 25, 5, 10, 15, 2);
+        inValues enter = new inValues('d', false, 10, 4, 3, 3, 50, 25, 5, 10, 15, 20);
 
-        for (int i=0; i<enter.demandValues-1;i++){
-            System.out.println(enter.demandsArray[i][0]);
-            System.out.println(enter.demandsArray[i][1]);
-        }
+
 
         enter.demandsArray[0][0]= 29;
         enter.demandsArray[1][0]= 26;
@@ -54,7 +51,7 @@ public class main {
 
 
         enter.bubbleSort();
-        System.out.println("Demandas");
+     /*   System.out.println("Demandas");
         for(int i=0; i< enter.demandValues; i++){
             System.out.println(enter.demandsArray[i][0]);
             System.out.println(enter.demandsArray[i][1]);
@@ -68,7 +65,7 @@ public class main {
         for(int i=0; i< enter.w8TimeAmntClient; i++){
             System.out.println(enter.clientw8TimeArray[i][0]);
             System.out.println(enter.clientw8TimeArray[i][1]);
-        }
+        }*/
 
        System.out.println(enter.timeUnit);
         simulation sim = new simulation();
