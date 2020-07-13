@@ -7,7 +7,7 @@ public class main {
 
 
     public static void main(String[] args) {
-       /* fileCreator creator = new fileCreator();
+       fileCreator creator = new fileCreator();
         creator.createDir();
         //creator.createStream();
         try {
@@ -20,7 +20,7 @@ public class main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-*/
+
 
         System.out.println("PENSASDASDAS");
         inValues enter = new inValues('d', false, 5, 4, 3, 3, 50, 25, 5, 10, 15, 2);
@@ -33,10 +33,10 @@ public class main {
         enter.demandsArray[0][0]= 0;
         enter.bubbleSort();
 
-        System.out.println(enter.timeUnit);
+       /* System.out.println(enter.timeUnit);
         simulation sim = new simulation();
         sim.simulate(enter);
-        System.out.println("pene");
+        System.out.println("pene");*/
         //inValues enter = new inValues('d',false,5,4,3,3,50,25,5,10,15,2);
         //enter.bubbleSort();
         //System.out.println(enter.timeUnit);

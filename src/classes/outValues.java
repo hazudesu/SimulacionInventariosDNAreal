@@ -50,10 +50,8 @@ public class outValues {
         this.demandRandom = demandRandom;
         this.deliverRandom = deliverRandom;
         this.w8TimeRandom = w8TimeRandom;
-<<<<<<< HEAD
         this.Qvalue = qvalue;
         this.Rvalue = rvalue;
-=======
         Qvalue = qvalue;
         Rvalue = rvalue;
         this.totalCostInv = totalCostInv;
@@ -62,7 +60,6 @@ public class outValues {
         this.totalRemainCost = totalRemainCost;
         this.w8RemainCost = w8RemainCost;
         this.noW8RemainCost = noW8RemainCost;
->>>>>>> master
     }
 
     //------------------------------------------------------------------------------------------------------------------
