@@ -35,8 +35,8 @@ public class simulation {
 
 
         //Inicio de Simulacion
-        for(int i=minQ; i<=maxQ;i++){
-            for(int j=minR; j<=maxR;j++){
+      //  for(int i=minQ; i<=maxQ;i++){
+           // for(int j=minR; j<=maxR;j++){
                 boolean orderup = false;
                 int currentOrders = 0;
                 int remainingOrderTime = 0;
@@ -53,7 +53,6 @@ public class simulation {
                     }
                     //Inicializar variables N# Random y Valor (Demanda, TEntrega, TEspera)
                     randomDemand(entrada, salida);
-                    randomDeliverT(entrada, salida);
                     randomW8Time(entrada, salida);
                     //Inicializacion Inv. Final
                     if (((salida.invInc.get(k)) - salida.demand.get(k)) < 0)
@@ -68,26 +67,31 @@ public class simulation {
                     else
                         salida.remain.add(0);
                     //Inicializacion N# Orden
-                    if((orderup == false) && (salida.invInc.get(k)<=salida.getRvalue())){
+                    if((orderup == false) && (salida.finalInv.get(k)<=salida.getRvalue())){
                         currentOrders++;
                         salida.orderNo.add(currentOrders);
                         orderup = true;
+                        randomDeliverT(entrada, salida);
                         remainingOrderTime= salida.deliverTime.get(k);
                     }else
-                    if((orderup == true) && (remainingOrderTime == 0 && k>1)){
+                    if((orderup == true) && (remainingOrderTime == 0 && k>0)){
                         orderup = false;
                         salida.invInc.remove(k);
                         salida.invInc.add(salida.invInc.get(k-1)+salida.getQvalue());
+                        salida.deliverTime.add(0);
+                        salida.deliverRandom.add(0);
                     }else
                     if((orderup == true) && (remainingOrderTime != 0)){
                         remainingOrderTime--;
                         salida.orderNo.add(0);
+                        salida.deliverTime.add(0);
+                        salida.deliverRandom.add(0);
                     }
                   //  System.out.println("MAMALO GIO");
                 }
                 System.out.println(salida.toString());
-            }
-        }
+           // }
+       // }
 return;
 
     }
