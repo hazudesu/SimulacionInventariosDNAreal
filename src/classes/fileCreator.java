@@ -298,6 +298,7 @@ public class fileCreator {
     public void modifyinFile(String fileopen, inValues inModed){
         String separator = System.getProperty("line.separator");
         File fileMod = new File(path+fileopen);
+        int i = 0,j = 0;
         try {
             FileWriter fw = new FileWriter(fileMod);
             int atrCount = 0;
@@ -316,15 +317,26 @@ public class fileCreator {
                         atrCount++;
                         break;
                     case 2 :
-                        fw.write(Integer.toString(inModed.getTimeAmount()) + separator);
+                        fw.write(inModed.getTimeAmount() + separator);
                         atrCount++;
                         break;
                     case 3 :
-                        fw.write(Integer.toString(inModed.getDemandValues()) + separator);
+                        fw.write(inModed.getDemandValues() + separator);
                         atrCount++;
                         break;
                     case 4 :
-                        System.out.println("UwU1");
+                        int [][] arr = inModed.getDemandsArray();
+                        for ( i = 0 ; i<2 ; i++ ){
+                            for( j = 0 ; j<inModed.getDemandValues(); j++){
+                                if((j == inModed.getDemandValues() - 1) && (i == 0))
+                                    fw.write(arr[i][j] + "-");
+                                else
+                                    if((j == inModed.getDemandValues() - 1) && (i == 1))
+                                        fw.write(arr[i][j] + separator);
+                                    else
+                                        fw.write(arr[i][j] + "/");
+                            }
+                        }
                         atrCount++;
                         break;
                     case 5 :
@@ -332,7 +344,18 @@ public class fileCreator {
                         atrCount++;
                         break;
                     case 6 :
-                        System.out.println("UwU2");
+                        int [][] arr2 = inModed.getDeliverTimeArray();
+                        for ( i = 0 ; i<2 ; i++ ){
+                            for(j = 0 ; j<inModed.getDeliverTimeAmount(); j++){
+                                if((j == inModed.getDeliverTimeAmount() - 1) && (i == 0))
+                                    fw.write(arr2[i][j] + "-");
+                                else
+                                if((j == inModed.getDeliverTimeAmount() - 1) && (i == 1))
+                                    fw.write(arr2[i][j] + separator);
+                                else
+                                    fw.write(arr2[i][j] + "/");
+                            }
+                        }
                         atrCount++;
                         break;
                     case 7 :
@@ -340,31 +363,42 @@ public class fileCreator {
                         atrCount++;
                         break;
                     case 8 :
-                        System.out.println("UwU3");
+                        int [][] arr3 = inModed.getClientw8TimeArray();
+                        for ( i = 0 ; i<2 ; i++ ){
+                            for(j = 0 ; j<inModed.getW8TimeAmntClient(); j++){
+                                if((j == inModed.getW8TimeAmntClient() - 1) && (i == 0))
+                                    fw.write(arr3[i][j] + "-");
+                                else
+                                if((j == inModed.getW8TimeAmntClient() - 1) && (i == 1))
+                                    fw.write(arr3[i][j] + separator);
+                                else
+                                    fw.write(arr3[i][j] + "/");
+                            }
+                        }
                         atrCount++;
                         break;
                     case 9 :
-                        fw.write(Float.toString(inModed.getInvCost()) + separator);
+                        fw.write(inModed.getInvCost() + separator);
                         atrCount++;
                         break;
                     case 10 :
-                        fw.write(Float.toString(inModed.getPurchaseCost()) + separator);
+                        fw.write(inModed.getPurchaseCost() + separator);
                         atrCount++;
                         break;
                     case 11 :
-                        fw.write(Float.toString(inModed.getOrderCost()) + separator);
+                        fw.write(inModed.getOrderCost() + separator);
                         atrCount++;
                         break;
                     case 12 :
-                        fw.write(Float.toString(inModed.getAcumDemandCost()) + separator);
+                        fw.write(inModed.getAcumDemandCost() + separator);
                         atrCount++;
                         break;
                     case 13 :
-                        fw.write(Float.toString(inModed.getSaleLossCost()) + separator);
+                        fw.write(inModed.getSaleLossCost() + separator);
                         atrCount++;
                         break;
                     case 14 :
-                        fw.write(Integer.toString(inModed.getInitialInv()) + separator);
+                        fw.write(inModed.getInitialInv() + separator);
                         atrCount++;
                         break;
                 }
