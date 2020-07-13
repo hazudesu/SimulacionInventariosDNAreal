@@ -76,6 +76,7 @@ public class simulation {
                     }else
                     if((orderup == true) && (remainingOrderTime == 0 && k>1)){
                         orderup = false;
+                        salida.invInc.remove(k);
                         salida.invInc.add(salida.invInc.get(k-1)+salida.getQvalue());
                     }else
                     if((orderup == true) && (remainingOrderTime != 0)){
@@ -87,9 +88,6 @@ public class simulation {
                 System.out.println(salida.toString());
             }
         }
-
-
-
 return;
 
     }
