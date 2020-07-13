@@ -47,16 +47,6 @@ public class fileCreator {
 
     }
 
-    public void createStream (String Filename){
-        try {
-            newDoc = new File(path + fileName);
-            fOut = new FileWriter(newDoc);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void closeFileStream() throws IOException {
         fOut.close();
@@ -275,8 +265,34 @@ public class fileCreator {
         return result;
     }
 
-    public void writeResult(outValues salida, String resultFileName){
-        createStream("newFile.txt");
+    public void writeResult(outValues[] salida, outValues salidaOptima, String resultFileName){
+        String separator = System.getProperty("line.separator");
+        String space = "          ";
+
+        try {
+            newDoc = new File(path + resultFileName);
+            fOut = new FileWriter(newDoc);
+            int att =1;
+
+            for(int i = 0; i<att ; i++){
+                fOut.write("Resultados de Simulacion" + separator);
+                fOut.write("---------------------------------------------------------------------------------------------------" + separator);
+                fOut.write("Politica Optima:" + separator);
+                fOut.write("Q = " + space +"R = " +separator);
+                fOut.write("Costo de inventario = " + separator);
+                fOut.write("Costo de Orden =  " + separator);
+                fOut.write("Costo de Compra = " + separator);
+                fOut.write("Costo de Faltante = " + separator);
+                fOut.write("COSTO TOTAL DE POLITICA = " + separator);
+            }
+
+            fOut.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
