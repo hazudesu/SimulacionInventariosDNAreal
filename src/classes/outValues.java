@@ -53,6 +53,8 @@ public class outValues {
         this.demandRandom = demandRandom;
         this.deliverRandom = deliverRandom;
         this.w8TimeRandom = w8TimeRandom;
+        this.Qvalue = qvalue;
+        this.Rvalue = rvalue;
         Qvalue = qvalue;
         Rvalue = rvalue;
         this.totalCostInv = totalCostInv;
@@ -66,6 +68,33 @@ public class outValues {
     //------------------------------------------------------------------------------------------------------------------
                                                     //Setters & Getters
 
+
+    @Override
+    public String toString() {
+        return "outValues{" +
+                "day=" + day +
+                ", invInc=" + invInc +
+                ", demand=" + demand +
+                ", finalInv=" + finalInv +
+                ", invProm=" + invProm +
+                ", remain=" + remain +
+                ", orderNo=" + orderNo +
+                ", deliverTime=" + deliverTime +
+                ", w8Time=" + w8Time +
+                ", demandRandom=" + demandRandom +
+                ", deliverRandom=" + deliverRandom +
+                ", w8TimeRandom=" + w8TimeRandom +
+                ", Qvalue=" + Qvalue +
+                ", Rvalue=" + Rvalue +
+                ", totalCostInv=" + totalCostInv +
+                ", totalOrderCost=" + totalOrderCost +
+                ", totalPurchaseCost=" + totalPurchaseCost +
+                ", totalRemainCost=" + totalRemainCost +
+                ", totalCost=" + totalCost +
+                ", w8RemainCost=" + w8RemainCost +
+                ", noW8RemainCost=" + noW8RemainCost +
+                '}';
+    }
 
     public ArrayList getDay() {
         return day;
@@ -147,7 +176,7 @@ public class outValues {
     }
 
     public void setQvalue(int qvalue) {
-        Qvalue = qvalue;
+        this.Qvalue = qvalue;
     }
 
     public int getRvalue() {
@@ -155,6 +184,6 @@ public class outValues {
     }
 
     public void setRvalue(int rvalue) {
-        Rvalue = rvalue;
+        this.Rvalue = rvalue;
     }
 }

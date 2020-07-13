@@ -76,6 +76,7 @@ public class inValues {
                 '}';
     }
 
+
     public void printarray(){
         for(int i = 0; i<=1; i++)
             for(int j = 0; j<5 ; j++)
@@ -92,48 +93,6 @@ public class inValues {
 
     //Metodo de selección por probabilidades (Set ValoresActuales Demanda, Entrega, Cliente)
 
-   /* public void setDemandTime() {
-        int VarRandom = new Random().nextInt(100);
-        System.out.println(VarRandom);
-        int Sum = 0;
-        //cambiar tipo de array a floats??
-        for (int i = 0; i < demandsArray.length; i++) {
-            if (VarRandom < (demandsArray[i][1] + Sum)) {
-                this.demandRandom = demandsArray[i][0];
-                return;
-            }
-            Sum = Sum + demandsArray[i][1];
-        }
-    }
-
-    public void setDeliverTime() {
-        int VarRandom = new Random().nextInt(100);
-        int Sum = 0;
-        System.out.println(VarRandom);
-        //cambiar tipo de array a floats??
-        for (int i = 0; i < deliverTimeArray.length; i++) {
-            if (VarRandom < (deliverTimeArray[i][1] + Sum)) {
-                this.deliverRandom = deliverTimeArray[i][0];
-                return;
-            }
-            Sum = Sum + deliverTimeArray[i][1];
-        }
-    }
-
-    public void setW8Time() {
-        int VarRandom = new Random().nextInt(100);
-        int Sum = 0;
-        System.out.println(VarRandom);
-        //cambiar tipo de array a floats??
-        for (int i = 0; i < clientw8TimeArray.length; i++) {
-            if (VarRandom < (clientw8TimeArray[i][1] + Sum)) {
-                this.w8TimeRandom = clientw8TimeArray[i][0];
-                return;
-            }
-            Sum = Sum + clientw8TimeArray[i][1];
-        }
-    }
-*/
     //PARA MOSTRAR LA TABLA FINAL CREAR ARREGLO [I][12] PARA ALMACENAR TODAS LAS VARIABLES DE RESULTADO DE SIMULACION
     /* 12= Nro de variables en tabla, posiblemente 14 si almacenamos Q Y R, i=0 hasta timeAmount (duración de simulación)
      */
@@ -151,8 +110,12 @@ public class inValues {
                 {
                     // swap arr[j+1] and arr[i]
                     int temp = this.demandsArray[j][0];
+                    int temp2 = this.demandsArray[j][1];
                     this.demandsArray[j][0] = this.demandsArray[j+1][0];
+                    this.demandsArray[j][1] = this.demandsArray[j+1][1];
                     this.demandsArray[j+1][0] = temp;
+                    this.demandsArray[j+1][1] = temp2;
+
                 }
             }
         }
@@ -164,8 +127,11 @@ public class inValues {
                 {
                     // swap arr[j+1] and arr[i]
                     int temp = this.deliverTimeArray[j][0];
+                    int temp2 = this.deliverTimeArray[j][1];
                     this.deliverTimeArray[j][0] = this.deliverTimeArray[j+1][0];
+                    this.deliverTimeArray[j][1] = this.deliverTimeArray[j+1][1];
                     this.deliverTimeArray[j+1][0] = temp;
+                    this.deliverTimeArray[j+1][1] = temp2;
                 }
             }
         }
@@ -177,8 +143,11 @@ public class inValues {
                 {
                     // swap arr[j+1] and arr[i]
                     int temp = this.clientw8TimeArray[j][0];
+                    int temp2 = this.clientw8TimeArray[j][1];
                     this.clientw8TimeArray[j][0] = this.clientw8TimeArray[j+1][0];
+                    this.clientw8TimeArray[j][1] = this.clientw8TimeArray[j+1][1];
                     this.clientw8TimeArray[j+1][0] = temp;
+                    this.clientw8TimeArray[j+1][1] = temp2;
                 }
             }
         }
