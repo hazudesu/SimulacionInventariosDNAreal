@@ -15,6 +15,8 @@ public class main {
             inValues test = creator.readFile("C:\\\\Simulacion de Inventarios\\\\Archivos\\\\Caso.txt");
             System.out.println(test.toString());
             test.printarray();
+            creator.writeResult(null,null);
+            System.out.println((float)4/26);
         } catch (IOException e) {
             e.printStackTrace();
         }

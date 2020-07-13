@@ -47,9 +47,9 @@ public class fileCreator {
 
     }
 
-    public void createStream (){
+    public void createStream (String Filename){
         try {
-            newDoc = new File("C://Simulacion de Inventarios/Archivos/" + fileName);
+            newDoc = new File(path + fileName);
             fOut = new FileWriter(newDoc);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -276,7 +276,7 @@ public class fileCreator {
     }
 
     public void writeResult(outValues salida, String resultFileName){
-
+        createStream("newFile.txt");
     }
 
 

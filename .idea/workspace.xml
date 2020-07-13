@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/fileCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/fileCreator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/fileCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/fileCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/outValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/outValues.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +142,7 @@
       <workItem from="1594497115869" duration="1018000" />
       <workItem from="1594500801340" duration="1242000" />
       <workItem from="1594504421141" duration="22549000" />
-      <workItem from="1594590401593" duration="9213000" />
+      <workItem from="1594590401593" duration="10164000" />
     </task>
     <servers />
   </component>
