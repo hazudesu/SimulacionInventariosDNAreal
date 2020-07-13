@@ -54,7 +54,7 @@ public class fileCreator {
 
     public inValues readFile(String fileName) throws IOException {
         inValues result = new inValues();
-        FileReader rd = new FileReader(fileName);
+        FileReader rd = new FileReader(path + fileName);
         System.out.print(rd.ready());
         BufferedReader buffrd = new BufferedReader(rd);
         if(rd == null){
@@ -305,40 +305,72 @@ public class fileCreator {
                 switch (atrCount){
                     case 0 :
                         fw.write(inModed.getTimeUnit() + separator);
+                        atrCount++;
                         break;
                     case 1 :
                         if(inModed.isEventTable())
                             fw.write("S" + separator);
+
                         else
                             fw.write("N" + separator);
+                        atrCount++;
+                        break;
+                    case 2 :
+                        fw.write(Integer.toString(inModed.getTimeAmount()) + separator);
+                        atrCount++;
                         break;
                     case 3 :
-                        fw.write(Integer.toString(inModed.getTimeAmount()));
+                        fw.write(Integer.toString(inModed.getDemandValues()) + separator);
+                        atrCount++;
                         break;
                     case 4 :
+                        System.out.println("UwU1");
+                        atrCount++;
                         break;
                     case 5 :
+                        fw.write(inModed.getDeliverTimeAmount() + separator);
+                        atrCount++;
                         break;
                     case 6 :
+                        System.out.println("UwU2");
+                        atrCount++;
                         break;
                     case 7 :
+                        fw.write(inModed.getW8TimeAmntClient() + separator);
+                        atrCount++;
                         break;
                     case 8 :
+                        System.out.println("UwU3");
+                        atrCount++;
                         break;
                     case 9 :
+                        fw.write(Float.toString(inModed.getInvCost()) + separator);
+                        atrCount++;
                         break;
                     case 10 :
+                        fw.write(Float.toString(inModed.getPurchaseCost()) + separator);
+                        atrCount++;
                         break;
                     case 11 :
+                        fw.write(Float.toString(inModed.getOrderCost()) + separator);
+                        atrCount++;
                         break;
                     case 12 :
+                        fw.write(Float.toString(inModed.getAcumDemandCost()) + separator);
+                        atrCount++;
                         break;
                     case 13 :
+                        fw.write(Float.toString(inModed.getSaleLossCost()) + separator);
+                        atrCount++;
                         break;
                     case 14 :
+                        fw.write(Integer.toString(inModed.getInitialInv()) + separator);
+                        atrCount++;
                         break;
                 }
+
             }
+            fw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

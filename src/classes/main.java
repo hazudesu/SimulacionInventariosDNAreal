@@ -7,22 +7,22 @@ public class main {
 
 
     public static void main(String[] args) {
-      /* fileCreator creator = new fileCreator();
+        fileCreator creator = new fileCreator();
         creator.createDir();
         //creator.createStream();
         try {
-            inValues test = creator.readFile(creator.openFile());
+            inValues test = creator.readFile("Caso.txt");
+            test.toString();
+            //inValues test = creator.readFile(creator.openFile());
+            creator.modifyinFile("NewFile2.txt",test);
             //System.out.println(test.toString());
             //test.printarray();
 
-            System.out.println("PENE");
             return;
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
 
-
-        System.out.println("PENSASDASDAS");
         inValues enter = new inValues('d', false, 10, 4, 3, 3, 50, 25, 5, 10, 15, 20);
 
 
@@ -70,7 +70,6 @@ public class main {
        System.out.println(enter.timeUnit);
         simulation sim = new simulation();
         sim.simulate(enter);
-        System.out.println("pene");
 
 
 
