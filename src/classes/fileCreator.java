@@ -40,8 +40,9 @@ public class fileCreator {
         fd.setFile("*.txt");
         fd.setVisible(true);
         fileName = fd.getFile();
-        System.out.println(fileName+"ff");
         fd.setVisible(false);
+        fd.dispose();
+        System.out.println(path+fileName);
         return path+fileName;
 
     }
@@ -269,7 +270,6 @@ public class fileCreator {
 
                 }
 
-                break;
             }
         }
         return result;

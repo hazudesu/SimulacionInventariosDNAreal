@@ -11,9 +11,10 @@ public class main {
         creator.createDir();
         //creator.createStream();
         try {
-            inValues test = creator.readFile(creator.openFile());
-            //System.out.println(test.toString());
-            //test.printarray();
+            //inValues test = creator.readFile(creator.openFile());
+            inValues test = creator.readFile("C:\\\\Simulacion de Inventarios\\\\Archivos\\\\Caso.txt");
+            System.out.println(test.toString());
+            test.printarray();
         } catch (IOException e) {
             e.printStackTrace();
         }
