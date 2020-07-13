@@ -33,11 +33,11 @@ public class simulation {
         int remainingOrderTime = 0;
 
         //Inicio de Simulacion
-        for(int i=minQ; i<=maxQ;i++){
-            for(int j=minR; j<=maxR;j++){
+       // for(int i=minQ; i<=maxQ;i++){
+       //     for(int j=minR; j<=maxR;j++){
                 outValues salida = new outValues();
-                salida.setQvalue(i);
-                salida.setRvalue(j);
+                salida.setQvalue(minQ);
+                salida.setRvalue(minR);
                 //Ciclo de simulacion hasta cantidadTiempo
                 for (int k=0; k< entrada.timeAmount; k++){
                     salida.day.add(k);
@@ -75,8 +75,8 @@ public class simulation {
                     if((orderup == true) && (remainingOrderTime != 0))
                         remainingOrderTime--;
                 }
-            }
-        }
+            //}
+      //  }
 
 
 return;
@@ -97,23 +97,26 @@ return;
     }
 
     public int minR(inValues input, int minQ) {
-        int t0 = minQ / input.demandsArray[0][0];
+        System.out.println(minQ);
+        System.out.println(input.demandsArray[0][0]);
+        float t0 =((float)minQ / (float)input.demandsArray[0][0]);
+        System.out.println(t0);
         if (input.deliverTimeArray[0][0] < t0) {
             return input.deliverTimeArray[0][0] * input.demandsArray[0][0];
         } else {
-            int n = input.deliverTimeArray[0][0] / t0;
-            int Le = input.deliverTimeArray[0][0] * (n * t0);
+            int n = (int) (input.deliverTimeArray[0][0] / t0);
+            int Le = (int) (input.deliverTimeArray[0][0] * (n * t0));
             return Le - input.demandsArray[0][0];
         }
     }
 
     public int maxR(inValues input, int maxQ) {
-        int t0 = maxQ / input.demandsArray[input.demandValues-1][0];
+        float t0 = ((float)maxQ / (float)input.demandsArray[input.demandValues-1][0]);
         if (input.deliverTimeArray[input.deliverTimeAmount-1][0] < t0) {
             return input.deliverTimeArray[input.deliverTimeAmount-1][0] * input.demandsArray[input.demandValues-1][0];
         } else {
-            int n = input.deliverTimeArray[input.deliverTimeAmount-1][0] / t0;
-            int Le = input.deliverTimeArray[input.deliverTimeAmount-1][0] * (n * t0);
+            int n = (int) (input.deliverTimeArray[input.deliverTimeAmount-1][0] / t0);
+            int Le = (int) (input.deliverTimeArray[input.deliverTimeAmount-1][0] * (n * t0));
             return Le - input.demandsArray[input.demandValues-1][0];
         }
     }
@@ -153,6 +156,7 @@ return;
     }
 
     public void randomW8Time(inValues entrada, outValues salida){
+        System.out.println("MAMALO GIO");
         int VarRandom = new Random().nextInt(100);
         System.out.println(VarRandom);
         salida.w8TimeRandom.add(VarRandom);
