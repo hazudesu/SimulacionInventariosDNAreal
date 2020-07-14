@@ -55,6 +55,7 @@ public class simulation {
 
     public void simulate(inValues entrada) {
         //Inicializacion de Q y R (min y max)
+        entrada.calcInvCostUnit();
         minQ = minQ(entrada);
         maxQ = maxQ(entrada);
         minR = minR(entrada, minQ);
@@ -159,13 +160,13 @@ public class simulation {
                 }
                 salida.setTotalPurchaseCost(((int) (entrada.purchaseCost * salida.getQvalue() * currentOrders)));
                 salida.setTotalOrderCost((int) (entrada.orderCost * currentOrders));
-                salida.setTotalCostInv(salida.totalCostInv * (entrada.invCost / 360));
+                salida.setTotalCostInv(salida.totalCostInv * entrada.invCostUnit);
                 salida.acumTotalCost();
                 salidaFinal.add(salida);
                 //Pregunta para almacenar la simulacion optima más actual
                 if(salida.totalCost <= salidaOptima.totalCost)
                     salidaOptima = salida;
-                System.out.println(salida.toString());
+                //System.out.println(salida.toString());
             }
         }
     }

@@ -25,6 +25,7 @@ public class inValues {
     protected int w8TimeAmntClient;
     protected int[][] clientw8TimeArray;
     protected float invCost;
+    protected float invCostUnit;
     protected float purchaseCost;
     protected float orderCost;
     protected float acumDemandCost;
@@ -34,7 +35,7 @@ public class inValues {
 //----------------------------------------------------------------------------------------------------------------------
     //Constructor de parametros de Entrada
 
-    public inValues(char timeUnit, boolean eventTable, int timeAmount, int demandValues, int deliverTimeAmount, int w8TimeAmntClient, float invCost, float purchaseCost, float orderCost, float acumDemandCost, float saleLossCost, int initialInv) {
+    public inValues(char timeUnit, boolean eventTable, int timeAmount, int demandValues, int deliverTimeAmount, int w8TimeAmntClient, float invCost,float invCostUnit, float purchaseCost, float orderCost, float acumDemandCost, float saleLossCost, int initialInv) {
         this.timeUnit = timeUnit;
         this.eventTable = eventTable;
         this.timeAmount = timeAmount;
@@ -45,6 +46,7 @@ public class inValues {
         this.w8TimeAmntClient = w8TimeAmntClient;
         this.clientw8TimeArray = new int[w8TimeAmntClient][2];
         this.invCost = invCost;
+        this.invCostUnit = invCostUnit;
         this.purchaseCost = purchaseCost;
         this.orderCost = orderCost;
         this.acumDemandCost = acumDemandCost;
@@ -144,6 +146,31 @@ public class inValues {
             }
         }
     }
+
+    public void calcInvCostUnit(){
+        switch (this.timeUnit){
+            case 'd':
+                this.invCostUnit=this.invCost/360;
+                break;
+            case 's':
+                this.invCostUnit=this.invCost/52;
+                break;
+            case 'm':
+                this.invCostUnit=this.invCost/12;
+                break;
+            case 'b':
+                this.invCostUnit=this.invCost/6;
+                break;
+            case 't':
+                this.invCostUnit=this.invCost/4;
+                break;
+            default:
+                break;
+
+        }
+    }
+
+
 
     //Getters y Setters de atributos
 

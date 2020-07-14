@@ -113,7 +113,7 @@ public class outValues {
     }
 
     public void acumTotalCost (){ //Almacenar Coste total del objeto (Combinacion)
-        this.totalCost = this.totalOrderCost+this.totalCostInv+this.totalPurchaseCost+this.totalRemainCost;
+        this.totalCost = this.totalOrderCost+this.totalCostInv+this.totalRemainCost;
     }
 
     public ArrayList getDay() {
