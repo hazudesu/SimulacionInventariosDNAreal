@@ -89,10 +89,10 @@ public class interfaz {
                 tabla tablas = new tabla();
 
                 tablas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                tablas.setSize(3000,500);
+                //tablas.setSize(500,500);
                 tablas.setVisible(true);
                 tablas.setLocationRelativeTo(null);
-                tablas.setTitle("My first java table");
+                //tablas.setTitle("My first java table");
 
                 //JOptionPane.showMessageDialog(null, " Aguantalo Menor ");
 
@@ -107,7 +107,7 @@ public class interfaz {
             public void keyTyped(KeyEvent e) {
                 super.keyTyped(e);
                 char c = e.getKeyChar();
-                if ( c < '0' || c >'9')
+                if ( c < '0' || c >'9') 
                     e.consume();
             }
             public void keyReleased(KeyEvent e) {

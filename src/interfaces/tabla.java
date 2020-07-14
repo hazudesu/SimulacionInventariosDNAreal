@@ -21,7 +21,7 @@ public class tabla extends JFrame {
         };
 
         tabla = new JTable(data,columnName);
-        tabla.setPreferredScrollableViewportSize(new Dimension(500,50));
+        tabla.setPreferredScrollableViewportSize(new Dimension(1500,50));
         tabla.setFillsViewportHeight(true);
 
         JScrollPane scrollPane = new JScrollPane(tabla);
