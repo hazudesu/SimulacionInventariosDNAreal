@@ -6,16 +6,16 @@ import java.util.ArrayList;
 public class outValues {
     protected ArrayList<Integer> day = new ArrayList<Integer>();
     protected ArrayList<Integer> invInc = new ArrayList<Integer>();
+    protected ArrayList<Integer> demandRandom = new ArrayList<Integer>();
     protected ArrayList<Integer> demand = new ArrayList<Integer>();
     protected ArrayList<Integer> finalInv = new ArrayList<Integer>();
     protected ArrayList<Float> invProm = new ArrayList<Float>();
     protected ArrayList<Integer> remain = new ArrayList<Integer>();
     protected ArrayList<Integer> orderNo = new ArrayList<Integer>();
-    protected ArrayList<Integer> deliverTime = new ArrayList<Integer>();
-    protected ArrayList<Integer> w8Time = new ArrayList<Integer>();
-    protected ArrayList<Integer> demandRandom = new ArrayList<Integer>();
     protected ArrayList<Integer> deliverRandom = new ArrayList<Integer>();
+    protected ArrayList<Integer> deliverTime = new ArrayList<Integer>();
     protected ArrayList<Integer> w8TimeRandom = new ArrayList<Integer>();
+    protected ArrayList<Integer> w8Time = new ArrayList<Integer>();
     protected int Qvalue;
     protected int Rvalue;
 
@@ -74,16 +74,16 @@ public class outValues {
         return "outValues{" +
                 "day=" + day +
                 ", invInc=" + invInc +
+                ", demandRandom=" + demandRandom +
                 ", demand=" + demand +
                 ", finalInv=" + finalInv +
                 ", invProm=" + invProm +
                 ", remain=" + remain +
                 ", orderNo=" + orderNo +
-                ", deliverTime=" + deliverTime +
-                ", w8Time=" + w8Time +
-                ", demandRandom=" + demandRandom +
                 ", deliverRandom=" + deliverRandom +
+                ", deliverTime=" + deliverTime +
                 ", w8TimeRandom=" + w8TimeRandom +
+                ", w8Time=" + w8Time +
                 ", Qvalue=" + Qvalue +
                 ", Rvalue=" + Rvalue +
                 ", totalCostInv=" + totalCostInv +

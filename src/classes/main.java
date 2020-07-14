@@ -7,7 +7,7 @@ public class main {
 
 
     public static void main(String[] args) {
-        fileCreator creator = new fileCreator();
+    /*    fileCreator creator = new fileCreator();
         creator.createDir();
         //creator.createStream();
         try {
@@ -21,32 +21,41 @@ public class main {
             return;
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        inValues enter = new inValues('d', false, 10, 4, 3, 3, 50, 25, 5, 10, 15, 20);
+        inValues enter = new inValues('d', false, 14, 8, 3, 3, 10, 25, 260, 30, 60, 10);
 
 
 
-        enter.demandsArray[0][0]= 29;
-        enter.demandsArray[1][0]= 26;
-        enter.demandsArray[2][0]= 27;
-        enter.demandsArray[3][0]= 28;
-        enter.demandsArray[0][1]= 20;
-        enter.demandsArray[1][1]= 20;
-        enter.demandsArray[2][1]= 30;
-        enter.demandsArray[3][1]= 30;
+        enter.demandsArray[0][0]= 20;
+        enter.demandsArray[1][0]= 22;
+        enter.demandsArray[2][0]= 24;
+        enter.demandsArray[3][0]= 26;
+        enter.demandsArray[4][0]= 28;
+        enter.demandsArray[5][0]= 30;
+        enter.demandsArray[6][0]= 32;
+        enter.demandsArray[7][0]= 34;
+        enter.demandsArray[0][1]= 5;
+        enter.demandsArray[1][1]= 5;
+        enter.demandsArray[2][1]= 10;
+        enter.demandsArray[3][1]= 10;
+        enter.demandsArray[4][1]= 20;
+        enter.demandsArray[5][1]= 30;
+        enter.demandsArray[6][1]= 15;
+        enter.demandsArray[7][1]= 5;
+
         enter.deliverTimeArray[0][0]= 1;
         enter.deliverTimeArray[1][0]= 2;
         enter.deliverTimeArray[2][0]= 3;
-        enter.deliverTimeArray[0][1]= 20;
+        enter.deliverTimeArray[0][1]= 40;
         enter.deliverTimeArray[1][1]= 30;
-        enter.deliverTimeArray[2][1]= 50;
+        enter.deliverTimeArray[2][1]= 30;
         enter.clientw8TimeArray[0][0]= 0;
         enter.clientw8TimeArray[1][0]= 1;
         enter.clientw8TimeArray[2][0]= 2;
-        enter.clientw8TimeArray[0][1]= 30;
-        enter.clientw8TimeArray[1][1]= 40;
-        enter.clientw8TimeArray[2][1]= 30;
+        enter.clientw8TimeArray[0][1]= 50;
+        enter.clientw8TimeArray[1][1]= 35;
+        enter.clientw8TimeArray[2][1]= 15;
 
 
 
