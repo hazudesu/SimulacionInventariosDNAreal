@@ -1,11 +1,15 @@
 package classes;
 
-
 import static java.lang.System.exit;
 
 import java.util.Arrays;
 import java.util.Random;
-
+/*
+ *  @author Lopez Daniel 26.623.586
+ *          Luces Adrian 26.936.932
+ *          Angeles Nestor 26.262.971
+ *
+ * */
 public class inValues {
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -85,18 +89,6 @@ public class inValues {
 
 
     //----------------------------------------------------------------------------------------------------------------------
-    //Getters y Setters de atributos
-
-    //Setters de arrays
-
-    //
-
-    //Metodo de selección por probabilidades (Set ValoresActuales Demanda, Entrega, Cliente)
-
-    //PARA MOSTRAR LA TABLA FINAL CREAR ARREGLO [I][12] PARA ALMACENAR TODAS LAS VARIABLES DE RESULTADO DE SIMULACION
-    /* 12= Nro de variables en tabla, posiblemente 14 si almacenamos Q Y R, i=0 hasta timeAmount (duración de simulación)
-     */
-
     //Sort de arrays (Menor a Mayor)
     public void bubbleSort() {
         int n = this.demandsArray.length;

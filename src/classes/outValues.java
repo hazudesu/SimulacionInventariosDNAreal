@@ -2,8 +2,14 @@ package classes;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-
+/*
+ *  @author Lopez Daniel 26.623.586
+ *          Luces Adrian 26.936.932
+ *          Angeles Nestor 26.262.971
+ *
+ * */
 public class outValues {
+
     protected ArrayList<Integer> day = new ArrayList<Integer>();
     protected ArrayList<Integer> invInc = new ArrayList<Integer>();
     protected ArrayList<Integer> demandRandom = new ArrayList<Integer>();
@@ -16,27 +22,23 @@ public class outValues {
     protected ArrayList<Integer> deliverTime = new ArrayList<Integer>();
     protected ArrayList<Integer> w8TimeRandom = new ArrayList<Integer>();
     protected ArrayList<Integer> w8Time = new ArrayList<Integer>();
-    protected int Qvalue;
-    protected int Rvalue;
+    protected int Qvalue; //Valor de Q correspondiente a la combinacion actual
+    protected int Rvalue; //Valor de R correspondiente a la combinacion actual
 
-    protected float totalCostInv;
-    protected int totalOrderCost;
-    protected int totalPurchaseCost;
-    protected int totalRemainCost;
-    protected float totalCost;
+    protected float totalCostInv;   //Valor de costo de inventario total
+    protected int totalOrderCost;   //Valor de costo de orden total
+    protected int totalPurchaseCost;//Valor de costo de compra total
+    protected int w8RemainCost;     //Valor de costo por faltante con espera total
+    protected int noW8RemainCost;   //Valor de costo por faltante sin espera  total
+    protected int totalRemainCost;  //Valor de costo por faltantes total
 
-    protected int w8RemainCost;
-    protected int noW8RemainCost;
+    protected float totalCost;//Valor de costo de inventario total
+
 
 
 
     //------------------------------------------------------------------------------------------------------------------
                                                     //Constructores
-
-
-
-
-
     public outValues() {
     }
 
@@ -67,8 +69,6 @@ public class outValues {
 
     //------------------------------------------------------------------------------------------------------------------
                                                     //Setters & Getters
-
-
     @Override
     public String toString() {
         return "outValues{" +
@@ -96,28 +96,25 @@ public class outValues {
                 '}';
     }
 
-    public void acumW8RemainCost (int sum){
+    public void acumW8RemainCost (int sum){ //Almacenar coste con espera (Demanda acumulada)
         this.w8RemainCost += sum;
     }
 
-    public void noacumW8RemainCost (int sum){
+    public void noacumW8RemainCost (int sum){ //Almacenar coste sin espera (Perdida de venta)
         this.noW8RemainCost += sum;
     }
 
-    public void acumTotalRemainCost (){
+    public void acumTotalRemainCost (){ //Almacenar coste por faltantes total
         this.totalRemainCost = this.w8RemainCost+this.noW8RemainCost;
     }
 
-
-    public void acumTotalInvCost (Float sum){
+    public void acumTotalInvCost (Float sum){ //Almacenar Coste de inventario total
         this.totalCostInv+= sum;
     }
 
-    public void acumTotalCost (){
+    public void acumTotalCost (){ //Almacenar Coste total del objeto (Combinacion)
         this.totalCost = this.totalOrderCost+this.totalCostInv+this.totalPurchaseCost+this.totalRemainCost;
     }
-
-
 
     public ArrayList getDay() {
         return day;
@@ -134,7 +131,6 @@ public class outValues {
     public void setInvInc(ArrayList invInc) {
         this.invInc = invInc;
     }
-
 
     public ArrayList getDemand() {
         return demand;
@@ -176,7 +172,6 @@ public class outValues {
         this.orderNo = orderNo;
     }
 
-
     public ArrayList getDeliverTime() {
         return deliverTime;
     }
@@ -184,7 +179,6 @@ public class outValues {
     public void setDeliverTime(ArrayList deliverTime) {
         this.deliverTime = deliverTime;
     }
-
 
     public ArrayList getW8Time() {
         return w8Time;

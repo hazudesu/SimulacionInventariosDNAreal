@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
+/*
+ *  @author Lopez Daniel 26.623.586
+ *          Luces Adrian 26.936.932
+ *          Angeles Nestor 26.262.971
+ *
+ * */
+
 public class simulation {
 
     //----------------------------------------------------------------------------------------------------------------------
@@ -13,8 +20,8 @@ public class simulation {
     protected int maxQ; //Q maxima
     protected int minR; //R minima
     protected int maxR; //R maxima
-    protected ArrayList<outValues> salidaFinal = new ArrayList<outValues>();
-    protected outValues salidaOptima;
+    protected ArrayList<outValues> salidaFinal = new ArrayList<outValues>(); //Lista para almacenar Salidas
+    protected outValues salidaOptima; //Variable para almacenar salida optima
 
 //----------------------------------------------------------------------------------------------------------------------
     //Constructor de parametros de Entrada
@@ -74,7 +81,7 @@ public class simulation {
                 salida.setRvalue(j);
                 //Ciclo de simulacion hasta cantidadTiempo
                 for (int k = 0; k < entrada.timeAmount; k++) {
-                    salida.day.add(k);
+                    salida.day.add(k+1);
                     payRemain(remainList, entrada, salida);
                     if (k == 0)
                         salida.invInc.add(entrada.initialInv);
@@ -155,15 +162,12 @@ public class simulation {
                 salida.setTotalCostInv(salida.totalCostInv * (entrada.invCost / 360));
                 salida.acumTotalCost();
                 salidaFinal.add(salida);
+                //Pregunta para almacenar la simulacion optima más actual
                 if(salida.totalCost <= salidaOptima.totalCost)
                     salidaOptima = salida;
-                //Metodo para almacenar la simulacion mas optima
                 System.out.println(salida.toString());
-
             }
-
         }
-
     }
 
     //Metodos de inicializacion Q y R (Min-Max)
@@ -181,9 +185,11 @@ public class simulation {
 
     public int minR(inValues input, int minQ) {
         float t0 = ((float) minQ / (float) input.demandsArray[0][0]);
+        //Para L<t0
         if (input.deliverTimeArray[0][0] < t0) {
             return input.deliverTimeArray[0][0] * input.demandsArray[0][0];
         } else {
+            //Para L>0
             int n = (int) (input.deliverTimeArray[0][0] / t0);
             // System.out.println(n);
             float Le = (input.deliverTimeArray[0][0] - (n * t0));
@@ -194,9 +200,11 @@ public class simulation {
 
     public int maxR(inValues input, int maxQ) {
         float t0 = ((float) maxQ / (float) input.demandsArray[input.demandValues - 1][0]);
+        //Para L<t0
         if (input.deliverTimeArray[input.deliverTimeAmount - 1][0] < t0) {
             return input.deliverTimeArray[input.deliverTimeAmount - 1][0] * input.demandsArray[input.demandValues - 1][0];
         } else {
+            //Para L>0
             int n = (int) (input.deliverTimeArray[input.deliverTimeAmount - 1][0] / t0);
             // System.out.println(n);
             float Le = (input.deliverTimeArray[input.deliverTimeAmount - 1][0] - (n * t0));
@@ -205,10 +213,9 @@ public class simulation {
         }
     }
 
-    //RECORDAR MULTIPLICAR LOS VALORES DE LOS RANDOM POR 100 Y CASTEAR
-
-
     //Metodos de seleccion de prob
+
+    //Calcular numero aleatorio y valor correspondiente para demanda
     public void randomDemand(inValues entrada, outValues salida) {
         int VarRandom = new Random().nextInt(100);
         salida.demandRandom.add(VarRandom);
@@ -222,6 +229,7 @@ public class simulation {
         }
     }
 
+    //Calcular numero aleatorio y valor correspondiente para tiempo de entrega
     public void randomDeliverT(inValues entrada, outValues salida) {
         int VarRandom = new Random().nextInt(100);
         salida.deliverRandom.add(VarRandom);
@@ -235,6 +243,7 @@ public class simulation {
         }
     }
 
+    //Calcular numero aleatorio y valor correspondiente para tiempo de espera
     public void randomW8Time(inValues entrada, outValues salida) {
 
         int VarRandom = new Random().nextInt(100);
@@ -264,8 +273,4 @@ public class simulation {
             }
         }
     }
-
-
 }
-
-
