@@ -24,7 +24,7 @@ public class main {
             e.printStackTrace();
         }*/
 
-        inValues enter = new inValues('d', false, 14, 8, 3, 3, 10, 25, 260, 30, 60, 10);
+        inValues enter = new inValues('d', false, 14, 8, 3, 3, 50, 25, 260, 30, 60, 10);
 
 
 
