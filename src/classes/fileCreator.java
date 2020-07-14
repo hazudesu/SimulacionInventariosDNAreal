@@ -38,7 +38,7 @@ public class fileCreator {
         }
     }
 
-    public String openFile(){
+    /*public String openFile(){
 
         FileDialog fd = new FileDialog(frame, "Select a file",FileDialog.LOAD);
         fd.setDirectory(path);
@@ -50,12 +50,8 @@ public class fileCreator {
         System.out.println(path+fileName);
         return path+fileName;
 
-    }
+    }*/
 
-
-    public void closeFileStream() throws IOException {
-        fOut.close();
-    }
 
     public inValues readFile(String fileName) throws IOException {
         inValues result = new inValues();
@@ -124,13 +120,13 @@ public class fileCreator {
                         String[] part1 = splitted[0].split("/");
                         String[] part2 = splitted[1].split("/");
                         if((part1.length) == (part2.length)){
-                            int[][] artry = new int[2][part1.length];
-                            for(int i = 0; i<= 1 ; i++){
-                                for(int j = 0; j<part2.length ; j++){
-                                    if(i == 0)
-                                        artry[i][j] = Integer.parseInt(part1[j]);
-                                    if(i == 1)
-                                        artry[i][j] = Integer.parseInt(part2[j]);
+                            int[][] artry = new int[part1.length][2];
+                            for(int i = 0; i< part1.length ; i++){
+                                for(int j = 0; j<2 ; j++){
+                                    if(j == 0)
+                                        artry[i][j] = Integer.parseInt(part1[i]);
+                                    if(j == 1)
+                                        artry[i][j] = Integer.parseInt(part2[i]);
                                 }
                             }
                             result.setDemandsArray(artry);
@@ -155,13 +151,13 @@ public class fileCreator {
                         String[] A = splitted2[0].split("/");
                         String[] B = splitted2[1].split("/");
                         if((A.length) == (B.length)){
-                            int[][] artry = new int[2][A.length];
-                            for(int i = 0; i<= 1 ; i++){
-                                for(int j = 0; j<B.length ; j++){
-                                    if(i == 0)
-                                        artry[i][j] = Integer.parseInt(A[j]);
-                                    if(i == 1)
-                                        artry[i][j] = Integer.parseInt(B[j]);
+                            int[][] artry = new int[A.length][2];
+                            for(int i = 0; i< B.length ; i++){
+                                for(int j = 0; j<2 ; j++){
+                                    if(j == 0)
+                                        artry[i][j] = Integer.parseInt(A[i]);
+                                    if(j == 1)
+                                        artry[i][j] = Integer.parseInt(B[i]);
                                 }
                             }
                             result.setDeliverTimeArray(artry);
@@ -186,13 +182,13 @@ public class fileCreator {
                         String[] A1 = splitted3[0].split("/");
                         String[] B1 = splitted3[1].split("/");
                         if((A1.length) == (B1.length)){
-                            int[][] artry = new int[2][A1.length];
-                            for(int i = 0; i<= 1 ; i++){
-                                for(int j = 0; j<B1.length ; j++){
-                                    if(i == 0)
-                                        artry[i][j] = Integer.parseInt(A1[j]);
-                                    if(i == 1)
-                                        artry[i][j] = Integer.parseInt(B1[j]);
+                            int[][] artry = new int[A1.length][2];
+                            for(int i = 0; i< B1.length ; i++){
+                                for(int j = 0; j< 2 ; j++){
+                                    if(j == 0)
+                                        artry[i][j] = Integer.parseInt(A1[i]);
+                                    if(j == 1)
+                                        artry[i][j] = Integer.parseInt(B1[i]);
                                 }
                             }
                             result.setClientw8TimeArray(artry);
@@ -347,12 +343,12 @@ public class fileCreator {
                         for ( i = 0 ; i<2 ; i++ ){
                             for( j = 0 ; j<inModed.getDemandValues(); j++){
                                 if((j == inModed.getDemandValues() - 1) && (i == 0))
-                                    fw.write(arr[i][j] + "-");
+                                    fw.write(arr[j][i] + "-");
                                 else
                                     if((j == inModed.getDemandValues() - 1) && (i == 1))
-                                        fw.write(arr[i][j] + separator);
+                                        fw.write(arr[j][i] + separator);
                                     else
-                                        fw.write(arr[i][j] + "/");
+                                        fw.write(arr[j][i] + "/");
                             }
                         }
                         atrCount++;
@@ -366,12 +362,12 @@ public class fileCreator {
                         for ( i = 0 ; i<2 ; i++ ){
                             for(j = 0 ; j<inModed.getDeliverTimeAmount(); j++){
                                 if((j == inModed.getDeliverTimeAmount() - 1) && (i == 0))
-                                    fw.write(arr2[i][j] + "-");
+                                    fw.write(arr2[j][i] + "-");
                                 else
                                 if((j == inModed.getDeliverTimeAmount() - 1) && (i == 1))
-                                    fw.write(arr2[i][j] + separator);
+                                    fw.write(arr2[j][i] + separator);
                                 else
-                                    fw.write(arr2[i][j] + "/");
+                                    fw.write(arr2[j][i] + "/");
                             }
                         }
                         atrCount++;
@@ -385,12 +381,12 @@ public class fileCreator {
                         for ( i = 0 ; i<2 ; i++ ){
                             for(j = 0 ; j<inModed.getW8TimeAmntClient(); j++){
                                 if((j == inModed.getW8TimeAmntClient() - 1) && (i == 0))
-                                    fw.write(arr3[i][j] + "-");
+                                    fw.write(arr3[j][i] + "-");
                                 else
                                 if((j == inModed.getW8TimeAmntClient() - 1) && (i == 1))
-                                    fw.write(arr3[i][j] + separator);
+                                    fw.write(arr3[j][i] + separator);
                                 else
-                                    fw.write(arr3[i][j] + "/");
+                                    fw.write(arr3[j][i] + "/");
                             }
                         }
                         atrCount++;

@@ -85,8 +85,8 @@ public class inValues {
 
 
     public void printarray(){
-        for(int i = 0; i<=1; i++)
-            for(int j = 0; j<5 ; j++)
+        for(int i = 0; i<5; i++)
+            for(int j = 0; j<2 ; j++)
                 System.out.println(clientw8TimeArray[i][j]);
     }
 
