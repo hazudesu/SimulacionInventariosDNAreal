@@ -108,13 +108,15 @@ public class outValues {
         this.totalRemainCost = this.w8RemainCost+this.noW8RemainCost;
     }
 
-    public void acumTotalOrderCost(Float sum){
-        this.totalOrderCost += sum;
+
+    public void acumTotalInvCost (Float sum){
+        this.totalCostInv+= sum;
     }
 
     public void acumTotalCost (){
         this.totalCost = this.totalOrderCost+this.totalCostInv+this.totalPurchaseCost+this.totalRemainCost;
     }
+
 
 
     public ArrayList getDay() {
