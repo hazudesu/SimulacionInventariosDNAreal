@@ -22,6 +22,12 @@ public class simulation {
     protected int maxR; //R maxima
     protected ArrayList<outValues> salidaFinal = new ArrayList<outValues>(); //Lista para almacenar Salidas
     protected outValues salidaOptima; //Variable para almacenar salida optima
+   /* protected ArrayList<Integer> arrayDemands = new ArrayList<Integer>();
+    protected ArrayList<Integer> arrayDeliverT= new ArrayList<Integer>();
+    protected ArrayList<Integer> arrayW8Time =new ArrayList<Integer>();;
+    protected ArrayList<Integer> arrayDemandsRnd = new ArrayList<Integer>();
+    protected ArrayList<Integer> arrayDeliverTRnd= new ArrayList<Integer>();
+    protected ArrayList<Integer> arrayW8TimeRnd =new ArrayList<Integer>();;*/
 
 //----------------------------------------------------------------------------------------------------------------------
     //Constructor de parametros de Entrada
@@ -62,13 +68,14 @@ public class simulation {
         maxR = maxR(entrada, maxQ);
         outValues iniCost = new outValues();
 
-        System.out.println(minQ);
-        System.out.println(maxQ);
-        System.out.println(minR);
-        System.out.println(maxR);
+        System.out.println("Q min = "+minQ);
+        System.out.println("Q max = "+maxQ);
+        System.out.println("R min = "+minR);
+        System.out.println("R max = "+maxR);
         salidaOptima = new outValues();
         iniCost.setTotalCost(99999999);
         salidaOptima = iniCost;
+
 
         //Inicio de Simulacion
         for (int i = minQ; i <= maxQ; i++) {
@@ -231,6 +238,8 @@ public class simulation {
     }
 
     //Calcular numero aleatorio y valor correspondiente para tiempo de entrega
+    //PARA QUE LOS VALORES SEAN LOS MISMOS PARA CADA Q Y R CAMBIAR EL PARAMETRO DE SALIDA POR EL ARRAYLIST CORRESPONDIENTE
+    //LUEGO EN SIMULATION EN VEZ DE EJECUTAR ESTAS FUNCIONES SE RECORREN LOS ARRAYLIST YA INICIALIZADOS
     public void randomDeliverT(inValues entrada, outValues salida) {
         int VarRandom = new Random().nextInt(100);
         salida.deliverRandom.add(VarRandom);
@@ -246,7 +255,6 @@ public class simulation {
 
     //Calcular numero aleatorio y valor correspondiente para tiempo de espera
     public void randomW8Time(inValues entrada, outValues salida) {
-
         int VarRandom = new Random().nextInt(100);
         salida.w8TimeRandom.add(VarRandom);
         int Sum = 0;

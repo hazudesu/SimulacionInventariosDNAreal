@@ -52,6 +52,7 @@ public class inValues {
         this.acumDemandCost = acumDemandCost;
         this.saleLossCost = saleLossCost;
         this.initialInv = initialInv;
+        System.out.println("inValues Creado con exito");
     }
 
 
