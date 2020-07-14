@@ -148,7 +148,7 @@ public class simulation {
                         salida.deliverRandom.add(0);
                     }
                     salida.acumTotalRemainCost();
-                    salida.acumTotalOrderCost(salida.invProm.get(k));
+                    salida.acumTotalInvCost(salida.invProm.get(k));
                 }
                 salida.setTotalPurchaseCost(((int) (entrada.purchaseCost * salida.getQvalue() * currentOrders)));
                 salida.setTotalOrderCost((int) (entrada.orderCost * currentOrders));
