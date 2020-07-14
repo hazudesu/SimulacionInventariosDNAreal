@@ -7,15 +7,15 @@ public class main {
 
 
     public static void main(String[] args) {
-    /*    fileCreator creator = new fileCreator();
+        fileCreator creator = new fileCreator();
         creator.createDir();
         //creator.createStream();
-        try {
+        /*try {
             inValues test = creator.readFile("Caso.txt");
-            test.setEventTable(false);
-            test.toString();
+            //test.setEventTable(false);
+            //test.toString();
             //inValues test = creator.readFile(creator.openFile());
-            creator.modifyinFile("Caso.txt",test);
+            //creator.modifyinFile("Caso.txt",test);
             //System.out.println(test.toString());
             //test.printarray();
 
@@ -80,11 +80,12 @@ public class main {
        System.out.println(enter.timeUnit);
         simulation sim = new simulation();
         sim.simulate(enter);
+        outValues[] salidaFinalArray = sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]);
+        creator.writeResult( salidaFinalArray , sim.getSalidaOptima() , "resultadoSim.txt");
 
 
 
-        //InterfaceThread interfaz = new InterfaceThread();
-        //interfaz.start();
+
     }
 
 }

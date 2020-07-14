@@ -14,7 +14,7 @@ public class simulation {
     protected int minR; //R minima
     protected int maxR; //R maxima
     protected ArrayList<outValues> salidaFinal = new ArrayList<outValues>();
-    protected outValues[] salidaOptima;
+    protected outValues salidaOptima;
 
 //----------------------------------------------------------------------------------------------------------------------
     //Constructor de parametros de Entrada
@@ -22,6 +22,27 @@ public class simulation {
     public simulation() {
 
     }
+
+//----------------------------------------------------------------------------------------------------------------------
+    //Setters y Getters
+
+    public ArrayList<outValues> getSalidaFinal() {
+        return salidaFinal;
+    }
+
+    public void setSalidaFinal(ArrayList<outValues> salidaFinal) {
+        this.salidaFinal = salidaFinal;
+    }
+
+    public outValues getSalidaOptima() {
+        return salidaOptima;
+    }
+
+    public void setSalidaOptima(outValues salidaOptima) {
+        this.salidaOptima = salidaOptima;
+    }
+
+
 //----------------------------------------------------------------------------------------------------------------------
     //Metodo de simulacion
 
@@ -37,9 +58,9 @@ public class simulation {
         System.out.println(maxQ);
         System.out.println(minR);
         System.out.println(maxR);
-        salidaOptima = new outValues[1];
+        salidaOptima = new outValues();
         iniCost.setTotalCost(99999999);
-        salidaOptima[0] = iniCost;
+        salidaOptima = iniCost;
 
         //Inicio de Simulacion
         for (int i = minQ; i <= maxQ; i++) {
@@ -49,8 +70,8 @@ public class simulation {
                 int remainingOrderTime = 0;
                 outValues salida = new outValues();
                 ArrayList<contRemain> remainList = new ArrayList<contRemain>();
-                salida.setQvalue(minQ);
-                salida.setRvalue(minR);
+                salida.setQvalue(i);
+                salida.setRvalue(j);
                 //Ciclo de simulacion hasta cantidadTiempo
                 for (int k = 0; k < entrada.timeAmount; k++) {
                     salida.day.add(k);
@@ -134,10 +155,11 @@ public class simulation {
                 salida.setTotalCostInv(salida.totalCostInv * (entrada.invCost / 360));
                 salida.acumTotalCost();
                 salidaFinal.add(salida);
-                if(salida.totalCost <= salidaOptima[0].totalCost)
-                    salidaOptima[0] = salida;
+                if(salida.totalCost <= salidaOptima.totalCost)
+                    salidaOptima = salida;
                 //Metodo para almacenar la simulacion mas optima
                 System.out.println(salida.toString());
+
             }
 
         }
@@ -242,6 +264,8 @@ public class simulation {
             }
         }
     }
+
+
 }
 
 
