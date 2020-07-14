@@ -274,10 +274,21 @@ public class fileCreator {
             fOut = new FileWriter(newDoc);
             int att =1;
 
+            fOut.write("Resultados de Simulacion" + separator);
+            fOut.write("---------------------------------------------------------------------------------------------------" + separator);
+            fOut.write("Politica Optima:" +separator);
+            fOut.write("Q = " + salidaOptima.getQvalue() +space +"R = " + salidaOptima.getRvalue()+ separator);
+            fOut.write("Costo de inventario = "+ separator);
+            fOut.write("Costo de Orden =  " + separator);
+            fOut.write("Costo de Compra = " + separator);
+            fOut.write("Costo de Faltante = " + separator);
+            fOut.write("COSTO TOTAL DE POLITICA = " + separator);
+            fOut.write("---------------------------------------------------------------------------------------------------" + separator);
+
             for(int i = 0; i<att ; i++){
                 fOut.write("Resultados de Simulacion" + separator);
                 fOut.write("---------------------------------------------------------------------------------------------------" + separator);
-                fOut.write("Politica Optima:" + separator);
+                fOut.write("Tablas de Evento: " + separator);
                 fOut.write("Q = " + space +"R = " +separator);
                 fOut.write("Costo de inventario = " + separator);
                 fOut.write("Costo de Orden =  " + separator);
