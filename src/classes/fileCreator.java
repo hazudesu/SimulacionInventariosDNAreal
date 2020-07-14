@@ -268,36 +268,38 @@ public class fileCreator {
     public void writeResult(outValues[] salida, outValues salidaOptima, String resultFileName){
         String separator = System.getProperty("line.separator");
         String space = "          ";
-
+        FileWriter fOut2;
+        File newDoc2;
+        System.out.println(resultFileName);
         try {
-            newDoc = new File(path + resultFileName);
-            fOut = new FileWriter(newDoc);
-            int att =1;
+            System.out.println(resultFileName);
+            newDoc2 = new File(path + resultFileName);
+            fOut2 = new FileWriter(newDoc2);
 
-            fOut.write("Resultados de Simulacion" + separator);
-            fOut.write("---------------------------------------------------------------------------------------------------" + separator);
-            fOut.write("Politica Optima:" +separator);
-            fOut.write("Q = " + salidaOptima.getQvalue() +space +"R = " + salidaOptima.getRvalue()+ separator);
-            fOut.write("Costo de inventario = "+ separator);
-            fOut.write("Costo de Orden =  " + separator);
-            fOut.write("Costo de Compra = " + separator);
-            fOut.write("Costo de Faltante = " + separator);
-            fOut.write("COSTO TOTAL DE POLITICA = " + separator);
-            fOut.write("---------------------------------------------------------------------------------------------------" + separator);
+            fOut2.write("Resultados de Simulacion" + separator);
+            fOut2.write("---------------------------------------------------------------------------------------------------" + separator);
+            fOut2.write("Politica Optima:" +separator);
+            fOut2.write("Q = " + salidaOptima.getQvalue() +space +"R = " + salidaOptima.getRvalue()+ separator);
+            fOut2.write("Costo de inventario = " + salidaOptima.getTotalCostInv() + separator);
+            fOut2.write("Costo de Orden =  " + salidaOptima.getTotalOrderCost() + separator);
+            fOut2.write("Costo de Compra = " + salidaOptima.getTotalPurchaseCost() + separator);
+            fOut2.write("Costo de Faltante = " + salidaOptima.getTotalRemainCost() + separator);
+            fOut2.write("COSTO TOTAL DE POLITICA = " + salidaOptima.getTotalCost() + separator);
+            fOut2.write("---------------------------------------------------------------------------------------------------" + separator);
 
-            for(int i = 0; i<att ; i++){
-                fOut.write("Resultados de Simulacion" + separator);
-                fOut.write("---------------------------------------------------------------------------------------------------" + separator);
-                fOut.write("Tablas de Evento: " + separator);
-                fOut.write("Q = " + space +"R = " +separator);
-                fOut.write("Costo de inventario = " + separator);
-                fOut.write("Costo de Orden =  " + separator);
-                fOut.write("Costo de Compra = " + separator);
-                fOut.write("Costo de Faltante = " + separator);
-                fOut.write("COSTO TOTAL DE POLITICA = " + separator);
+            for(int i = 0; i < salida.length ; i++){
+                fOut2.write("Resultados de Simulacion" + separator);
+                fOut2.write("---------------------------------------------------------------------------------------------------" + separator);
+                //fOut.write("Tablas de Evento: " + separator);
+                fOut2.write("Q = " + salida[i].getQvalue() + space +"R = " + salida[i].getRvalue() + separator);
+                fOut2.write("Costo de inventario = " +salida[i].getTotalCostInv() + separator);
+                fOut2.write("Costo de Orden =  " + salida[i].getTotalOrderCost() + separator);
+                fOut2.write("Costo de Compra = " + salida[i].getTotalPurchaseCost() + separator);
+                fOut2.write("Costo de Faltante = " + salida[i].getTotalRemainCost() + separator);
+                fOut2.write("COSTO TOTAL DE POLITICA = " + salida[i].getTotalCost() + separator);
+
             }
-
-            fOut.close();
+            fOut2.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
