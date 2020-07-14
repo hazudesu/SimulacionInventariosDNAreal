@@ -10,19 +10,15 @@ public class main {
         fileCreator creator = new fileCreator();
         creator.createDir();
         //creator.createStream();
-        /*try {
+        try {
             inValues test = creator.readFile("Caso.txt");
-            //test.setEventTable(false);
-            //test.toString();
-            //inValues test = creator.readFile(creator.openFile());
-            //creator.modifyinFile("Caso.txt",test);
-            //System.out.println(test.toString());
-            //test.printarray();
+            System.out.println(test.toString());
+            test.printarray();
+            creator.modifyinFile("moded.txt",test);
 
-            return;
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
 
         inValues enter = new inValues('d', false, 14, 8, 3, 3, 50, 25, 260, 30, 60, 10);
 
@@ -58,6 +54,8 @@ public class main {
         enter.clientw8TimeArray[1][1]= 35;
         enter.clientw8TimeArray[2][1]= 15;
 
+        System.out.println(enter.toString());
+
 
 
         enter.bubbleSort();
@@ -79,9 +77,9 @@ public class main {
 
        System.out.println(enter.timeUnit);
         simulation sim = new simulation();
-        sim.simulate(enter);
-        outValues[] salidaFinalArray = sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]);
-        creator.writeResult( salidaFinalArray , sim.getSalidaOptima() , "resultadoSim.txt");
+        //sim.simulate(enter);
+        //outValues[] salidaFinalArray = sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]);
+        //creator.writeResult( salidaFinalArray , sim.getSalidaOptima() , "resultadoSim.txt");
 
 
 
