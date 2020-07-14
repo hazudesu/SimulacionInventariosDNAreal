@@ -285,11 +285,11 @@ public class fileCreator {
             fOut.write("COSTO TOTAL DE POLITICA = " + separator);
             fOut.write("---------------------------------------------------------------------------------------------------" + separator);
 
-            for(int i = 0; i<att ; i++){
+            for(int i = 0; i < salida.length ; i++){
                 fOut.write("Resultados de Simulacion" + separator);
                 fOut.write("---------------------------------------------------------------------------------------------------" + separator);
                 fOut.write("Tablas de Evento: " + separator);
-                fOut.write("Q = " + space +"R = " +separator);
+                fOut.write("Q = " + salida[i].getQvalue() + space +"R = " + salida[i].getRvalue() + separator);
                 fOut.write("Costo de inventario = " + separator);
                 fOut.write("Costo de Orden =  " + separator);
                 fOut.write("Costo de Compra = " + separator);
