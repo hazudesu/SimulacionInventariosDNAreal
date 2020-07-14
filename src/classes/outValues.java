@@ -19,11 +19,11 @@ public class outValues {
     protected int Qvalue;
     protected int Rvalue;
 
-    protected int totalCostInv;
+    protected float totalCostInv;
     protected int totalOrderCost;
     protected int totalPurchaseCost;
     protected int totalRemainCost;
-    protected int totalCost;
+    protected float totalCost;
 
     protected int w8RemainCost;
     protected int noW8RemainCost;
@@ -95,6 +95,27 @@ public class outValues {
                 ", noW8RemainCost=" + noW8RemainCost +
                 '}';
     }
+
+    public void acumW8RemainCost (int sum){
+        this.w8RemainCost += sum;
+    }
+
+    public void noacumW8RemainCost (int sum){
+        this.noW8RemainCost += sum;
+    }
+
+    public void acumTotalRemainCost (){
+        this.totalRemainCost = this.w8RemainCost+this.noW8RemainCost;
+    }
+
+    public void acumTotalOrderCost(Float sum){
+        this.totalOrderCost += sum;
+    }
+
+    public void acumTotalCost (){
+        this.totalCost = this.totalOrderCost+this.totalCostInv+this.totalPurchaseCost+this.totalRemainCost;
+    }
+
 
     public ArrayList getDay() {
         return day;
@@ -187,6 +208,43 @@ public class outValues {
         this.Rvalue = rvalue;
     }
 
+    public float getTotalCostInv() {
+        return totalCostInv;
+    }
 
+    public void setTotalCostInv(float totalCostInv) {
+        this.totalCostInv = totalCostInv;
+    }
 
+    public int getTotalOrderCost() {
+        return totalOrderCost;
+    }
+
+    public void setTotalOrderCost(int totalOrderCost) {
+        this.totalOrderCost = totalOrderCost;
+    }
+
+    public int getTotalPurchaseCost() {
+        return totalPurchaseCost;
+    }
+
+    public void setTotalPurchaseCost(int totalPurchaseCost) {
+        this.totalPurchaseCost = totalPurchaseCost;
+    }
+
+    public int getTotalRemainCost() {
+        return totalRemainCost;
+    }
+
+    public void setTotalRemainCost(int totalRemainCost) {
+        this.totalRemainCost = totalRemainCost;
+    }
+
+    public float getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(float totalCost) {
+        this.totalCost = totalCost;
+    }
 }

@@ -9,11 +9,12 @@ public class simulation {
     //----------------------------------------------------------------------------------------------------------------------
     //Atributos (Parametros) de entrada
 
-    protected int minQ;
-    protected int maxQ;
-    protected int minR;
-    protected int maxR;
-
+    protected int minQ; //Q minima
+    protected int maxQ; //Q maxima
+    protected int minR; //R minima
+    protected int maxR; //R maxima
+    protected ArrayList<outValues> salidaFinal = new ArrayList<outValues>();
+    protected outValues[] salidaOptima;
 
 //----------------------------------------------------------------------------------------------------------------------
     //Constructor de parametros de Entrada
@@ -25,17 +26,20 @@ public class simulation {
     //Metodo de simulacion
 
     public void simulate(inValues entrada) {
-
+        //Inicializacion de Q y R (min y max)
         minQ = minQ(entrada);
         maxQ = maxQ(entrada);
         minR = minR(entrada, minQ);
         maxR = maxR(entrada, maxQ);
+        outValues iniCost = new outValues();
 
         System.out.println(minQ);
         System.out.println(maxQ);
         System.out.println(minR);
         System.out.println(maxR);
-
+        salidaOptima = new outValues[1];
+        iniCost.setTotalCost(99999999);
+        salidaOptima[0] = iniCost;
 
         //Inicio de Simulacion
         for (int i = minQ; i <= maxQ; i++) {
@@ -45,14 +49,15 @@ public class simulation {
                 int remainingOrderTime = 0;
                 outValues salida = new outValues();
                 ArrayList<contRemain> remainList = new ArrayList<contRemain>();
-                salida.setQvalue(i);
-                salida.setRvalue(j);
+                salida.setQvalue(minQ);
+                salida.setRvalue(minR);
                 //Ciclo de simulacion hasta cantidadTiempo
                 for (int k = 0; k < entrada.timeAmount; k++) {
                     salida.day.add(k);
-                    payRemain(remainList);
+                    payRemain(remainList, entrada, salida);
                     if (k == 0)
                         salida.invInc.add(entrada.initialInv);
+                        //Chequear si existe una orden pendiente
                     else if ((orderup == true) && (remainingOrderTime == 0) && (k > 0)) {
                         // System.out.println("uwu");
                         orderup = false;
@@ -64,10 +69,12 @@ public class simulation {
                             if (remainList.get(x).online && remainList.get(x).W8Time > 0) {
                                 if (invTemp - remainList.get(x).amount >= 0) {
                                     invTemp = invTemp - remainList.get(x).amount;
+                                    salida.acumW8RemainCost((int) (remainList.get(x).amount * entrada.acumDemandCost));
                                     remainList.remove(x);
                                 } else if (invTemp - remainList.get(x).amount < 0) {
                                     int amountTemp = remainList.get(x).amount - invTemp;
                                     int W8TimeTemp = remainList.get(x).W8Time;
+                                    salida.acumW8RemainCost((int) (invTemp * entrada.acumDemandCost));
                                     contRemain remainTemp = new contRemain(amountTemp, W8TimeTemp, true);
                                     remainList.remove(x);
                                     remainList.add(x, remainTemp);
@@ -102,6 +109,7 @@ public class simulation {
                         salida.w8TimeRandom.add(0);
                     }
                     //Inicializacion N# Orden
+
                     if ((orderup == false) && (salida.finalInv.get(k) <= salida.getRvalue())) {
                         currentOrders++;
                         salida.orderNo.add(currentOrders);
@@ -113,24 +121,38 @@ public class simulation {
                         salida.orderNo.add(0);
                         salida.deliverTime.add(0);
                         salida.deliverRandom.add(0);
+                    } else if ((!orderup) && (salida.finalInv.get(k) > salida.getRvalue())) {
+                        salida.orderNo.add(0);
+                        salida.deliverTime.add(0);
+                        salida.deliverRandom.add(0);
                     }
-
+                    salida.acumTotalRemainCost();
+                    salida.acumTotalOrderCost(salida.invProm.get(k));
                 }
+                salida.setTotalPurchaseCost(((int) (entrada.purchaseCost * salida.getQvalue() * currentOrders)));
+                salida.setTotalOrderCost((int) (entrada.orderCost * currentOrders));
+                salida.setTotalCostInv(salida.totalCostInv * (entrada.invCost / 360));
+                salida.acumTotalCost();
+                salidaFinal.add(salida);
+                if(salida.totalCost <= salidaOptima[0].totalCost)
+                    salidaOptima[0] = salida;
+                //Metodo para almacenar la simulacion mas optima
                 System.out.println(salida.toString());
             }
+
         }
 
     }
 
     //Metodos de inicializacion Q y R (Min-Max)
     public int minQ(inValues input) {
-        float qValue = (2 * input.orderCost * input.demandsArray[0][0] * (input.invCost + input.saleLossCost) / (input.invCost * input.saleLossCost));
+        float qValue = (2 * input.orderCost * input.demandsArray[0][0] * (input.invCost + input.saleLossCost) * 360 / (input.invCost * input.saleLossCost));
         qValue = Math.round(Math.sqrt(qValue));
         return (int) qValue;
     }
 
     public int maxQ(inValues input) {
-        float qValue = (2 * input.orderCost * input.demandsArray[input.demandValues - 1][0] * (input.invCost + input.acumDemandCost) / (input.invCost * input.acumDemandCost));
+        float qValue = (2 * input.orderCost * input.demandsArray[input.demandValues - 1][0] * (input.invCost + input.acumDemandCost) * 360 / (input.invCost * input.acumDemandCost));
         qValue = Math.round(Math.sqrt(qValue));
         return (int) qValue;
     }
@@ -141,8 +163,9 @@ public class simulation {
             return input.deliverTimeArray[0][0] * input.demandsArray[0][0];
         } else {
             int n = (int) (input.deliverTimeArray[0][0] / t0);
-            ;
+            // System.out.println(n);
             float Le = (input.deliverTimeArray[0][0] - (n * t0));
+            // System.out.println(Le);
             return Math.round(Le * input.demandsArray[0][0]);
         }
     }
@@ -153,7 +176,9 @@ public class simulation {
             return input.deliverTimeArray[input.deliverTimeAmount - 1][0] * input.demandsArray[input.demandValues - 1][0];
         } else {
             int n = (int) (input.deliverTimeArray[input.deliverTimeAmount - 1][0] / t0);
+            // System.out.println(n);
             float Le = (input.deliverTimeArray[input.deliverTimeAmount - 1][0] - (n * t0));
+            // System.out.println(Le);
             return Math.round(Le * input.demandsArray[input.demandValues - 1][0]);
         }
     }
@@ -202,9 +227,11 @@ public class simulation {
         }
     }
 
-    public void payRemain(ArrayList<contRemain> remainList) {
+    //Metodo de chequeo faltantes pendientes
+    public void payRemain(ArrayList<contRemain> remainList, inValues entrada, outValues salida) {
         for (int i = 0; i < remainList.size(); i++) {
             if (remainList.get(i).online && remainList.get(i).W8Time == 0) {
+                salida.noacumW8RemainCost((int) (remainList.get(i).amount * entrada.saleLossCost));
                 remainList.remove(i);
             } else if (remainList.get(i).online && remainList.get(i).W8Time > 0) {
                 int amountTemp = remainList.get(i).amount;
