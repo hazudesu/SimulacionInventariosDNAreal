@@ -12,9 +12,10 @@ public class main {
         //creator.createStream();
         try {
             inValues test = creator.readFile("Caso.txt");
+            test.setEventTable(false);
             test.toString();
             //inValues test = creator.readFile(creator.openFile());
-            creator.modifyinFile("NewFile2.txt",test);
+            creator.modifyinFile("Caso.txt",test);
             //System.out.println(test.toString());
             //test.printarray();
 
