@@ -15,7 +15,7 @@ public class inValues {
     protected boolean eventTable;
     protected int timeAmount;
     protected int demandValues;
-    protected int[][] demandsArray;
+    public int[][] demandsArray;
     protected int deliverTimeAmount;
     protected int[][] deliverTimeArray;
     protected int w8TimeAmntClient;
