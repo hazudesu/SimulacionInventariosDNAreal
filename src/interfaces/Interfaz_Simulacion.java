@@ -1108,20 +1108,11 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                 Interfaz.setLocationRelativeTo(null);
                 //new Interfaz_Simulacion().setVisible(true);
                 
-                
-                
+
                 fileCreator creator = new fileCreator();
                 creator.createDir();
-        //creator.createStream();
         /*try {
             inValues test = creator.readFile("Caso.txt");
-            //test.setEventTable(false);
-            //test.toString();
-            //inValues test = creator.readFile(creator.openFile());
-            //creator.modifyinFile("Caso.txt",test);
-            //System.out.println(test.toString());
-            //test.printarray();
-
             return;
         } catch (IOException e) {
             e.printStackTrace();
