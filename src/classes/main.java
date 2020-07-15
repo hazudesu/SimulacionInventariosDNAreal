@@ -1,8 +1,17 @@
 package classes;
-
-
 import java.io.IOException;
-
+/*
+ *  UCAB Guayana
+ *  Ing. Informática
+ *  8vo Semestre
+ *  Investigación de Operaciones
+ *  Prof. Luz Medina
+ *  Ciudad Guayana, 14 de Julio 2020
+ *  @author Lopez Daniel 26.623.586
+ *          Luces Adrian 26.936.932
+ *          Angeles Nestor 26.262.971
+ *
+ * */
 public class main {
 
 
@@ -10,19 +19,21 @@ public class main {
         fileCreator creator = new fileCreator();
         creator.createDir();
         //creator.createStream();
-        try {
+        /*try {
             inValues test = creator.readFile("Caso.txt");
-            System.out.println(test.toString());
-            test.printarray();
-            creator.modifyinFile("moded.txt",test);
+            //test.setEventTable(false);
+            //test.toString();
+            //inValues test = creator.readFile(creator.openFile());
+            //creator.modifyinFile("Caso.txt",test);
+            //System.out.println(test.toString());
+            //test.printarray();
 
+            return;
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
         inValues enter = new inValues('d', false, 14, 8, 3, 3, 50, 25, 260, 30, 60, 10);
-
-
 
         enter.demandsArray[0][0]= 20;
         enter.demandsArray[1][0]= 22;
@@ -47,6 +58,7 @@ public class main {
         enter.deliverTimeArray[0][1]= 40;
         enter.deliverTimeArray[1][1]= 30;
         enter.deliverTimeArray[2][1]= 30;
+
         enter.clientw8TimeArray[0][0]= 0;
         enter.clientw8TimeArray[1][0]= 1;
         enter.clientw8TimeArray[2][0]= 2;
@@ -54,32 +66,15 @@ public class main {
         enter.clientw8TimeArray[1][1]= 35;
         enter.clientw8TimeArray[2][1]= 15;
 
-        System.out.println(enter.toString());
-
-
-
         enter.bubbleSort();
-     /*   System.out.println("Demandas");
-        for(int i=0; i< enter.demandValues; i++){
-            System.out.println(enter.demandsArray[i][0]);
-            System.out.println(enter.demandsArray[i][1]);
-        }
-        System.out.println("Entregas");
-        for(int i=0; i< enter.deliverTimeAmount; i++){
-            System.out.println(enter.deliverTimeArray[i][0]);
-            System.out.println(enter.deliverTimeArray[i][1]);
-        }
-        System.out.println("Esperas");
-        for(int i=0; i< enter.w8TimeAmntClient; i++){
-            System.out.println(enter.clientw8TimeArray[i][0]);
-            System.out.println(enter.clientw8TimeArray[i][1]);
-        }*/
 
-       System.out.println(enter.timeUnit);
-        simulation sim = new simulation();
-        //sim.simulate(enter);
-        //outValues[] salidaFinalArray = sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]);
-        //creator.writeResult( salidaFinalArray , sim.getSalidaOptima() , "resultadoSim.txt");
+       enter.calcInvCostUnit();
+
+       simulation sim = new simulation();
+
+       sim.simulate(enter);
+       outValues[] salidaFinalArray = sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]);
+       creator.writeResult( salidaFinalArray , sim.getSalidaOptima() , "resultadoSim.txt");
 
 
 

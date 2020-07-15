@@ -4,12 +4,14 @@ import classes.fileCreator;
 import classes.inValues;
 import classes.outValues;
 import classes.simulation;
-import java.awt.Color;
+
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Interfaz_Simulacion extends javax.swing.JFrame {
 
@@ -22,12 +24,12 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     DefaultListModel dataa3 = new DefaultListModel();
     
     int acumpDemanda, acumpTiempoEntrega, acumpTiempoEspera = 0;
-    boolean tabla= true;
+
+    fileCreator creator = new fileCreator();
     
     
     public Interfaz_Simulacion() {
         initComponents();
-        
         listaVDemanda.setModel(data);
         listaVTiempoEntrega.setModel(data2);
         listaVTiempoEspera.setModel(data3);
@@ -292,14 +294,11 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        botonSimular = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         TiempoSimulacion = new javax.swing.JTextField();
-        uTiempo = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        unidadTiempo = new javax.swing.JComboBox<>();
-        botonSimular = new javax.swing.JButton();
-        mostrarTabla = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -311,7 +310,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Proyecto de Investigacion de Operaciones");
+        jLabel1.setText("Simulación de Inventarios DNA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -340,7 +339,11 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         jButton1.setText("Cargar Archivo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                try {
+                    jButton1ActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -353,7 +356,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -751,20 +754,18 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
 
         jLabel20.setText("unidades");
 
-        jLabel7.setText("Tiempo de Simulacion");
-
-        uTiempo.setText("dias");
-
-        jLabel31.setText("Costos:");
-
-        jLabel26.setText("Unidad de Tiempo");
-
-        unidadTiempo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dias", "Semanas", "Meses", "Bimestres", "Trimestres" }));
-        unidadTiempo.addActionListener(new java.awt.event.ActionListener() {
+        botonSimular.setText("Simular");
+        botonSimular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                unidadTiempoActionPerformed(evt);
+                botonSimularActionPerformed(evt);
             }
         });
+
+        jLabel7.setText("Tiempo de Simulacion");
+
+        jLabel8.setText("dias");
+
+        jLabel31.setText("Costos");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -772,42 +773,6 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel9))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TiempoSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(uTiempo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel26))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel15)
-                                    .addGap(116, 116, 116)
-                                    .addComponent(jLabel12))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel17)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel14))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addGap(146, 146, 146)
-                                        .addComponent(jLabel13)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CostoFaltanteSinEspera, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(InventarioInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CostoFaltanteConEspera, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(unidadTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -820,8 +785,47 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel10)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(CostoOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                                    .addComponent(CostoOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jLabel9))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TiempoSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel12)
+                                .addGap(18, 18, 18)
+                                .addComponent(CostoFaltanteConEspera, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(74, 74, 74)
+                                        .addComponent(botonSimular, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel17)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel14))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel16)
+                                                .addGap(146, 146, 146)
+                                                .addComponent(jLabel13)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(CostoFaltanteSinEspera, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(InventarioInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19)
                     .addComponent(jLabel20)
@@ -860,49 +864,31 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                     .addComponent(InventarioInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17)
                     .addComponent(jLabel20))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(TiempoSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(uTiempo)
-                    .addComponent(jLabel26)
-                    .addComponent(unidadTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(TiempoSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(botonSimular)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
-
-        botonSimular.setText("Simular");
-        botonSimular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSimularActionPerformed(evt);
-            }
-        });
-
-        mostrarTabla.setSelected(true);
-        mostrarTabla.setText("Mostrar tabla");
-        mostrarTabla.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostrarTablaActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addComponent(botonSimular, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(mostrarTabla)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(111, 111, 111)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 29, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -914,22 +900,124 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonSimular)
-                    .addComponent(mostrarTabla))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jButton1ActionPerformed
+
+        // Cargar archivos
+
+        JFileChooser selector = new JFileChooser();
+        selector.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Texto", "txt");
+        selector.setFileFilter(filter);
+        selector.setCurrentDirectory(new File(creator.getPath()));
+        selector.showOpenDialog(new Component(){});
+
+        File fileToget = selector.getSelectedFile();
+        inValues show = creator.readFile(fileToget.getName());
+
+
+
+
+
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // Guardar archivos
+
+        //--------------------------------------------------------------------------------------------------------------
+                                            //Extraer datos
+
+        char timeUnit;
+        boolean eventTable;
+
+        int timeAmount = Integer.parseInt(TiempoSimulacion.getText());
+        int demandValues = data.getSize();
+        //int[][] demandsArray;
+        int deliverTimeAmount = data2.getSize();
+        //int[][] deliverTimeArray;
+        int w8TimeAmntClient = data3.getSize();
+        //int[][] clientw8TimeArray;
+        float invCost = Float.parseFloat(CostoInventario.getText());
+        float purchaseCost = Float.parseFloat(CostoCompra.getText());
+        float orderCost = Float.parseFloat(CostoOrdenar.getText());
+        float acumDemandCost = Float.parseFloat(CostoFaltanteConEspera.getText());
+        float saleLossCost = Float.parseFloat(CostoFaltanteSinEspera.getText());
+        int initialInv = Integer.parseInt(InventarioInicial.getText());
+
+
+        inValues enter = new inValues('d', false, 10, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
+
+        int demandsArray[][] = new int[data.size()][2];
+        int deliveryTimeArray[][] = new int[data2.size()][2];
+        int clientw8TimeArray[][] = new int[data3.size()][2];
+        int i=0;
+
+        //Demanda Diaria
+        while(i<data.size()){
+            demandsArray[i][0] = Integer.parseInt(data.getElementAt(i).toString());
+            System.out.println("Entro Valor Demanda Diaria "+i+" "+Integer.parseInt(data.getElementAt(i).toString()));
+            i++;
+        }
+
+        i=0;
+        while(i<dataa.size()){
+            System.out.println("Entro Probabilidad Demanda Diaria");
+            demandsArray[i][1] = Integer.parseInt(dataa.getElementAt(i).toString());
+            i++;
+        }
+        i=0;
+        //Tiempo de Entrega
+        while(i<data2.size()){
+            deliveryTimeArray[i][0] = Integer.parseInt(data2.getElementAt(i).toString());
+            System.out.println("Entro Valor Tiempo Entrega "+i+" "+Integer.parseInt(data2.getElementAt(i).toString()));
+            i++;
+        }
+
+        i=0;
+        while(i<dataa2.size()){
+            System.out.println("Entro Probabilidad Tiempo de Entrega");
+            deliveryTimeArray[i][1] = Integer.parseInt(dataa2.getElementAt(i).toString());
+            i++;
+        }
+
+        i=0;
+        //Tiempo de Espera Cliente
+        while(i<data3.size()){
+            clientw8TimeArray[i][0] = Integer.parseInt(data3.getElementAt(i).toString());
+            System.out.println("Entro Valor Tiempo Espera "+i+" "+Integer.parseInt(data3.getElementAt(i).toString()));
+            i++;
+        }
+
+        i=0;
+        while(i<dataa3.size()){
+            System.out.println("Entro Probabilidad Tiempo de Entrega");
+            clientw8TimeArray[i][1] = Integer.parseInt(dataa3.getElementAt(i).toString());
+            i++;
+        }
+
+
+        enter.setDemandsArray(demandsArray);
+        enter.setDeliverTimeArray(deliveryTimeArray);
+        enter.setClientw8TimeArray(clientw8TimeArray);
+        enter.bubbleSort();
+        enter.calcInvCostUnit();
+
+
+
+        //--------------------------------------------------------------------------------------------------------------
+
+
+        creator.modifyinFile("name.txt", enter );
+
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void borrarTiempoEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarTiempoEntregaActionPerformed
@@ -945,7 +1033,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
 
     private void agregarTiempoEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarTiempoEntregaActionPerformed
         // TODO add your handling code here:
-        if(vTiempoEntrega.getText().isEmpty() || pTiempoEntrega.getText().isEmpty() || (acumpTiempoEntrega+Integer.parseInt(pTiempoEntrega.getText())>100) || data2.contains(vTiempoEntrega.getText())){
+        if(vTiempoEntrega.getText().isEmpty() || pTiempoEntrega.getText().isEmpty() || (acumpTiempoEntrega+Integer.parseInt(pTiempoEntrega.getText())>100)){
             }else{
             data2.addElement(vTiempoEntrega.getText());
             dataa2.addElement(pTiempoEntrega.getText());
@@ -970,7 +1058,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
 
     private void agregarDemandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarDemandaActionPerformed
         // TODO add your handling code here:
-        if(vDemanda.getText().isEmpty() || pDemanda.getText().isEmpty() || (acumpDemanda+Integer.parseInt(pDemanda.getText())>100) || data.contains(vDemanda.getText())){
+        if(vDemanda.getText().isEmpty() || pDemanda.getText().isEmpty() || (acumpDemanda+Integer.parseInt(pDemanda.getText())>100)){
             }else{
             data.addElement(vDemanda.getText());
             dataa.addElement(pDemanda.getText());
@@ -984,7 +1072,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         
     private void agregarEsperaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarEsperaClienteActionPerformed
         // TODO add your handling code here:
-        if(vTiempoEspera.getText().isEmpty() || pTiempoEspera.getText().isEmpty() || (acumpTiempoEspera+Integer.parseInt(pTiempoEspera.getText())>100) || data3.contains(vTiempoEspera.getText())){
+        if(vTiempoEspera.getText().isEmpty() || pTiempoEspera.getText().isEmpty() || (acumpTiempoEspera+Integer.parseInt(pTiempoEspera.getText())>100)){
             }else{
             data3.addElement(vTiempoEspera.getText());
             dataa3.addElement(pTiempoEspera.getText());
@@ -1018,7 +1106,9 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     private void botonSimularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSimularActionPerformed
         // TODO add your handling code here:
         //int entero = Integer.parseInt(vDemanda.getText());
-        char timeUnit = 'd';
+        
+         
+        char timeUnit;
         boolean eventTable;
         
         int timeAmount = Integer.parseInt(TiempoSimulacion.getText());
@@ -1035,18 +1125,8 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         float saleLossCost = Float.parseFloat(CostoFaltanteSinEspera.getText());
         int initialInv = Integer.parseInt(InventarioInicial.getText());
       
-        if(uTiempo.getText()=="Dias")
-            timeUnit = 'd';
-        if(uTiempo.getText()=="Semanas")
-            timeUnit = 's';
-        if(uTiempo.getText()=="Meses")
-            timeUnit = 'm';
-        if(uTiempo.getText()=="Bimestres")
-            timeUnit = 'b';
-        if(uTiempo.getText()=="Trimestres")
-            timeUnit = 't';
         
-        inValues enter = new inValues(timeUnit, tabla, 10, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
+        inValues enter = new inValues('d', false, 10, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
         
         int demandsArray[][] = new int[data.size()][2];
         int deliveryTimeArray[][] = new int[data2.size()][2];
@@ -1096,19 +1176,27 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
            i++;
         }
         
+        
         enter.setDemandsArray(demandsArray);
         enter.setDeliverTimeArray(deliveryTimeArray);
-        enter.setClientw8TimeArray(clientw8TimeArray);  
-        
-        //enter.bubbleSort();
-        
+        enter.setClientw8TimeArray(clientw8TimeArray);
+        enter.bubbleSort();
+        enter.calcInvCostUnit();
+
+        simulation sim = new simulation();
+        sim.simulate(enter);
+
+        creator.writeResult(sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]),sim.getSalidaOptima(),"Resultado1.txt");
+
+
+
         tabla tablas = new tabla();
 
-            tablas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            tablas.setSize(1500,500);
-            tablas.setVisible(true);
-            tablas.setLocationRelativeTo(null);
-            //tablas.setTitle("My first java table");
+                tablas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                tablas.setSize(1500,500);
+                tablas.setVisible(true);
+                tablas.setLocationRelativeTo(null);
+                //tablas.setTitle("My first java table");
 
     }//GEN-LAST:event_botonSimularActionPerformed
 
@@ -1123,17 +1211,6 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     private void vDemandaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vDemandaKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_vDemandaKeyReleased
-
-    private void unidadTiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unidadTiempoActionPerformed
-        // TODO add your handling code here:
-        uTiempo.setText(unidadTiempo.getSelectedItem().toString());
-    }//GEN-LAST:event_unidadTiempoActionPerformed
-
-    private void mostrarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTablaActionPerformed
-        // TODO add your handling code here:
-        tabla = !tabla;
-        //System.out.println(tabla);
-    }//GEN-LAST:event_mostrarTablaActionPerformed
 
         public void validar(){
         if(!(acumpDemanda!=100 || acumpTiempoEspera!=100 || acumpTiempoEntrega!=100 ||
@@ -1152,20 +1229,11 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                 Interfaz.setLocationRelativeTo(null);
                 //new Interfaz_Simulacion().setVisible(true);
                 
-                
-                
+
                 fileCreator creator = new fileCreator();
                 creator.createDir();
-        //creator.createStream();
         /*try {
             inValues test = creator.readFile("Caso.txt");
-            //test.setEventTable(false);
-            //test.toString();
-            //inValues test = creator.readFile(creator.openFile());
-            //creator.modifyinFile("Caso.txt",test);
-            //System.out.println(test.toString());
-            //test.printarray();
-
             return;
         } catch (IOException e) {
             e.printStackTrace();
@@ -1212,7 +1280,6 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
@@ -1221,6 +1288,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1241,15 +1309,12 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     private javax.swing.JList<String> listaVDemanda;
     private javax.swing.JList<String> listaVTiempoEntrega;
     private javax.swing.JList<String> listaVTiempoEspera;
-    private javax.swing.JCheckBox mostrarTabla;
     private javax.swing.JTextField pDemanda;
     private javax.swing.JTextField pTiempoEntrega;
     private javax.swing.JTextField pTiempoEspera;
     private javax.swing.JLabel probabilidadDemanda;
     private javax.swing.JLabel probabilidadTiempoEntrega;
     private javax.swing.JLabel probabilidadTiempoEspera;
-    private javax.swing.JLabel uTiempo;
-    private javax.swing.JComboBox<String> unidadTiempo;
     private javax.swing.JTextField vDemanda;
     private javax.swing.JTextField vTiempoEntrega;
     private javax.swing.JTextField vTiempoEspera;
