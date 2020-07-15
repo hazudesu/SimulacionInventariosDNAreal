@@ -38,19 +38,6 @@ public class fileCreator {
         }
     }
 
-    /*public String openFile(){
-
-        FileDialog fd = new FileDialog(frame, "Select a file",FileDialog.LOAD);
-        fd.setDirectory(path);
-        fd.setFile("*.txt");
-        fd.setVisible(true);
-        fileName = fd.getFile();
-        fd.setVisible(false);
-        fd.dispose();
-        System.out.println(path+fileName);
-        return path+fileName;
-
-    }*/
 
 
     public inValues readFile(String fileName) throws IOException {

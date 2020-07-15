@@ -68,10 +68,6 @@ public class simulation {
         maxR = maxR(entrada, maxQ);
         outValues iniCost = new outValues();
 
-        System.out.println("Q min = "+minQ);
-        System.out.println("Q max = "+maxQ);
-        System.out.println("R min = "+minR);
-        System.out.println("R max = "+maxR);
         salidaOptima = new outValues();
         iniCost.setTotalCost(99999999);
         salidaOptima = iniCost;
@@ -95,7 +91,6 @@ public class simulation {
                         salida.invInc.add(entrada.initialInv);
                         //Chequear si existe una orden pendiente
                     else if ((orderup == true) && (remainingOrderTime == 0) && (k > 0)) {
-                        // System.out.println("uwu");
                         orderup = false;
                         int invTemp = (salida.finalInv.get(k - 1)) + salida.getQvalue();
 
@@ -173,7 +168,7 @@ public class simulation {
                 //Pregunta para almacenar la simulacion optima más actual
                 if(salida.totalCost <= salidaOptima.totalCost)
                     salidaOptima = salida;
-                System.out.println(salida.toString());
+
             }
         }
     }

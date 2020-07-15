@@ -1069,7 +1069,6 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             dataa2.addElement(pTiempoEntrega.getText());
             
             acumpTiempoEntrega = acumpTiempoEntrega+Integer.parseInt(pTiempoEntrega.getText());
-            //System.out.println(acumpTiempoEntrega);
             probabilidadTiempoEntrega.setText(acumpTiempoEntrega+"%");
         }
         validar();

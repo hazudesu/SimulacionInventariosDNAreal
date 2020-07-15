@@ -86,11 +86,11 @@ public class interfaz {
             public void actionPerformed(ActionEvent actionEvent) {
                 //arrayd[0] = 1;
                 //arrayd[1] = 2;
-                tabla tablas = new tabla();
-                tablas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                //tabla tablas = new tabla();
+                //tablas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 //tablas.setSize(500,500);
-                tablas.setVisible(true);
-                tablas.setLocationRelativeTo(null);
+                //tablas.setVisible(true);
+                //tablas.setLocationRelativeTo(null);
                 //tablas.setTitle("My first java table");
                 //JOptionPane.showMessageDialog(null, " Aguantalo Menor ");
                 //System.out.println(arrayd);
