@@ -22,6 +22,8 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     DefaultListModel dataa3 = new DefaultListModel();
     
     int acumpDemanda, acumpTiempoEntrega, acumpTiempoEspera = 0;
+
+    fileCreator creator = new fileCreator();
     
     
     public Interfaz_Simulacion() {
@@ -1068,10 +1070,13 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         enter.setClientw8TimeArray(clientw8TimeArray);
         enter.bubbleSort();
         enter.calcInvCostUnit();
-        System.out.println(enter);
         simulation sim = new simulation();
         sim.simulate(enter);
-        System.out.println(enter);
+
+        creator.writeResult(sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]),sim.getSalidaOptima(),"Resultado1.txt");
+
+
+
         tabla tablas = new tabla();
 
                 tablas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
