@@ -1207,7 +1207,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         
         i=0;
         while(i<dataa3.size()){
-           System.out.println("Entro Probabilidad Tiempo de Entrega");
+           System.out.println("Entro Probabilidad Tiempo de Espera");
            clientw8TimeArray[i][1] = Integer.parseInt(dataa3.getElementAt(i).toString());
            i++;
         }
