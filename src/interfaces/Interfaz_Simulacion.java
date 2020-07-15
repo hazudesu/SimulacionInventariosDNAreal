@@ -318,7 +318,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Proyecto de Investigacion de Operaciones");
+        jLabel1.setText("Simulacion de Invearios DNA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1027,7 +1027,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
 
         i=0;
         while(i<dataa3.size()){
-            System.out.println("Entro Probabilidad Tiempo de Entrega");
+            System.out.println("Entro Probabilidad Tiempo de espera");
             clientw8TimeArray[i][1] = Integer.parseInt(dataa3.getElementAt(i).toString());
             i++;
         }
