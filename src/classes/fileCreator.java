@@ -6,7 +6,12 @@ import java.io.*;
 import java.awt.desktop.*;
 import java.awt.FileDialog;
 import java.util.ArrayList;
-
+/*
+ *  @author Lopez Daniel 26.623.586
+ *          Luces Adrian 26.936.932
+ *          Angeles Nestor 26.262.971
+ *
+ * */
 public class fileCreator {
     protected Desktop desktop = Desktop.getDesktop();
     protected String fileName;
