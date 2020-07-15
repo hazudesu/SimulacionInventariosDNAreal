@@ -306,6 +306,9 @@ public class fileCreator {
         }
     }
 
+    /**Metodo modifyinFile, se encarga de realizar la modificacion y escritura de archivos en el directorio
+     * principal predeterminado.*/
+
     public void modifyinFile(String fileopen, inValues inModed){
         String separator = System.getProperty("line.separator");
         File fileMod = new File(path+fileopen);
