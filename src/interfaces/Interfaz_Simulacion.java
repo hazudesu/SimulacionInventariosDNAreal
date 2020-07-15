@@ -306,7 +306,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Proyecto de Investigacion de Operaciones");
+        jLabel1.setText("Simulación de Inventarios DNA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -757,7 +757,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
 
         jLabel8.setText("dias");
 
-        jLabel31.setText("Costos:");
+        jLabel31.setText("Costos");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1065,10 +1065,13 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         
         enter.setDemandsArray(demandsArray);
         enter.setDeliverTimeArray(deliveryTimeArray);
-        enter.setClientw8TimeArray(clientw8TimeArray);  
-        
-        //enter.bubbleSort();
-        
+        enter.setClientw8TimeArray(clientw8TimeArray);
+        enter.bubbleSort();
+        enter.calcInvCostUnit();
+        System.out.println(enter);
+        simulation sim = new simulation();
+        sim.simulate(enter);
+        System.out.println(enter);
         tabla tablas = new tabla();
 
                 tablas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -173,7 +173,7 @@ public class simulation {
                 //Pregunta para almacenar la simulacion optima más actual
                 if(salida.totalCost <= salidaOptima.totalCost)
                     salidaOptima = salida;
-                //System.out.println(salida.toString());
+                System.out.println(salida.toString());
             }
         }
     }

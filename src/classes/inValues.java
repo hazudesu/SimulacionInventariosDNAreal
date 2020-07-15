@@ -35,7 +35,7 @@ public class inValues {
 //----------------------------------------------------------------------------------------------------------------------
     //Constructor de parametros de Entrada
 
-    public inValues(char timeUnit, boolean eventTable, int timeAmount, int demandValues, int deliverTimeAmount, int w8TimeAmntClient, float invCost,float invCostUnit, float purchaseCost, float orderCost, float acumDemandCost, float saleLossCost, int initialInv) {
+    public inValues(char timeUnit, boolean eventTable, int timeAmount, int demandValues, int deliverTimeAmount, int w8TimeAmntClient, float invCost, float purchaseCost, float orderCost, float acumDemandCost, float saleLossCost, int initialInv) {
         this.timeUnit = timeUnit;
         this.eventTable = eventTable;
         this.timeAmount = timeAmount;
@@ -46,7 +46,7 @@ public class inValues {
         this.w8TimeAmntClient = w8TimeAmntClient;
         this.clientw8TimeArray = new int[w8TimeAmntClient][2];
         this.invCost = invCost;
-        this.invCostUnit = invCostUnit;
+        this.invCostUnit = (float) 0.20;
         this.purchaseCost = purchaseCost;
         this.orderCost = orderCost;
         this.acumDemandCost = acumDemandCost;
@@ -75,6 +75,7 @@ public class inValues {
                 ", w8TimeAmntClient=" + w8TimeAmntClient +
                 ", clientw8TimeArray=" + Arrays.toString(clientw8TimeArray) +
                 ", invCost=" + invCost +
+                ", invCostUnit=" + invCostUnit +
                 ", purchaseCost=" + purchaseCost +
                 ", orderCost=" + orderCost +
                 ", acumDemandCost=" + acumDemandCost +
@@ -82,6 +83,8 @@ public class inValues {
                 ", initialInv=" + initialInv +
                 '}';
     }
+
+
 
 
     public void printarray(){
