@@ -10,6 +10,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -24,6 +26,8 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     DefaultListModel dataa3 = new DefaultListModel();
     
     int acumpDemanda, acumpTiempoEntrega, acumpTiempoEspera = 0;
+    
+    boolean tabla= true;
 
     fileCreator creator = new fileCreator();
     
@@ -294,11 +298,14 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        botonSimular = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         TiempoSimulacion = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        uTiempo = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        botonSimular = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -310,7 +317,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Simulación de Inventarios DNA");
+        jLabel1.setText("Proyecto de Investigacion de Operaciones");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -339,11 +346,11 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         jButton1.setText("Cargar Archivo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    jButton1ActionPerformed(evt);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+		try{
+		jButton1ActionPerformed(evt);
+		} catch (IOException e){
+		e.printStackTrace();
+}
             }
         });
 
@@ -356,7 +363,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -469,8 +476,8 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pDemanda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pDemanda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vDemanda, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -754,18 +761,15 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
 
         jLabel20.setText("unidades");
 
-        botonSimular.setText("Simular");
-        botonSimular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSimularActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("Tiempo de Simulacion");
 
-        jLabel8.setText("dias");
+        uTiempo.setText("Dias");
 
-        jLabel31.setText("Costos");
+        jLabel31.setText("Costos:");
+
+        jLabel8.setText("Unidad de Tiempo");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dias", "Semanas", "Meses", "Bimestres", "Trimestres" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -773,6 +777,42 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jLabel9))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TiempoSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(uTiempo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel8))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel15)
+                                    .addGap(116, 116, 116)
+                                    .addComponent(jLabel12))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel17)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel14))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel16)
+                                        .addGap(146, 146, 146)
+                                        .addComponent(jLabel13)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CostoFaltanteSinEspera, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(InventarioInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CostoFaltanteConEspera, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -785,47 +825,8 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel10)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(CostoOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel9))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TiempoSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel12)
-                                .addGap(18, 18, 18)
-                                .addComponent(CostoFaltanteConEspera, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(74, 74, 74)
-                                        .addComponent(botonSimular, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel17)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel14))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel16)
-                                                .addGap(146, 146, 146)
-                                                .addComponent(jLabel13)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(CostoFaltanteSinEspera, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(InventarioInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(CostoOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19)
                     .addComponent(jLabel20)
@@ -864,31 +865,49 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                     .addComponent(InventarioInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17)
                     .addComponent(jLabel20))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(TiempoSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(botonSimular)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(TiempoSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(uTiempo)
+                    .addComponent(jLabel8)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
+
+        botonSimular.setText("Simular");
+        botonSimular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSimularActionPerformed(evt);
+            }
+        });
+
+        jCheckBox1.setSelected(true);
+        jCheckBox1.setText("Mostrar Tabla");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 29, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(botonSimular, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jCheckBox1)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -900,7 +919,15 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonSimular)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -909,7 +936,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jButton1ActionPerformed
 
         // Cargar archivos
-
+        try{
         JFileChooser selector = new JFileChooser();
         selector.setFileSelectionMode(JFileChooser.FILES_ONLY);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Texto", "txt");
@@ -919,13 +946,9 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
 
         File fileToget = selector.getSelectedFile();
         inValues show = creator.readFile(fileToget.getName());
-
-
-
-
-
-
-
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1033,7 +1056,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
 
     private void agregarTiempoEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarTiempoEntregaActionPerformed
         // TODO add your handling code here:
-        if(vTiempoEntrega.getText().isEmpty() || pTiempoEntrega.getText().isEmpty() || (acumpTiempoEntrega+Integer.parseInt(pTiempoEntrega.getText())>100)){
+        if(vTiempoEntrega.getText().isEmpty() || pTiempoEntrega.getText().isEmpty() || (acumpTiempoEntrega+Integer.parseInt(pTiempoEntrega.getText())>100) || data2.contains(vTiempoEntrega.getText())){
             }else{
             data2.addElement(vTiempoEntrega.getText());
             dataa2.addElement(pTiempoEntrega.getText());
@@ -1058,7 +1081,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
 
     private void agregarDemandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarDemandaActionPerformed
         // TODO add your handling code here:
-        if(vDemanda.getText().isEmpty() || pDemanda.getText().isEmpty() || (acumpDemanda+Integer.parseInt(pDemanda.getText())>100)){
+        if(vDemanda.getText().isEmpty() || pDemanda.getText().isEmpty() || (acumpDemanda+Integer.parseInt(pDemanda.getText())>100) || data.contains(vDemanda.getText())){
             }else{
             data.addElement(vDemanda.getText());
             dataa.addElement(pDemanda.getText());
@@ -1072,7 +1095,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         
     private void agregarEsperaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarEsperaClienteActionPerformed
         // TODO add your handling code here:
-        if(vTiempoEspera.getText().isEmpty() || pTiempoEspera.getText().isEmpty() || (acumpTiempoEspera+Integer.parseInt(pTiempoEspera.getText())>100)){
+        if(vTiempoEspera.getText().isEmpty() || pTiempoEspera.getText().isEmpty() || (acumpTiempoEspera+Integer.parseInt(pTiempoEspera.getText())>100) || data3.contains(vTiempoEspera.getText())){
             }else{
             data3.addElement(vTiempoEspera.getText());
             dataa3.addElement(pTiempoEspera.getText());
@@ -1108,7 +1131,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         //int entero = Integer.parseInt(vDemanda.getText());
         
          
-        char timeUnit;
+        char timeUnit='d';
         boolean eventTable;
         
         int timeAmount = Integer.parseInt(TiempoSimulacion.getText());
@@ -1125,8 +1148,18 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         float saleLossCost = Float.parseFloat(CostoFaltanteSinEspera.getText());
         int initialInv = Integer.parseInt(InventarioInicial.getText());
       
+        if(uTiempo.getText()=="Dias")
+            timeUnit = 'd';
+        if(uTiempo.getText()=="Semanas")
+            timeUnit = 's';
+        if(uTiempo.getText()=="Meses")
+            timeUnit = 'm';
+        if(uTiempo.getText()=="Bimestres")
+            timeUnit = 'b';
+        if(uTiempo.getText()=="Trimestres")
+            timeUnit = 't';  
         
-        inValues enter = new inValues('d', false, 10, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
+        inValues enter = new inValues(timeUnit, tabla, 10, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
         
         int demandsArray[][] = new int[data.size()][2];
         int deliveryTimeArray[][] = new int[data2.size()][2];
@@ -1176,7 +1209,6 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
            i++;
         }
         
-        
         enter.setDemandsArray(demandsArray);
         enter.setDeliverTimeArray(deliveryTimeArray);
         enter.setClientw8TimeArray(clientw8TimeArray);
@@ -1187,7 +1219,6 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         sim.simulate(enter);
 
         creator.writeResult(sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]),sim.getSalidaOptima(),"Resultado1.txt");
-
 
 
         tabla tablas = new tabla();
@@ -1212,6 +1243,11 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_vDemandaKeyReleased
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+        tabla = !tabla;
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
         public void validar(){
         if(!(acumpDemanda!=100 || acumpTiempoEspera!=100 || acumpTiempoEntrega!=100 ||
                 CostoInventario.getText().isEmpty() || CostoOrdenar.getText().isEmpty() || CostoCompra.getText().isEmpty() || TiempoSimulacion.getText().isEmpty() || 
@@ -1229,7 +1265,6 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                 Interfaz.setLocationRelativeTo(null);
                 //new Interfaz_Simulacion().setVisible(true);
                 
-
                 fileCreator creator = new fileCreator();
                 creator.createDir();
         /*try {
@@ -1238,9 +1273,6 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-
-        
-        
             }
         });
     }
@@ -1260,8 +1292,10 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     private javax.swing.JButton borrarTiempoEntrega;
     private javax.swing.JButton borrarTiempoEspera;
     private javax.swing.JButton botonSimular;
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1315,6 +1349,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     private javax.swing.JLabel probabilidadDemanda;
     private javax.swing.JLabel probabilidadTiempoEntrega;
     private javax.swing.JLabel probabilidadTiempoEspera;
+    private javax.swing.JLabel uTiempo;
     private javax.swing.JTextField vDemanda;
     private javax.swing.JTextField vTiempoEntrega;
     private javax.swing.JTextField vTiempoEspera;
