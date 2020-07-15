@@ -33,7 +33,7 @@ public class main {
             e.printStackTrace();
         }*/
 
-        inValues enter = new inValues('d', false, 14, 8, 3, 3, 50, 25, 260, 30, 60, 10);
+       /* inValues enter = new inValues('d', false, 14, 8, 3, 3, 50, 25, 260, 30, 60, 10);
 
         enter.demandsArray[0][0]= 20;
         enter.demandsArray[1][0]= 22;
@@ -74,7 +74,7 @@ public class main {
 
        sim.simulate(enter);
        outValues[] salidaFinalArray = sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]);
-       creator.writeResult( salidaFinalArray , sim.getSalidaOptima() , "resultadoSim.txt");
+       creator.writeResult( salidaFinalArray , sim.getSalidaOptima() , "resultadoSim.txt");*/
 
 
 
