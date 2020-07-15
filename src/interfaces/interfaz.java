@@ -1,22 +1,28 @@
 package interfaces;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class interfaz {
+
     private JButton continuarButton;
     private JPanel panel1;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JTextField textField6;
-    private JTextField textField7;
-    private JTextField textField8;
-    private JTextField textField9;
-    private JTextField textField10;
+
+    //Casillas del formulario
+    private JTextField d1;
+    private JTextField d2;
+    private JTextField d4;
+    private JTextField d3;
+    private JTextField d5;
+    private JTextField d6;
+    private JTextField d7;
+    private JTextField d8;
+    private JTextField d9;
+    private JTextField d10;
     private JTextField textField11;
     private JTextField textField12;
     private JTextField textField13;
@@ -51,18 +57,196 @@ public class interfaz {
     private JTextField textField42;
     private JTextField textField43;
     private JTextField textField44;
+    private JButton cargarArchivoButton;
+    private JButton guardarArchivoButton;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JTextArea textArea1;
+    private JButton agregarButton;
+    private JButton borrarUltimoValorButton;
+    private JList list1;
+    private JList list2;
+    private JTextField prueba;
 
+    int arrayd[];
+    String hola;
 
     public interfaz() {
+
+        DefaultListModel data = new DefaultListModel();
+        data.addElement("hola");
+        data.addElement("chao");
+        //String[] data = {"1","50","20"};
+        list1.setModel(data);
+
+        continuarButton.setEnabled(false);
+
         continuarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                JOptionPane.showMessageDialog(null, " Aguantalo Menor ");
+                //arrayd[0] = 1;
+                //arrayd[1] = 2;
+                tabla tablas = new tabla();
+                tablas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                //tablas.setSize(500,500);
+                tablas.setVisible(true);
+                tablas.setLocationRelativeTo(null);
+                //tablas.setTitle("My first java table");
+                //JOptionPane.showMessageDialog(null, " Aguantalo Menor ");
+                //System.out.println(arrayd);
             }
         });
+
+        d1.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if ( c < '0' || c >'9') 
+                    e.consume();
+            }
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                validar(d1);
+            }
+        });
+        d2.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if ( c < '0' || c >'9')
+                    e.consume();
+            }
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                validar(d2);
+            }
+        });
+        d3.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if ( c < '0' || c >'9')
+                    e.consume();
+            }
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                validar(d3);
+            }
+        });
+        d4.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if ( c < '0' || c >'9')
+                    e.consume();
+            }
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                validar(d4);
+            }
+        });
+        d5.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if ( c < '0' || c >'9')
+                    e.consume();
+            }
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                validar(d5);
+            }
+        });
+        d6.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if ( c < '0' || c >'9')
+                    e.consume();
+            }
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                validar(d6);
+            }
+        });
+        d7.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if ( c < '0' || c >'9')
+                    e.consume();
+            }
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                validar(d7);
+            }
+        });
+        d8.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if ( c < '0' || c >'9')
+                    e.consume();
+            }
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                validar(d8);
+            }
+        });
+        d9.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if ( c < '0' || c >'9')
+                    e.consume();
+            }
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                validar(d9);
+            }
+        });
+        d10.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if ( c < '0' || c >'9')
+                    e.consume();
+            }
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                validar(d10);
+            }
+        });
+
     }
 
+
+    public void validar(JTextField d){
+
+        if(d.getText().isEmpty()) {
+            d.setBackground(Color.white);
+        }else
+            d.setBackground(Color.green);
+
+        if(!(d1.getText().isEmpty() || d2.getText().isEmpty() || d3.getText().isEmpty() || d4.getText().isEmpty() || d5.getText().isEmpty() ||
+                d6.getText().isEmpty() || d7.getText().isEmpty() || d8.getText().isEmpty() || d9.getText().isEmpty() || d10.getText().isEmpty()))
+            continuarButton.setEnabled(true);
+    }
+
+
     public static void main(String[] args) {
+        int array1[];
+
         JFrame proyectoIO = new JFrame("Proyecto IO");
 
         proyectoIO.setContentPane(new interfaz().panel1);
@@ -70,6 +254,8 @@ public class interfaz {
         proyectoIO.pack();
         proyectoIO.setVisible(true);
         proyectoIO.setLocationRelativeTo(null);
+        System.out.println('a');
+
 
     }
 }
