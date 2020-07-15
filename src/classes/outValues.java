@@ -120,6 +120,19 @@ public class outValues {
         return day;
     }
 
+    public ArrayList<Integer> getDeliverRandom() {
+        return deliverRandom;
+    }
+    
+    
+    public ArrayList<Integer> getDemandRandom() {
+        return demandRandom;
+    }
+
+    public ArrayList<Integer> getW8TimeRandom() {
+        return w8TimeRandom;
+    }
+
     public void setDay(ArrayList day) {
         this.day = day;
     }
