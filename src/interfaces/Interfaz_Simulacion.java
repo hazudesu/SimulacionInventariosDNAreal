@@ -1142,11 +1142,8 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         
         int timeAmount = Integer.parseInt(TiempoSimulacion.getText());
         int demandValues = data.getSize();
-        //int[][] demandsArray;
         int deliverTimeAmount = data2.getSize();
-        //int[][] deliverTimeArray;
         int w8TimeAmntClient = data3.getSize();
-        //int[][] clientw8TimeArray;
         float invCost = Float.parseFloat(CostoInventario.getText());
         float purchaseCost = Float.parseFloat(CostoCompra.getText());
         float orderCost = Float.parseFloat(CostoOrdenar.getText());
@@ -1228,28 +1225,15 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         
         
         outValues[] salidaFinalArray = sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]);
-        
-        //Object[][] RTabla = new Object[timeAmount][12];
+
         tabla RTabla = new tabla(timeAmount,salidaFinalArray.length);
-        System.out.println("hola");
         
         for(int x=0 ; x<salidaFinalArray.length ; x++){
-            //System.out.println("hola");
-            System.out.println("main"+salidaFinalArray[x].toString());
             RTabla.vaciarOutValues(salidaFinalArray[x]);
         }
-       //}
-        
-        //RTabla.imprimirTabla();
-        
-        
-        tabla1 tablas = new tabla1(RTabla.getData());
-                //tabla = new JTable(data,columnName);
-                //tabla.setPreferredScrollableViewportSize(new Dimension(1500,500));
-               // tabla.setFillsViewportHeight(true);
 
-                //JScrollPane scrollPane = new JScrollPane(tabla);
-               // add(scrollPane);
+        
+       // tabla1 tablas = new tabla1(RTabla.getData());
                RTabla.imprimirTabla();
                RTabla.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                RTabla.setSize(1500,500);
