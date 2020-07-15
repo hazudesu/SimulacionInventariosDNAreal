@@ -1166,7 +1166,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         if(uTiempo.getText()=="Trimestres")
             timeUnit = 't';  
         
-        inValues enter = new inValues(timeUnit, tabla, 10, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
+        inValues enter = new inValues(timeUnit, tabla, timeAmount, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
         
         int demandsArray[][] = new int[data.size()][2];
         int deliveryTimeArray[][] = new int[data2.size()][2];
@@ -1226,15 +1226,38 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         sim.simulate(enter);
 
         creator.writeResult(sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]),sim.getSalidaOptima(),"Resultado1.txt");
+        
+        
+        outValues[] salidaFinalArray = sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]);
+        
+        //Object[][] RTabla = new Object[timeAmount][12];
+        tabla RTabla = new tabla(timeAmount,salidaFinalArray.length);
+        System.out.println("hola");
+        
+        for(int x=0 ; x<salidaFinalArray.length ; x++){
+            //System.out.println("hola");
+            System.out.println("main"+salidaFinalArray[x].toString());
+            RTabla.vaciarOutValues(salidaFinalArray[x]);
+        }
+       //}
+        
+        //RTabla.imprimirTabla();
+        
+        
+        tabla1 tablas = new tabla1(RTabla.getData());
+                //tabla = new JTable(data,columnName);
+                //tabla.setPreferredScrollableViewportSize(new Dimension(1500,500));
+               // tabla.setFillsViewportHeight(true);
 
-
-        tabla tablas = new tabla();
-
-                tablas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                tablas.setSize(1500,500);
-                tablas.setVisible(true);
-                tablas.setLocationRelativeTo(null);
-                //tablas.setTitle("My first java table");
+                //JScrollPane scrollPane = new JScrollPane(tabla);
+               // add(scrollPane);
+               RTabla.imprimirTabla();
+               RTabla.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+               RTabla.setSize(1500,500);
+               RTabla.setVisible(true);
+               RTabla.setLocationRelativeTo(null);
+               RTabla.setTitle("My first java table");
+        
 
     }//GEN-LAST:event_botonSimularActionPerformed
 
