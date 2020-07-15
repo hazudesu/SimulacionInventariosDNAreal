@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
+/*
+ *  @author Lopez Daniel 26.623.586
+ *          Luces Adrian 26.936.932
+ *          Angeles Nestor 26.262.971
+ *
+ * */
+
 public class simulation {
 
     //----------------------------------------------------------------------------------------------------------------------
@@ -13,8 +20,14 @@ public class simulation {
     protected int maxQ; //Q maxima
     protected int minR; //R minima
     protected int maxR; //R maxima
-    protected ArrayList<outValues> salidaFinal = new ArrayList<outValues>();
-    protected outValues salidaOptima;
+    protected ArrayList<outValues> salidaFinal = new ArrayList<outValues>(); //Lista para almacenar Salidas
+    protected outValues salidaOptima; //Variable para almacenar salida optima
+   /* protected ArrayList<Integer> arrayDemands = new ArrayList<Integer>();
+    protected ArrayList<Integer> arrayDeliverT= new ArrayList<Integer>();
+    protected ArrayList<Integer> arrayW8Time =new ArrayList<Integer>();;
+    protected ArrayList<Integer> arrayDemandsRnd = new ArrayList<Integer>();
+    protected ArrayList<Integer> arrayDeliverTRnd= new ArrayList<Integer>();
+    protected ArrayList<Integer> arrayW8TimeRnd =new ArrayList<Integer>();;*/
 
 //----------------------------------------------------------------------------------------------------------------------
     //Constructor de parametros de Entrada
@@ -48,19 +61,21 @@ public class simulation {
 
     public void simulate(inValues entrada) {
         //Inicializacion de Q y R (min y max)
+        entrada.calcInvCostUnit();
         minQ = minQ(entrada);
         maxQ = maxQ(entrada);
         minR = minR(entrada, minQ);
         maxR = maxR(entrada, maxQ);
         outValues iniCost = new outValues();
 
-        System.out.println(minQ);
-        System.out.println(maxQ);
-        System.out.println(minR);
-        System.out.println(maxR);
+        System.out.println("Q min = "+minQ);
+        System.out.println("Q max = "+maxQ);
+        System.out.println("R min = "+minR);
+        System.out.println("R max = "+maxR);
         salidaOptima = new outValues();
         iniCost.setTotalCost(99999999);
         salidaOptima = iniCost;
+
 
         //Inicio de Simulacion
         for (int i = minQ; i <= maxQ; i++) {
@@ -74,7 +89,7 @@ public class simulation {
                 salida.setRvalue(j);
                 //Ciclo de simulacion hasta cantidadTiempo
                 for (int k = 0; k < entrada.timeAmount; k++) {
-                    salida.day.add(k);
+                    salida.day.add(k+1);
                     payRemain(remainList, entrada, salida);
                     if (k == 0)
                         salida.invInc.add(entrada.initialInv);
@@ -152,18 +167,15 @@ public class simulation {
                 }
                 salida.setTotalPurchaseCost(((int) (entrada.purchaseCost * salida.getQvalue() * currentOrders)));
                 salida.setTotalOrderCost((int) (entrada.orderCost * currentOrders));
-                salida.setTotalCostInv(salida.totalCostInv * (entrada.invCost / 360));
+                salida.setTotalCostInv(salida.totalCostInv * entrada.invCostUnit);
                 salida.acumTotalCost();
                 salidaFinal.add(salida);
+                //Pregunta para almacenar la simulacion optima más actual
                 if(salida.totalCost <= salidaOptima.totalCost)
                     salidaOptima = salida;
-                //Metodo para almacenar la simulacion mas optima
                 System.out.println(salida.toString());
-
             }
-
         }
-
     }
 
     //Metodos de inicializacion Q y R (Min-Max)
@@ -181,9 +193,11 @@ public class simulation {
 
     public int minR(inValues input, int minQ) {
         float t0 = ((float) minQ / (float) input.demandsArray[0][0]);
+        //Para L<t0
         if (input.deliverTimeArray[0][0] < t0) {
             return input.deliverTimeArray[0][0] * input.demandsArray[0][0];
         } else {
+            //Para L>0
             int n = (int) (input.deliverTimeArray[0][0] / t0);
             // System.out.println(n);
             float Le = (input.deliverTimeArray[0][0] - (n * t0));
@@ -194,9 +208,11 @@ public class simulation {
 
     public int maxR(inValues input, int maxQ) {
         float t0 = ((float) maxQ / (float) input.demandsArray[input.demandValues - 1][0]);
+        //Para L<t0
         if (input.deliverTimeArray[input.deliverTimeAmount - 1][0] < t0) {
             return input.deliverTimeArray[input.deliverTimeAmount - 1][0] * input.demandsArray[input.demandValues - 1][0];
         } else {
+            //Para L>0
             int n = (int) (input.deliverTimeArray[input.deliverTimeAmount - 1][0] / t0);
             // System.out.println(n);
             float Le = (input.deliverTimeArray[input.deliverTimeAmount - 1][0] - (n * t0));
@@ -205,10 +221,9 @@ public class simulation {
         }
     }
 
-    //RECORDAR MULTIPLICAR LOS VALORES DE LOS RANDOM POR 100 Y CASTEAR
-
-
     //Metodos de seleccion de prob
+
+    //Calcular numero aleatorio y valor correspondiente para demanda
     public void randomDemand(inValues entrada, outValues salida) {
         int VarRandom = new Random().nextInt(100);
         salida.demandRandom.add(VarRandom);
@@ -222,6 +237,9 @@ public class simulation {
         }
     }
 
+    //Calcular numero aleatorio y valor correspondiente para tiempo de entrega
+    //PARA QUE LOS VALORES SEAN LOS MISMOS PARA CADA Q Y R CAMBIAR EL PARAMETRO DE SALIDA POR EL ARRAYLIST CORRESPONDIENTE
+    //LUEGO EN SIMULATION EN VEZ DE EJECUTAR ESTAS FUNCIONES SE RECORREN LOS ARRAYLIST YA INICIALIZADOS
     public void randomDeliverT(inValues entrada, outValues salida) {
         int VarRandom = new Random().nextInt(100);
         salida.deliverRandom.add(VarRandom);
@@ -235,8 +253,8 @@ public class simulation {
         }
     }
 
+    //Calcular numero aleatorio y valor correspondiente para tiempo de espera
     public void randomW8Time(inValues entrada, outValues salida) {
-
         int VarRandom = new Random().nextInt(100);
         salida.w8TimeRandom.add(VarRandom);
         int Sum = 0;
@@ -264,8 +282,4 @@ public class simulation {
             }
         }
     }
-
-
 }
-
-

@@ -1,11 +1,15 @@
 package classes;
 
-
 import static java.lang.System.exit;
 
 import java.util.Arrays;
 import java.util.Random;
-
+/*
+ *  @author Lopez Daniel 26.623.586
+ *          Luces Adrian 26.936.932
+ *          Angeles Nestor 26.262.971
+ *
+ * */
 public class inValues {
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -21,6 +25,7 @@ public class inValues {
     protected int w8TimeAmntClient;
     protected int[][] clientw8TimeArray;
     protected float invCost;
+    protected float invCostUnit;
     protected float purchaseCost;
     protected float orderCost;
     protected float acumDemandCost;
@@ -41,11 +46,13 @@ public class inValues {
         this.w8TimeAmntClient = w8TimeAmntClient;
         this.clientw8TimeArray = new int[w8TimeAmntClient][2];
         this.invCost = invCost;
+        this.invCostUnit = (float) 0.20;
         this.purchaseCost = purchaseCost;
         this.orderCost = orderCost;
         this.acumDemandCost = acumDemandCost;
         this.saleLossCost = saleLossCost;
         this.initialInv = initialInv;
+        System.out.println("inValues Creado con exito");
     }
 
 
@@ -68,6 +75,7 @@ public class inValues {
                 ", w8TimeAmntClient=" + w8TimeAmntClient +
                 ", clientw8TimeArray=" + Arrays.toString(clientw8TimeArray) +
                 ", invCost=" + invCost +
+                ", invCostUnit=" + invCostUnit +
                 ", purchaseCost=" + purchaseCost +
                 ", orderCost=" + orderCost +
                 ", acumDemandCost=" + acumDemandCost +
@@ -75,6 +83,8 @@ public class inValues {
                 ", initialInv=" + initialInv +
                 '}';
     }
+
+
 
 
     public void printarray(){
@@ -85,18 +95,6 @@ public class inValues {
 
 
     //----------------------------------------------------------------------------------------------------------------------
-    //Getters y Setters de atributos
-
-    //Setters de arrays
-
-    //
-
-    //Metodo de selección por probabilidades (Set ValoresActuales Demanda, Entrega, Cliente)
-
-    //PARA MOSTRAR LA TABLA FINAL CREAR ARREGLO [I][12] PARA ALMACENAR TODAS LAS VARIABLES DE RESULTADO DE SIMULACION
-    /* 12= Nro de variables en tabla, posiblemente 14 si almacenamos Q Y R, i=0 hasta timeAmount (duración de simulación)
-     */
-
     //Sort de arrays (Menor a Mayor)
     public void bubbleSort() {
         int n = this.demandsArray.length;
@@ -152,6 +150,31 @@ public class inValues {
             }
         }
     }
+
+    public void calcInvCostUnit(){
+        switch (this.timeUnit){
+            case 'd':
+                this.invCostUnit=this.invCost/360;
+                break;
+            case 's':
+                this.invCostUnit=this.invCost/52;
+                break;
+            case 'm':
+                this.invCostUnit=this.invCost/12;
+                break;
+            case 'b':
+                this.invCostUnit=this.invCost/6;
+                break;
+            case 't':
+                this.invCostUnit=this.invCost/4;
+                break;
+            default:
+                break;
+
+        }
+    }
+
+
 
     //Getters y Setters de atributos
 
