@@ -462,4 +462,12 @@ public class fileCreator {
     public FileWriter getfOut() {
         return fOut;
     }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 }

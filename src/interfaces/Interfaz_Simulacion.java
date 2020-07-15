@@ -4,12 +4,14 @@ import classes.fileCreator;
 import classes.inValues;
 import classes.outValues;
 import classes.simulation;
-import java.awt.Color;
+
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Interfaz_Simulacion extends javax.swing.JFrame {
 
@@ -337,7 +339,11 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         jButton1.setText("Cargar Archivo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                try {
+                    jButton1ActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -900,12 +906,118 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jButton1ActionPerformed
+
+        // Cargar archivos
+
+        JFileChooser selector = new JFileChooser();
+        selector.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Texto", "txt");
+        selector.setFileFilter(filter);
+        selector.setCurrentDirectory(new File(creator.getPath()));
+        selector.showOpenDialog(new Component(){});
+
+        File fileToget = selector.getSelectedFile();
+        inValues show = creator.readFile(fileToget.getName());
+
+
+
+
+
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // Guardar archivos
+
+        //--------------------------------------------------------------------------------------------------------------
+                                            //Extraer datos
+
+        char timeUnit;
+        boolean eventTable;
+
+        int timeAmount = Integer.parseInt(TiempoSimulacion.getText());
+        int demandValues = data.getSize();
+        //int[][] demandsArray;
+        int deliverTimeAmount = data2.getSize();
+        //int[][] deliverTimeArray;
+        int w8TimeAmntClient = data3.getSize();
+        //int[][] clientw8TimeArray;
+        float invCost = Float.parseFloat(CostoInventario.getText());
+        float purchaseCost = Float.parseFloat(CostoCompra.getText());
+        float orderCost = Float.parseFloat(CostoOrdenar.getText());
+        float acumDemandCost = Float.parseFloat(CostoFaltanteConEspera.getText());
+        float saleLossCost = Float.parseFloat(CostoFaltanteSinEspera.getText());
+        int initialInv = Integer.parseInt(InventarioInicial.getText());
+
+
+        inValues enter = new inValues('d', false, 10, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
+
+        int demandsArray[][] = new int[data.size()][2];
+        int deliveryTimeArray[][] = new int[data2.size()][2];
+        int clientw8TimeArray[][] = new int[data3.size()][2];
+        int i=0;
+
+        //Demanda Diaria
+        while(i<data.size()){
+            demandsArray[i][0] = Integer.parseInt(data.getElementAt(i).toString());
+            System.out.println("Entro Valor Demanda Diaria "+i+" "+Integer.parseInt(data.getElementAt(i).toString()));
+            i++;
+        }
+
+        i=0;
+        while(i<dataa.size()){
+            System.out.println("Entro Probabilidad Demanda Diaria");
+            demandsArray[i][1] = Integer.parseInt(dataa.getElementAt(i).toString());
+            i++;
+        }
+        i=0;
+        //Tiempo de Entrega
+        while(i<data2.size()){
+            deliveryTimeArray[i][0] = Integer.parseInt(data2.getElementAt(i).toString());
+            System.out.println("Entro Valor Tiempo Entrega "+i+" "+Integer.parseInt(data2.getElementAt(i).toString()));
+            i++;
+        }
+
+        i=0;
+        while(i<dataa2.size()){
+            System.out.println("Entro Probabilidad Tiempo de Entrega");
+            deliveryTimeArray[i][1] = Integer.parseInt(dataa2.getElementAt(i).toString());
+            i++;
+        }
+
+        i=0;
+        //Tiempo de Espera Cliente
+        while(i<data3.size()){
+            clientw8TimeArray[i][0] = Integer.parseInt(data3.getElementAt(i).toString());
+            System.out.println("Entro Valor Tiempo Espera "+i+" "+Integer.parseInt(data3.getElementAt(i).toString()));
+            i++;
+        }
+
+        i=0;
+        while(i<dataa3.size()){
+            System.out.println("Entro Probabilidad Tiempo de Entrega");
+            clientw8TimeArray[i][1] = Integer.parseInt(dataa3.getElementAt(i).toString());
+            i++;
+        }
+
+
+        enter.setDemandsArray(demandsArray);
+        enter.setDeliverTimeArray(deliveryTimeArray);
+        enter.setClientw8TimeArray(clientw8TimeArray);
+        enter.bubbleSort();
+        enter.calcInvCostUnit();
+
+
+
+        //--------------------------------------------------------------------------------------------------------------
+
+
+        creator.modifyinFile("name.txt", enter );
+
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void borrarTiempoEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarTiempoEntregaActionPerformed
@@ -1070,6 +1182,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         enter.setClientw8TimeArray(clientw8TimeArray);
         enter.bubbleSort();
         enter.calcInvCostUnit();
+
         simulation sim = new simulation();
         sim.simulate(enter);
 
