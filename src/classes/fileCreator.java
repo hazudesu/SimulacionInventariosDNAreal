@@ -13,17 +13,16 @@ import java.util.ArrayList;
  *
  * */
 public class fileCreator {
-    protected Desktop desktop = Desktop.getDesktop();
-    protected String fileName;
-    protected String path = "C:\\\\Simulacion de Inventarios\\\\Archivos\\\\";
-    protected File directory = new File("C:\\Simulacion de Inventarios\\Archivos");
-    protected File newDoc;
-    protected FileWriter fOut;
-    protected JFrame frame = new JFrame();
+
+    protected String fileName;                                                                                          //Recibe el nombre a asignar para el archivo / nombre del archivo a abrir
+    protected String path = "C:\\\\Simulacion de Inventarios\\\\Archivos\\\\";                                          //Path del directorio predeterminado del programa
+    protected File directory = new File("C:\\Simulacion de Inventarios\\Archivos");                           //archivo del path al directorio predeterminado del programa
+    protected File newDoc;                                                                                              //Variable tipo file empleada para la creacion de nuevos documentos txt
+    protected FileWriter fOut;                                                                                          //Variable de tipo FileWriter para la creacion, apertura y escritura de Archivos
 
 
     //------------------------------------------------------------------------------------------------------------------
-                                    //Metodos
+                                    //Constructores
 
     fileCreator(String fileName){
         this.fileName = fileName;
@@ -32,12 +31,20 @@ public class fileCreator {
     public fileCreator() {
     }
 
+    //------------------------------------------------------------------------------------------------------------------
+                                    //Metodos
+
+
+    //Metodo para la creacion del directorio principal a usar en la ejecucion.
+
     public void createDir() {
         if (!directory.exists()) {
             directory.mkdirs();
         }
     }
 
+    /*Metodo readFile para la lectura de los archivos que contienen los datos de entrada
+    * basado en un formato especifico de entrada de datos*/
 
 
     public inValues readFile(String fileName) throws IOException {
@@ -253,12 +260,14 @@ public class fileCreator {
         return result;
     }
 
+    /*Metodo writeResult, se encarga del almacenamiento de los datos de salida o resultados de la simulacion
+    * una vez que esta ha terminado , estos archivos se almacenan en el directorio predeterminado*/
+
     public void writeResult(outValues[] salida, outValues salidaOptima, String resultFileName){
         String separator = System.getProperty("line.separator");
         String space = "          ";
         FileWriter fOut2;
         File newDoc2;
-        System.out.println(resultFileName);
         try {
             System.out.println(resultFileName);
             newDoc2 = new File(path + resultFileName);
@@ -295,6 +304,9 @@ public class fileCreator {
             e.printStackTrace();
         }
     }
+
+    /**Metodo modifyinFile, se encarga de realizar la modificacion y escritura de archivos en el directorio
+     * principal predeterminado.*/
 
     public void modifyinFile(String fileopen, inValues inModed){
         String separator = System.getProperty("line.separator");
