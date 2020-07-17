@@ -239,7 +239,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        nombreGuardarArchivo = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -350,11 +350,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         jButton1.setText("Cargar Archivo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    jButton1ActionPerformed(evt);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -368,7 +364,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nombreGuardarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -377,7 +373,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreGuardarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -957,7 +953,10 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         File fileToget = selector.getSelectedFile();
         show = creator.readFile(fileToget.getName());
         int i = 0;
-
+        acumpDemanda=0;
+        acumpTiempoEntrega=0;
+        acumpTiempoEspera=0;
+        
             uTiempo.setText(Character.toString(show.getTimeUnit()));
 
             boolean eventTable;
@@ -974,7 +973,6 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
 
             while(i<show.getDemandValues()){
                 //demandsArray[i][0] = Integer.parseInt(data.getElementAt(i).toString());
-
                 data.addElement(Integer.toString(show.getDemandsArray()[i][0]));
                 i++;
             }
@@ -984,8 +982,8 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             while(i<show.getDemandValues()){
                 //demandsArray[i][1] = Integer.parseInt(dataa.getElementAt(i).toString());
                 dataa.addElement(Integer.toString(show.getDemandsArray()[i][1]));
+                acumpDemanda += show.getDemandsArray()[i][1];
                 i++;
-                //acumpDemanda += show.getDemandsArray()[i][1];
             }
             i=0;
             //Tiempo de Entrega
@@ -999,8 +997,9 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             while(i<show.getDeliverTimeAmount()){
                 //deliveryTimeArray[i][1] = Integer.parseInt(dataa2.getElementAt(i).toString());
                 dataa2.addElement(Integer.toString(show.getDeliverTimeArray()[i][1]));
+                acumpTiempoEntrega += show.getDeliverTimeArray()[i][1];
                 i++;
-                //acumpTiempoEntrega += show.getDeliverTimeArray()[i][1];
+                
             }
 
             i=0;
@@ -1015,8 +1014,9 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             while(i<show.getW8TimeAmntClient()){
                 //clientw8TimeArray[i][1] = Integer.parseInt(dataa3.getElementAt(i).toString());
                 dataa3.addElement(Integer.toString(show.getClientw8TimeArray()[i][1]));
+                acumpTiempoEspera += show.getClientw8TimeArray()[i][1];
                 i++;
-                //acumpTiempoEspera += show.getClientw8TimeArray()[i][1];
+                
             }
 
             acumpDemanda =100;
@@ -1028,14 +1028,9 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             loaded = true;
 
 
-
-
-
         }catch(Exception e){
             
         }
-
-
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -1064,7 +1059,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         int initialInv = Integer.parseInt(InventarioInicial.getText());
 
 
-        inValues enter = new inValues('d', false, 10, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
+        inValues enter = new inValues('d', false, timeAmount, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
 
         int demandsArray[][] = new int[data.size()][2];
         int deliveryTimeArray[][] = new int[data2.size()][2];
@@ -1074,13 +1069,11 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         //Demanda Diaria
         while(i<data.size()){
             demandsArray[i][0] = Integer.parseInt(data.getElementAt(i).toString());
-
             i++;
         }
 
         i=0;
         while(i<dataa.size()){
-
             demandsArray[i][1] = Integer.parseInt(dataa.getElementAt(i).toString());
             i++;
         }
@@ -1088,13 +1081,11 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         //Tiempo de Entrega
         while(i<data2.size()){
             deliveryTimeArray[i][0] = Integer.parseInt(data2.getElementAt(i).toString());
-
             i++;
         }
 
         i=0;
         while(i<dataa2.size()){
-
             deliveryTimeArray[i][1] = Integer.parseInt(dataa2.getElementAt(i).toString());
             i++;
         }
@@ -1103,13 +1094,11 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         //Tiempo de Espera Cliente
         while(i<data3.size()){
             clientw8TimeArray[i][0] = Integer.parseInt(data3.getElementAt(i).toString());
-
             i++;
         }
 
         i=0;
         while(i<dataa3.size()){
-
             clientw8TimeArray[i][1] = Integer.parseInt(dataa3.getElementAt(i).toString());
             i++;
         }
@@ -1125,9 +1114,10 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
 
         //--------------------------------------------------------------------------------------------------------------
 
-
-        creator.modifyinFile("name.txt", enter );
-
+        if(nombreGuardarArchivo.getText().isEmpty())
+            creator.modifyinFile("name.txt", enter );
+        else
+            creator.modifyinFile(nombreGuardarArchivo.getText(), enter );
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1227,10 +1217,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             aca va lo que falta para mostrar las tablas/
              */
 
-
         }else {
-
-
             char timeUnit = 'd';
             boolean eventTable;
 
@@ -1266,13 +1253,11 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             //Demanda Diaria
             while (i < data.size()) {
                 demandsArray[i][0] = Integer.parseInt(data.getElementAt(i).toString());
-
                 i++;
             }
 
             i = 0;
             while (i < dataa.size()) {
-
                 demandsArray[i][1] = Integer.parseInt(dataa.getElementAt(i).toString());
                 i++;
             }
@@ -1280,13 +1265,11 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             //Tiempo de Entrega
             while (i < data2.size()) {
                 deliveryTimeArray[i][0] = Integer.parseInt(data2.getElementAt(i).toString());
-
                 i++;
             }
 
             i = 0;
             while (i < dataa2.size()) {
-
                 deliveryTimeArray[i][1] = Integer.parseInt(dataa2.getElementAt(i).toString());
                 i++;
             }
@@ -1295,13 +1278,11 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             //Tiempo de Espera Cliente
             while (i < data3.size()) {
                 clientw8TimeArray[i][0] = Integer.parseInt(data3.getElementAt(i).toString());
-
                 i++;
             }
 
             i = 0;
             while (i < dataa3.size()) {
-
                 clientw8TimeArray[i][1] = Integer.parseInt(dataa3.getElementAt(i).toString());
                 i++;
             }
@@ -1312,12 +1293,9 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             enter.bubbleSort();
             enter.calcInvCostUnit();
 
-
             sim.simulate(enter);
 
-
             creator.writeResult(sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]), sim.getSalidaOptima(), "Resultado1.txt");
-
 
             outValues[] salidaFinalArray = sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]);
 
@@ -1327,14 +1305,13 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                 RTabla.vaciarOutValues(salidaFinalArray[x]);
             }
 
-
             // tabla1 tablas = new tabla1(RTabla.getData());
             RTabla.imprimirTabla();
             RTabla.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             RTabla.setSize(1500, 500);
             RTabla.setVisible(true);
             RTabla.setLocationRelativeTo(null);
-            RTabla.setTitle("My first java table");
+            RTabla.setTitle("Tabla de Simulacion");
 
         }
         
@@ -1447,13 +1424,13 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JList<String> listaPDemanda;
     private javax.swing.JList<String> listaPTiempoEntrega;
     private javax.swing.JList<String> listaPTiempoEspera;
     private javax.swing.JList<String> listaVDemanda;
     private javax.swing.JList<String> listaVTiempoEntrega;
     private javax.swing.JList<String> listaVTiempoEspera;
+    private javax.swing.JTextField nombreGuardarArchivo;
     private javax.swing.JTextField pDemanda;
     private javax.swing.JTextField pTiempoEntrega;
     private javax.swing.JTextField pTiempoEspera;
