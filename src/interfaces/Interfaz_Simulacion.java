@@ -26,6 +26,9 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     DefaultListModel dataa3 = new DefaultListModel();
     
     int acumpDemanda, acumpTiempoEntrega, acumpTiempoEspera = 0;
+
+    boolean loaded = false;
+    inValues show;
     
     boolean tabla= true;
 
@@ -37,7 +40,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         listaVDemanda.setModel(data);
         listaVTiempoEntrega.setModel(data2);
         listaVTiempoEspera.setModel(data3);
-        
+
         listaPDemanda.setModel(dataa);
         listaPTiempoEntrega.setModel(dataa2);
         listaPTiempoEspera.setModel(dataa3);
@@ -318,7 +321,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Simulacion de Invearios DNA");
+        jLabel1.setText("Proyecto de Investigacion de Operaciones");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -946,16 +949,95 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         try{
         JFileChooser selector = new JFileChooser();
         selector.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Texto", "txt");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Text File", "txt");
         selector.setFileFilter(filter);
         selector.setCurrentDirectory(new File(creator.getPath()));
         selector.showOpenDialog(new Component(){});
 
         File fileToget = selector.getSelectedFile();
-        inValues show = creator.readFile(fileToget.getName());
+        show = creator.readFile(fileToget.getName());
+        int i = 0;
+
+            uTiempo.setText(Character.toString(show.getTimeUnit()));
+
+            boolean eventTable;
+
+            TiempoSimulacion.setText(Integer.toString(show.getTimeAmount()));
+
+            CostoInventario.setText(Float.toString(show.getInvCost()));
+            CostoCompra.setText(Float.toString(show.getPurchaseCost()));
+            CostoOrdenar.setText(Float.toString(show.getOrderCost()));
+            CostoFaltanteConEspera.setText(Float.toString(show.getAcumDemandCost()));
+            CostoFaltanteSinEspera.setText(Float.toString(show.getSaleLossCost()));
+            InventarioInicial.setText(Integer.toString(show.getInitialInv()));
+
+
+            while(i<show.getDemandValues()){
+                //demandsArray[i][0] = Integer.parseInt(data.getElementAt(i).toString());
+
+                data.addElement(Integer.toString(show.getDemandsArray()[i][0]));
+                i++;
+            }
+
+
+            i=0;
+            while(i<show.getDemandValues()){
+                //demandsArray[i][1] = Integer.parseInt(dataa.getElementAt(i).toString());
+                dataa.addElement(Integer.toString(show.getDemandsArray()[i][1]));
+                i++;
+                //acumpDemanda += show.getDemandsArray()[i][1];
+            }
+            i=0;
+            //Tiempo de Entrega
+            while(i<show.getDeliverTimeAmount()){
+                //deliveryTimeArray[i][0] = Integer.parseInt(data2.getElementAt(i).toString());
+                data2.addElement(Integer.toString(show.getDeliverTimeArray()[i][0]));
+                i++;
+            }
+
+            i=0;
+            while(i<show.getDeliverTimeAmount()){
+                //deliveryTimeArray[i][1] = Integer.parseInt(dataa2.getElementAt(i).toString());
+                dataa2.addElement(Integer.toString(show.getDeliverTimeArray()[i][1]));
+                i++;
+                //acumpTiempoEntrega += show.getDeliverTimeArray()[i][1];
+            }
+
+            i=0;
+            //Tiempo de Espera Cliente
+            while(i<show.getW8TimeAmntClient()){
+                //clientw8TimeArray[i][0] = Integer.parseInt(data3.getElementAt(i).toString());
+                data3.addElement(Integer.toString(show.getClientw8TimeArray()[i][0]));
+                i++;
+            }
+
+            i=0;
+            while(i<show.getW8TimeAmntClient()){
+                //clientw8TimeArray[i][1] = Integer.parseInt(dataa3.getElementAt(i).toString());
+                dataa3.addElement(Integer.toString(show.getClientw8TimeArray()[i][1]));
+                i++;
+                //acumpTiempoEspera += show.getClientw8TimeArray()[i][1];
+            }
+
+            acumpDemanda =100;
+            acumpTiempoEntrega = 100;
+            acumpTiempoEspera = 100;
+
+            validar();
+
+            loaded = true;
+
+
+
+
+
         }catch(Exception e){
             
         }
+
+
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -992,13 +1074,13 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         //Demanda Diaria
         while(i<data.size()){
             demandsArray[i][0] = Integer.parseInt(data.getElementAt(i).toString());
-            System.out.println("Entro Valor Demanda Diaria "+i+" "+Integer.parseInt(data.getElementAt(i).toString()));
+
             i++;
         }
 
         i=0;
         while(i<dataa.size()){
-            System.out.println("Entro Probabilidad Demanda Diaria");
+
             demandsArray[i][1] = Integer.parseInt(dataa.getElementAt(i).toString());
             i++;
         }
@@ -1006,13 +1088,13 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         //Tiempo de Entrega
         while(i<data2.size()){
             deliveryTimeArray[i][0] = Integer.parseInt(data2.getElementAt(i).toString());
-            System.out.println("Entro Valor Tiempo Entrega "+i+" "+Integer.parseInt(data2.getElementAt(i).toString()));
+
             i++;
         }
 
         i=0;
         while(i<dataa2.size()){
-            System.out.println("Entro Probabilidad Tiempo de Entrega");
+
             deliveryTimeArray[i][1] = Integer.parseInt(dataa2.getElementAt(i).toString());
             i++;
         }
@@ -1021,13 +1103,13 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         //Tiempo de Espera Cliente
         while(i<data3.size()){
             clientw8TimeArray[i][0] = Integer.parseInt(data3.getElementAt(i).toString());
-            System.out.println("Entro Valor Tiempo Espera "+i+" "+Integer.parseInt(data3.getElementAt(i).toString()));
+
             i++;
         }
 
         i=0;
         while(i<dataa3.size()){
-            System.out.println("Entro Probabilidad Tiempo de espera");
+
             clientw8TimeArray[i][1] = Integer.parseInt(dataa3.getElementAt(i).toString());
             i++;
         }
@@ -1093,7 +1175,6 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             dataa.addElement(pDemanda.getText());
             
             acumpDemanda = acumpDemanda+Integer.parseInt(pDemanda.getText());
-            //System.out.println(acumpDemanda);
             probabilidadDemanda.setText(acumpDemanda+"%");
         }
         validar();
@@ -1107,7 +1188,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             dataa3.addElement(pTiempoEspera.getText());
             
             acumpTiempoEspera = acumpTiempoEspera+Integer.parseInt(pTiempoEspera.getText());
-            //System.out.println(acumpTiempoEspera);
+
             probabilidadTiempoEspera.setText(acumpTiempoEspera+"%");
         }
         validar();
@@ -1135,111 +1216,127 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
     private void botonSimularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSimularActionPerformed
         // TODO add your handling code here:
         //int entero = Integer.parseInt(vDemanda.getText());
-        
-         
-        char timeUnit='d';
-        boolean eventTable;
-        
-        int timeAmount = Integer.parseInt(TiempoSimulacion.getText());
-        int demandValues = data.getSize();
-        int deliverTimeAmount = data2.getSize();
-        int w8TimeAmntClient = data3.getSize();
-        float invCost = Float.parseFloat(CostoInventario.getText());
-        float purchaseCost = Float.parseFloat(CostoCompra.getText());
-        float orderCost = Float.parseFloat(CostoOrdenar.getText());
-        float acumDemandCost = Float.parseFloat(CostoFaltanteConEspera.getText());
-        float saleLossCost = Float.parseFloat(CostoFaltanteSinEspera.getText());
-        int initialInv = Integer.parseInt(InventarioInicial.getText());
-      
-        if(uTiempo.getText()=="Dias")
-            timeUnit = 'd';
-        if(uTiempo.getText()=="Semanas")
-            timeUnit = 's';
-        if(uTiempo.getText()=="Meses")
-            timeUnit = 'm';
-        if(uTiempo.getText()=="Bimestres")
-            timeUnit = 'b';
-        if(uTiempo.getText()=="Trimestres")
-            timeUnit = 't';  
-        
-        inValues enter = new inValues(timeUnit, tabla, timeAmount, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
-        
-        int demandsArray[][] = new int[data.size()][2];
-        int deliveryTimeArray[][] = new int[data2.size()][2];
-        int clientw8TimeArray[][] = new int[data3.size()][2];
-        int i=0;
-        
-        //Demanda Diaria
-        while(i<data.size()){
-           demandsArray[i][0] = Integer.parseInt(data.getElementAt(i).toString());
-           System.out.println("Entro Valor Demanda Diaria "+i+" "+Integer.parseInt(data.getElementAt(i).toString()));
-           i++;
-        }
-        
-        i=0;
-        while(i<dataa.size()){
-           System.out.println("Entro Probabilidad Demanda Diaria");
-           demandsArray[i][1] = Integer.parseInt(dataa.getElementAt(i).toString());
-           i++;
-        }
-        i=0;
-        //Tiempo de Entrega
-        while(i<data2.size()){
-           deliveryTimeArray[i][0] = Integer.parseInt(data2.getElementAt(i).toString());
-           System.out.println("Entro Valor Tiempo Entrega "+i+" "+Integer.parseInt(data2.getElementAt(i).toString()));
-           i++;
-        }
-        
-        i=0;
-        while(i<dataa2.size()){
-           System.out.println("Entro Probabilidad Tiempo de Entrega");
-           deliveryTimeArray[i][1] = Integer.parseInt(dataa2.getElementAt(i).toString());
-           i++;
-        }
-        
-        i=0;
-        //Tiempo de Espera Cliente
-        while(i<data3.size()){
-           clientw8TimeArray[i][0] = Integer.parseInt(data3.getElementAt(i).toString());
-           System.out.println("Entro Valor Tiempo Espera "+i+" "+Integer.parseInt(data3.getElementAt(i).toString()));
-           i++;
-        }
-        
-        i=0;
-        while(i<dataa3.size()){
-           System.out.println("Entro Probabilidad Tiempo de Espera");
-           clientw8TimeArray[i][1] = Integer.parseInt(dataa3.getElementAt(i).toString());
-           i++;
-        }
-        
-        enter.setDemandsArray(demandsArray);
-        enter.setDeliverTimeArray(deliveryTimeArray);
-        enter.setClientw8TimeArray(clientw8TimeArray);
-        enter.bubbleSort();
-        enter.calcInvCostUnit();
 
         simulation sim = new simulation();
-        sim.simulate(enter);
 
-        creator.writeResult(sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]),sim.getSalidaOptima(),"Resultado1.txt");
-        
-        
-        outValues[] salidaFinalArray = sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]);
+        if(loaded){
+            sim.simulate(show);
+            creator.writeResult(sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]), sim.getSalidaOptima(), "Resultado1.txt");
 
-        tabla RTabla = new tabla(timeAmount,salidaFinalArray.length);
-        
-        for(int x=0 ; x<salidaFinalArray.length ; x++){
-            RTabla.vaciarOutValues(salidaFinalArray[x]);
+            /*
+            aca va lo que falta para mostrar las tablas/
+             */
+
+
+        }else {
+
+
+            char timeUnit = 'd';
+            boolean eventTable;
+
+            int timeAmount = Integer.parseInt(TiempoSimulacion.getText());
+            int demandValues = data.getSize();
+            int deliverTimeAmount = data2.getSize();
+            int w8TimeAmntClient = data3.getSize();
+            float invCost = Float.parseFloat(CostoInventario.getText());
+            float purchaseCost = Float.parseFloat(CostoCompra.getText());
+            float orderCost = Float.parseFloat(CostoOrdenar.getText());
+            float acumDemandCost = Float.parseFloat(CostoFaltanteConEspera.getText());
+            float saleLossCost = Float.parseFloat(CostoFaltanteSinEspera.getText());
+            int initialInv = Integer.parseInt(InventarioInicial.getText());
+
+            if (uTiempo.getText() == "Dias")
+                timeUnit = 'd';
+            if (uTiempo.getText() == "Semanas")
+                timeUnit = 's';
+            if (uTiempo.getText() == "Meses")
+                timeUnit = 'm';
+            if (uTiempo.getText() == "Bimestres")
+                timeUnit = 'b';
+            if (uTiempo.getText() == "Trimestres")
+                timeUnit = 't';
+
+            inValues enter = new inValues(timeUnit, tabla, timeAmount, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
+
+            int demandsArray[][] = new int[data.size()][2];
+            int deliveryTimeArray[][] = new int[data2.size()][2];
+            int clientw8TimeArray[][] = new int[data3.size()][2];
+            int i = 0;
+
+            //Demanda Diaria
+            while (i < data.size()) {
+                demandsArray[i][0] = Integer.parseInt(data.getElementAt(i).toString());
+
+                i++;
+            }
+
+            i = 0;
+            while (i < dataa.size()) {
+
+                demandsArray[i][1] = Integer.parseInt(dataa.getElementAt(i).toString());
+                i++;
+            }
+            i = 0;
+            //Tiempo de Entrega
+            while (i < data2.size()) {
+                deliveryTimeArray[i][0] = Integer.parseInt(data2.getElementAt(i).toString());
+
+                i++;
+            }
+
+            i = 0;
+            while (i < dataa2.size()) {
+
+                deliveryTimeArray[i][1] = Integer.parseInt(dataa2.getElementAt(i).toString());
+                i++;
+            }
+
+            i = 0;
+            //Tiempo de Espera Cliente
+            while (i < data3.size()) {
+                clientw8TimeArray[i][0] = Integer.parseInt(data3.getElementAt(i).toString());
+
+                i++;
+            }
+
+            i = 0;
+            while (i < dataa3.size()) {
+
+                clientw8TimeArray[i][1] = Integer.parseInt(dataa3.getElementAt(i).toString());
+                i++;
+            }
+
+            enter.setDemandsArray(demandsArray);
+            enter.setDeliverTimeArray(deliveryTimeArray);
+            enter.setClientw8TimeArray(clientw8TimeArray);
+            enter.bubbleSort();
+            enter.calcInvCostUnit();
+
+
+            sim.simulate(enter);
+
+
+            creator.writeResult(sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]), sim.getSalidaOptima(), "Resultado1.txt");
+
+
+            outValues[] salidaFinalArray = sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]);
+
+            tabla RTabla = new tabla(timeAmount, salidaFinalArray.length);
+
+            for (int x = 0; x < salidaFinalArray.length; x++) {
+                RTabla.vaciarOutValues(salidaFinalArray[x]);
+            }
+
+
+            // tabla1 tablas = new tabla1(RTabla.getData());
+            RTabla.imprimirTabla();
+            RTabla.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            RTabla.setSize(1500, 500);
+            RTabla.setVisible(true);
+            RTabla.setLocationRelativeTo(null);
+            RTabla.setTitle("My first java table");
+
         }
-
-        
-       // tabla1 tablas = new tabla1(RTabla.getData());
-               RTabla.imprimirTabla();
-               RTabla.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-               RTabla.setSize(1500,500);
-               RTabla.setVisible(true);
-               RTabla.setLocationRelativeTo(null);
-               RTabla.setTitle("My first java table");
         
 
     }//GEN-LAST:event_botonSimularActionPerformed

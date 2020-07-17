@@ -268,7 +268,6 @@ public class fileCreator {
         String space = "          ";
         FileWriter fOut2;
         File newDoc2;
-        System.out.println(resultFileName);
         try {
             System.out.println(resultFileName);
             newDoc2 = new File(path + resultFileName);
