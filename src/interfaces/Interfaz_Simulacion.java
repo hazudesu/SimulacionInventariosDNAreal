@@ -987,6 +987,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                 //demandsArray[i][1] = Integer.parseInt(dataa.getElementAt(i).toString());
                 dataa.addElement(Integer.toString(show.getDemandsArray()[i][1]));
                 acumpDemanda += show.getDemandsArray()[i][1];
+                probabilidadDemanda.setText(acumpDemanda+"%");
                 i++;
             }
             i=0;
@@ -1002,6 +1003,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                 //deliveryTimeArray[i][1] = Integer.parseInt(dataa2.getElementAt(i).toString());
                 dataa2.addElement(Integer.toString(show.getDeliverTimeArray()[i][1]));
                 acumpTiempoEntrega += show.getDeliverTimeArray()[i][1];
+                probabilidadTiempoEntrega.setText(acumpTiempoEntrega+"%");
                 i++;
                 
             }
@@ -1019,6 +1021,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
                 //clientw8TimeArray[i][1] = Integer.parseInt(dataa3.getElementAt(i).toString());
                 dataa3.addElement(Integer.toString(show.getClientw8TimeArray()[i][1]));
                 acumpTiempoEspera += show.getClientw8TimeArray()[i][1];
+                probabilidadTiempoEspera.setText(acumpTiempoEspera+"%");
                 i++;
                 
             }
@@ -1063,7 +1066,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         int initialInv = Integer.parseInt(InventarioInicial.getText());
 
 
-        inValues enter = new inValues('d', false, timeAmount, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
+        inValues enter = new inValues('d', true, timeAmount, data.size(), data2.size(), data3.size(), invCost, purchaseCost, orderCost, acumDemandCost, saleLossCost, initialInv);
 
         int demandsArray[][] = new int[data.size()][2];
         int deliveryTimeArray[][] = new int[data2.size()][2];
@@ -1117,11 +1120,13 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
 
 
         //--------------------------------------------------------------------------------------------------------------
-
+        System.out.println(nombreGuardarArchivo.getText());
+        
         if(nombreGuardarArchivo.getText().isEmpty())
             creator.modifyinFile("name.txt", enter );
         else
-            creator.modifyinFile(nombreGuardarArchivo.getText(), enter );
+            creator.modifyinFile(nombreGuardarArchivo.getText()+".txt", enter );
+        
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1213,15 +1218,15 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
 
         simulation sim = new simulation();
 
-        if(loaded){
-            sim.simulate(show);
-            creator.writeResult(sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]), sim.getSalidaOptima(), "Resultado1.txt");
+        //if(loaded){
+        //    sim.simulate(show);
+        //    creator.writeResult(sim.getSalidaFinal().toArray(new outValues[sim.getSalidaFinal().size()]), sim.getSalidaOptima(), "Resultado1.txt");
 
             /*
             aca va lo que falta para mostrar las tablas/
              */
 
-        }else {
+        //}else {
             char timeUnit = 'd';
             boolean eventTable;
 
@@ -1317,7 +1322,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             RTabla.setLocationRelativeTo(null);
             RTabla.setTitle("Tabla de Simulacion");
 
-        }
+        //}
         
 
     }//GEN-LAST:event_botonSimularActionPerformed
