@@ -12,7 +12,7 @@ public class outValues {
 
     protected ArrayList<Integer> day = new ArrayList<Integer>();
     protected ArrayList<Integer> invInc = new ArrayList<Integer>();
-    protected ArrayList<Integer> demandRandom = new ArrayList<Integer>();
+    protected ArrayList<Integer> demandRandom = new ArrayList<>();
     protected ArrayList<Integer> demand = new ArrayList<Integer>();
     protected ArrayList<Integer> finalInv = new ArrayList<Integer>();
     protected ArrayList<Float> invProm = new ArrayList<Float>();
@@ -22,17 +22,18 @@ public class outValues {
     protected ArrayList<Integer> deliverTime = new ArrayList<Integer>();
     protected ArrayList<Integer> w8TimeRandom = new ArrayList<Integer>();
     protected ArrayList<Integer> w8Time = new ArrayList<Integer>();
+
     protected int Qvalue; //Valor de Q correspondiente a la combinacion actual
     protected int Rvalue; //Valor de R correspondiente a la combinacion actual
 
     protected float totalCostInv;   //Valor de costo de inventario total
-    protected int totalOrderCost;   //Valor de costo de orden total
-    protected int totalPurchaseCost;//Valor de costo de compra total
-    protected int w8RemainCost;     //Valor de costo por faltante con espera total
-    protected int noW8RemainCost;   //Valor de costo por faltante sin espera  total
-    protected int totalRemainCost;  //Valor de costo por faltantes total
+    protected double totalOrderCost;   //Valor de costo de orden total
+    protected double totalPurchaseCost;//Valor de costo de compra total
+    protected double w8RemainCost;     //Valor de costo por faltante con espera total
+    protected double noW8RemainCost;   //Valor de costo por faltante sin espera  total
+    protected double totalRemainCost;  //Valor de costo por faltantes total
 
-    protected float totalCost;//Valor de costo de inventario total
+    protected double totalCost;//Valor de costo de inventario total
 
 
 
@@ -225,23 +226,23 @@ public class outValues {
         this.totalCostInv = totalCostInv;
     }
 
-    public int getTotalOrderCost() {
+    public double getTotalOrderCost() {
         return totalOrderCost;
     }
 
-    public void setTotalOrderCost(int totalOrderCost) {
+    public void setTotalOrderCost(double totalOrderCost) {
         this.totalOrderCost = totalOrderCost;
     }
 
-    public int getTotalPurchaseCost() {
+    public double getTotalPurchaseCost() {
         return totalPurchaseCost;
     }
 
-    public void setTotalPurchaseCost(int totalPurchaseCost) {
+    public void setTotalPurchaseCost(double totalPurchaseCost) {
         this.totalPurchaseCost = totalPurchaseCost;
     }
 
-    public int getTotalRemainCost() {
+    public double getTotalRemainCost() {
         return totalRemainCost;
     }
 
@@ -249,7 +250,7 @@ public class outValues {
         this.totalRemainCost = totalRemainCost;
     }
 
-    public float getTotalCost() {
+    public double getTotalCost() {
         return totalCost;
     }
 

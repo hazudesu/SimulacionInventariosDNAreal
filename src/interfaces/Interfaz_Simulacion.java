@@ -321,7 +321,7 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Proyecto de Investigacion de Operaciones");
+        jLabel1.setText("                     Simulación de Inventarios");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1315,12 +1315,12 @@ public class Interfaz_Simulacion extends javax.swing.JFrame {
             }
 
             // tabla1 tablas = new tabla1(RTabla.getData());
-            RTabla.imprimirTabla();
+            /*RTabla.imprimirTabla();
             RTabla.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             RTabla.setSize(1500, 500);
             RTabla.setVisible(true);
             RTabla.setLocationRelativeTo(null);
-            RTabla.setTitle("Tabla de Simulacion");
+            RTabla.setTitle("Tabla de Simulacion");*/
 
         //}
         

@@ -5,6 +5,7 @@ import java.awt.*;
 import java.io.*;
 import java.awt.desktop.*;
 import java.awt.FileDialog;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 /*
  *  @author Lopez Daniel 26.623.586
@@ -84,7 +85,7 @@ public class fileCreator {
                                 fillLine++;
                                 break;
                             }else{
-                                System.out.print("Error de formato");
+                                System.out.print("Error de formato1");
                                 return null;
                             }
                     case 2:
@@ -94,7 +95,7 @@ public class fileCreator {
                             fillLine++;
                             break;
                         }else{
-                            System.out.println("Error de Formato");
+                            System.out.println("Error de Formato2");
                             return null;
                         }
 
@@ -105,7 +106,7 @@ public class fileCreator {
                             fillLine++;
                             break;
                         }else{
-                            System.out.println("Error de Formato");
+                            System.out.println("Error de Formato3");
                             return null;
                         }
 
@@ -137,7 +138,7 @@ public class fileCreator {
                             fillLine++;
                             break;
                         }else{
-                            System.out.println("Error de Formato");
+                            System.out.println("Error de Formato4");
                             return null;
                         }
                     case 6:
@@ -168,7 +169,7 @@ public class fileCreator {
                             fillLine++;
                             break;
                         }else{
-                            System.out.println("Error de Formato");
+                            System.out.println("Error de Formato5");
                             return null;
                         }
                     case 8:
@@ -199,7 +200,7 @@ public class fileCreator {
                             fillLine++;
                             break;
                         }else{
-                            System.out.println("Error de Formato");
+                            System.out.println("Error de Formato6");
                             return null;
                         }
                     case 10:
@@ -209,7 +210,7 @@ public class fileCreator {
                             fillLine++;
                             break;
                         }else{
-                            System.out.println("Error de Formato");
+                            System.out.println("Error de Formato7");
                             return null;
                         }
                     case 11:
@@ -219,7 +220,7 @@ public class fileCreator {
                             fillLine++;
                             break;
                         }else{
-                            System.out.println("Error de Formato");
+                            System.out.println("Error de Formato8");
                             return null;
                         }
                     case 12:
@@ -229,7 +230,7 @@ public class fileCreator {
                             fillLine++;
                             break;
                         }else{
-                            System.out.println("Error de Formato");
+                            System.out.println("Error de Formato9");
                             return null;
                         }
                     case 13:
@@ -239,7 +240,7 @@ public class fileCreator {
                             fillLine++;
                             break;
                         }else{
-                            System.out.println("Error de Formato");
+                            System.out.println("Error de Formato10");
                             return null;
                         }
                     case 14:
@@ -249,7 +250,7 @@ public class fileCreator {
                             fillLine++;
                             break;
                         }else{
-                            System.out.println("Error de Formato");
+                            System.out.println("Error de Formato11");
                             return null;
                         }
 
@@ -271,20 +272,22 @@ public class fileCreator {
         try {
             System.out.println(resultFileName);
             newDoc2 = new File(path + resultFileName);
+            DecimalFormat df = new DecimalFormat("#");
+            df.setMaximumFractionDigits(3);
             fOut2 = new FileWriter(newDoc2);
 
             fOut2.write("Resultados de Simulacion" + separator);
             fOut2.write("---------------------------------------------------------------------------------------------------" + separator);
             fOut2.write("Politica Optima:" +separator);
-            fOut2.write("Q = " + salidaOptima.getQvalue() +space +"R = " + salidaOptima.getRvalue()+ separator);
-            fOut2.write("Costo de inventario = " + salidaOptima.getTotalCostInv() + separator);
-            fOut2.write("Costo de Orden =  " + salidaOptima.getTotalOrderCost() + separator);
-            fOut2.write("Costo de Compra = " + salidaOptima.getTotalPurchaseCost() + separator);
-            fOut2.write("Costo de Faltante = " + salidaOptima.getTotalRemainCost() + separator);
-            fOut2.write("COSTO TOTAL DE POLITICA = " + salidaOptima.getTotalCost() + separator);
+            fOut2.write("Q = " +salidaOptima.getQvalue() +space +"R = " + salidaOptima.getRvalue()+ separator);
+            fOut2.write("Costo de inventario = " + df.format(salidaOptima.getTotalCostInv())+ separator);
+            fOut2.write("Costo de Orden =  " + df.format(salidaOptima.getTotalOrderCost()) + separator);
+            fOut2.write("Costo de Compra = " + df.format(salidaOptima.getTotalPurchaseCost() )+ separator);
+            fOut2.write("Costo de Faltante = " + df.format(salidaOptima.getTotalRemainCost() )+ separator);
+            fOut2.write("COSTO TOTAL DE POLITICA = " + df.format(salidaOptima.getTotalCost() )+ separator);
             fOut2.write("---------------------------------------------------------------------------------------------------" + separator);
 
-            for(int i = 0; i < salida.length ; i++){
+           /* for(int i = 0; i < salida.length ; i++){
                 fOut2.write("Resultados de Simulacion" + separator);
                 fOut2.write("---------------------------------------------------------------------------------------------------" + separator);
                 //fOut.write("Tablas de Evento: " + separator);
@@ -295,7 +298,7 @@ public class fileCreator {
                 fOut2.write("Costo de Faltante = " + salida[i].getTotalRemainCost() + separator);
                 fOut2.write("COSTO TOTAL DE POLITICA = " + salida[i].getTotalCost() + separator);
 
-            }
+            }*/
             fOut2.close();
 
         } catch (FileNotFoundException e) {
