@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ba013635-969b-439f-988d-0e3f8a833f66" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/fileCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/fileCreator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/outValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/outValues.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/simulation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/classes/simulation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/interfaces/Interfaz_Simulacion$36.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/interfaces/Interfaz_Simulacion$36.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/interfaces/Interfaz_Simulacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimulacionInventariosDNA/interfaces/Interfaz_Simulacion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/fileCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/fileCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/outValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/outValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/Interfaz_Simulacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/Interfaz_Simulacion.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -190,7 +181,9 @@
       <workItem from="1596662546746" duration="63000" />
       <workItem from="1596720628392" duration="5529000" />
       <workItem from="1596927993737" duration="478000" />
-      <workItem from="1597031445651" duration="1221000" />
+      <workItem from="1597031445651" duration="2283000" />
+      <workItem from="1597088025378" duration="4536000" />
+      <workItem from="1597109434936" duration="2956000" />
     </task>
     <servers />
   </component>
